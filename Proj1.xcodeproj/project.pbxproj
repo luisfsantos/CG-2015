@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		167023721BB6EA5A00C233E2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 167023711BB6EA5A00C233E2 /* main.cpp */; };
+		167023791BB6EA6700C233E2 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167023781BB6EA6700C233E2 /* GLUT.framework */; };
+		1670237B1BB6EA6E00C233E2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1670237A1BB6EA6E00C233E2 /* OpenGL.framework */; };
+		1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1670237C1BB6EB0D00C233E2 /* Vector3.cpp */; settings = {ASSET_TAGS = (); }; };
+		167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1670237F1BB6FC4B00C233E2 /* Entity.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +29,12 @@
 /* Begin PBXFileReference section */
 		1670236E1BB6EA5A00C233E2 /* Proj1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Proj1; sourceTree = BUILT_PRODUCTS_DIR; };
 		167023711BB6EA5A00C233E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		167023781BB6EA6700C233E2 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
+		1670237A1BB6EA6E00C233E2 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		1670237C1BB6EB0D00C233E2 /* Vector3.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Vector3.cpp; sourceTree = "<group>"; };
+		1670237D1BB6EB0D00C233E2 /* Vector3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector3.hpp; sourceTree = "<group>"; };
+		1670237F1BB6FC4B00C233E2 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		167023801BB6FC4B00C233E2 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +42,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1670237B1BB6EA6E00C233E2 /* OpenGL.framework in Frameworks */,
+				167023791BB6EA6700C233E2 /* GLUT.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -41,6 +53,8 @@
 		167023651BB6EA5A00C233E2 = {
 			isa = PBXGroup;
 			children = (
+				1670237A1BB6EA6E00C233E2 /* OpenGL.framework */,
+				167023781BB6EA6700C233E2 /* GLUT.framework */,
 				167023701BB6EA5A00C233E2 /* Proj1 */,
 				1670236F1BB6EA5A00C233E2 /* Products */,
 			);
@@ -58,6 +72,10 @@
 			isa = PBXGroup;
 			children = (
 				167023711BB6EA5A00C233E2 /* main.cpp */,
+				1670237C1BB6EB0D00C233E2 /* Vector3.cpp */,
+				1670237D1BB6EB0D00C233E2 /* Vector3.hpp */,
+				1670237F1BB6FC4B00C233E2 /* Entity.cpp */,
+				167023801BB6FC4B00C233E2 /* Entity.hpp */,
 			);
 			path = Proj1;
 			sourceTree = "<group>";
@@ -118,6 +136,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */,
+				167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */,
 				167023721BB6EA5A00C233E2 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,6 +22,8 @@ Vector3 Entity::setPosition(double x, double y, double z) {
     return _position;
 }
 
-Vector3 Entity::setPosition(const Vector3& vec) {
-    _position.set(vec.getX(), vec.getY(), vec.getZ());
+Vector3 Entity::setPosition(const Vector3& p) {
+    Vector3 aux(0,0,0);
+    _position = (aux) + p;
+    return _position;
 }

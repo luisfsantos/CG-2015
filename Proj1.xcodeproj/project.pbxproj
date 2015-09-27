@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		162876EC1BB81FE4001A3ED4 /* Camera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162876EA1BB81FE4001A3ED4 /* Camera.cpp */; settings = {ASSET_TAGS = (); }; };
 		167023721BB6EA5A00C233E2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 167023711BB6EA5A00C233E2 /* main.cpp */; };
 		167023791BB6EA6700C233E2 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167023781BB6EA6700C233E2 /* GLUT.framework */; };
 		1670237B1BB6EA6E00C233E2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1670237A1BB6EA6E00C233E2 /* OpenGL.framework */; };
@@ -27,6 +28,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		162876EA1BB81FE4001A3ED4 /* Camera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Camera.cpp; sourceTree = "<group>"; };
+		162876EB1BB81FE4001A3ED4 /* Camera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Camera.hpp; sourceTree = "<group>"; };
 		1670236E1BB6EA5A00C233E2 /* Proj1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Proj1; sourceTree = BUILT_PRODUCTS_DIR; };
 		167023711BB6EA5A00C233E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		167023781BB6EA6700C233E2 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -76,6 +79,8 @@
 				1670237D1BB6EB0D00C233E2 /* Vector3.hpp */,
 				1670237F1BB6FC4B00C233E2 /* Entity.cpp */,
 				167023801BB6FC4B00C233E2 /* Entity.hpp */,
+				162876EA1BB81FE4001A3ED4 /* Camera.cpp */,
+				162876EB1BB81FE4001A3ED4 /* Camera.hpp */,
 			);
 			path = Proj1;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				162876EC1BB81FE4001A3ED4 /* Camera.cpp in Sources */,
 				1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */,
 				167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */,
 				167023721BB6EA5A00C233E2 /* main.cpp in Sources */,
@@ -255,6 +261,7 @@
 				167023771BB6EA5A00C233E2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

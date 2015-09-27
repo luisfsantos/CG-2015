@@ -33,5 +33,13 @@ public:
     bool getState ();
     bool setState (bool);
     GLenum getNum ();
+    void setPosition (const Vector3&);
+    void setDirection (const Vector3&);
+    void setCutOff (double);
+    void setExponent (double);
+    void setAmbient (const Vector3&);
+    void setDifuse (const Vector3&);
+    void setSpecular (const Vector3&);
+    void draw();
 
 };

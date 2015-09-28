@@ -8,10 +8,14 @@
 
 #include <iostream>
 #include "Vector3.hpp"
+#include "LightSource.hpp"
 
 int main(int argc, const char * argv[]) {
     Vector3::Vector3 vector1(2, 3, 4);
     Vector3::Vector3 vector2;
+    LightSource::LightSource ls(1);
+    ls.setAmbient(vector1);
+    delete vector2;
     double h = 9;
     std::cout << vector1.getX() << " " << vector1.getY() << " " << vector1.getZ() << "\n";
     vector2 = vector1 * h;

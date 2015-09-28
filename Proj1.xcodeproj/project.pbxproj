@@ -16,6 +16,9 @@
 		1670237B1BB6EA6E00C233E2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1670237A1BB6EA6E00C233E2 /* OpenGL.framework */; };
 		1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1670237C1BB6EB0D00C233E2 /* Vector3.cpp */; settings = {ASSET_TAGS = (); }; };
 		167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1670237F1BB6FC4B00C233E2 /* Entity.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5D01BB99118000F3B3D /* StaticObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5CE1BB99118000F3B3D /* StaticObject.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5D31BB991AC000F3B3D /* River.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5D11BB991AC000F3B3D /* River.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5D61BB9932A000F3B3D /* Roadside.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5D41BB9932A000F3B3D /* Roadside.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +50,12 @@
 		1670237D1BB6EB0D00C233E2 /* Vector3.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Vector3.hpp; sourceTree = "<group>"; };
 		1670237F1BB6FC4B00C233E2 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
 		167023801BB6FC4B00C233E2 /* Entity.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Entity.hpp; sourceTree = "<group>"; };
+		1674A5CE1BB99118000F3B3D /* StaticObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StaticObject.cpp; sourceTree = "<group>"; };
+		1674A5CF1BB99118000F3B3D /* StaticObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = StaticObject.hpp; sourceTree = "<group>"; };
+		1674A5D11BB991AC000F3B3D /* River.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = River.cpp; sourceTree = "<group>"; };
+		1674A5D21BB991AC000F3B3D /* River.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = River.hpp; sourceTree = "<group>"; };
+		1674A5D41BB9932A000F3B3D /* Roadside.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Roadside.cpp; sourceTree = "<group>"; };
+		1674A5D51BB9932A000F3B3D /* Roadside.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Roadside.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +92,7 @@
 		167023701BB6EA5A00C233E2 /* Proj1 */ = {
 			isa = PBXGroup;
 			children = (
+				1674A5D71BB993A3000F3B3D /* GameObjects */,
 				167023711BB6EA5A00C233E2 /* main.cpp */,
 				1670237C1BB6EB0D00C233E2 /* Vector3.cpp */,
 				1670237D1BB6EB0D00C233E2 /* Vector3.hpp */,
@@ -90,14 +100,27 @@
 				167023801BB6FC4B00C233E2 /* Entity.hpp */,
 				162876EA1BB81FE4001A3ED4 /* Camera.cpp */,
 				162876EB1BB81FE4001A3ED4 /* Camera.hpp */,
-				162876ED1BB821C9001A3ED4 /* GameObject.cpp */,
-				162876EE1BB821C9001A3ED4 /* GameObject.hpp */,
 				162876F01BB823F4001A3ED4 /* GameManager.cpp */,
 				162876F11BB823F4001A3ED4 /* GameManager.hpp */,
 				162876F31BB82635001A3ED4 /* LightSource.cpp */,
 				162876F41BB82635001A3ED4 /* LightSource.hpp */,
 			);
 			path = Proj1;
+			sourceTree = "<group>";
+		};
+		1674A5D71BB993A3000F3B3D /* GameObjects */ = {
+			isa = PBXGroup;
+			children = (
+				162876ED1BB821C9001A3ED4 /* GameObject.cpp */,
+				162876EE1BB821C9001A3ED4 /* GameObject.hpp */,
+				1674A5CE1BB99118000F3B3D /* StaticObject.cpp */,
+				1674A5CF1BB99118000F3B3D /* StaticObject.hpp */,
+				1674A5D11BB991AC000F3B3D /* River.cpp */,
+				1674A5D21BB991AC000F3B3D /* River.hpp */,
+				1674A5D41BB9932A000F3B3D /* Roadside.cpp */,
+				1674A5D51BB9932A000F3B3D /* Roadside.hpp */,
+			);
+			name = GameObjects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1674A5D01BB99118000F3B3D /* StaticObject.cpp in Sources */,
 				162876EC1BB81FE4001A3ED4 /* Camera.cpp in Sources */,
 				162876F21BB823F4001A3ED4 /* GameManager.cpp in Sources */,
 				162876F51BB82635001A3ED4 /* LightSource.cpp in Sources */,
@@ -163,6 +187,8 @@
 				167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */,
 				167023721BB6EA5A00C233E2 /* main.cpp in Sources */,
 				162876EF1BB821C9001A3ED4 /* GameObject.cpp in Sources */,
+				1674A5D61BB9932A000F3B3D /* Roadside.cpp in Sources */,
+				1674A5D31BB991AC000F3B3D /* River.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

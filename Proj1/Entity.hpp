@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "Vector3.hpp"
 
-#endif /* Entity_hpp */
 
 class Entity
 {
@@ -24,3 +23,7 @@ public:
     Vector3 setPosition(double, double, double);
     Vector3 setPosition(const Vector3&);
 };
+
+#endif /* Entity_hpp */
+
+

@@ -15,8 +15,6 @@
 #include "Camera.hpp"
 #include "GameObject.hpp"
 #include "LightSource.hpp"
-#endif /* GameManager_hpp */
-
 
 class GameManager
 {
@@ -37,3 +35,6 @@ public:
     void init();
     
 };
+
+#endif /* GameManager_hpp */
+

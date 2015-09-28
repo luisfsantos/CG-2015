@@ -10,9 +10,6 @@
 #define Vector3_hpp
 
 #include <stdio.h>
-#include <GLUT/glut.h>
-#endif /* Vector3_hpp */
-
 
 class Vector3
 {
@@ -24,6 +21,7 @@ protected:
 public:
     Vector3 ();
     Vector3 (double, double, double);
+    ~Vector3 ();
     double getX();
     double getY();
     double getZ();
@@ -33,3 +31,5 @@ public:
     Vector3 operator+(const Vector3&);
     Vector3 operator-(const Vector3&);
 };
+
+#endif /* Vector3_hpp */

@@ -11,8 +11,6 @@
 
 #include <stdio.h>
 #include "Entity.hpp"
-#endif /* GameObject_hpp */
-
 
 class GameObject : public Entity
 {
@@ -22,3 +20,6 @@ public:
     void draw();
     void update(double);
 };
+
+#endif /* GameObject_hpp */
+

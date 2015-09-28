@@ -10,6 +10,10 @@
 
 Vector3::Vector3() {}
 
+Vector3::~Vector3() {
+
+}
+
 Vector3::Vector3(double x, double y, double z) {
     set(x, y, z);
 }

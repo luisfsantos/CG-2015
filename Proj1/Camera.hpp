@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include "Entity.hpp"
-#endif /* Camera_hpp */
 
 
 class Camera : public Entity
@@ -26,3 +25,5 @@ public:
     void computeProjectionMatrix();
     void computeVisualizationMatrix();
 };
+
+#endif /* Camera_hpp */

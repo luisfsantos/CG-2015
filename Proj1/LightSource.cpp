@@ -45,5 +45,36 @@ void LightSource::setExponent(double exponent) {
 }
 
 void LightSource::setAmbient(const Vector3& ambient) {
-    
+    Vector3 aux;
+    aux = ambient;
+    _ambient[0] = aux.getX();
+    _ambient[1] = aux.getY();
+    _ambient[2] = aux.getZ();
+    _ambient[3] = 1;
 }
+
+void LightSource::setDiffuse(const Vector3& diffuse) {
+    Vector3 aux;
+    aux = diffuse;
+    _diffuse[0] = aux.getX();
+    _diffuse[1] = aux.getY();
+    _diffuse[2] = aux.getZ();
+    _diffuse[3] = 1;
+}
+
+void LightSource::setSpecular(const Vector3& specular) {
+    Vector3 aux;
+    aux = specular;
+    _specular[0] = aux.getX();
+    _specular[1] = aux.getY();
+    _specular[2] = aux.getZ();
+    _specular[3] = 1;
+}
+
+void draw() {
+    //fill this in depending on what its supposed to do
+}
+
+
+
+

@@ -13,7 +13,9 @@ Camera::Camera(double near, double far) {
     _far = far;
 }
 
-Camera::~Camera() {}
+Camera::~Camera() {
+
+}
 
 void Camera::update() {
     //fill this in depending on what its supposed to do

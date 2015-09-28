@@ -19,6 +19,13 @@
 		1674A5D01BB99118000F3B3D /* StaticObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5CE1BB99118000F3B3D /* StaticObject.cpp */; settings = {ASSET_TAGS = (); }; };
 		1674A5D31BB991AC000F3B3D /* River.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5D11BB991AC000F3B3D /* River.cpp */; settings = {ASSET_TAGS = (); }; };
 		1674A5D61BB9932A000F3B3D /* Roadside.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5D41BB9932A000F3B3D /* Roadside.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5DA1BB994A0000F3B3D /* DynamicObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5D81BB994A0000F3B3D /* DynamicObject.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5DD1BB996AC000F3B3D /* Car.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5DB1BB996AC000F3B3D /* Car.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5E11BB997FD000F3B3D /* Obstacle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5DF1BB997FD000F3B3D /* Obstacle.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5E41BB998FA000F3B3D /* Butter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5E21BB998FA000F3B3D /* Butter.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5E71BB99997000F3B3D /* Orange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5E51BB99997000F3B3D /* Orange.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5EB1BB99A7B000F3B3D /* PerspectiveCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5E91BB99A7B000F3B3D /* PerspectiveCamera.cpp */; settings = {ASSET_TAGS = (); }; };
+		1674A5EE1BB99F14000F3B3D /* OrthogonalCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5EC1BB99F14000F3B3D /* OrthogonalCamera.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -56,6 +63,20 @@
 		1674A5D21BB991AC000F3B3D /* River.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = River.hpp; sourceTree = "<group>"; };
 		1674A5D41BB9932A000F3B3D /* Roadside.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Roadside.cpp; sourceTree = "<group>"; };
 		1674A5D51BB9932A000F3B3D /* Roadside.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Roadside.hpp; sourceTree = "<group>"; };
+		1674A5D81BB994A0000F3B3D /* DynamicObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DynamicObject.cpp; sourceTree = "<group>"; };
+		1674A5D91BB994A0000F3B3D /* DynamicObject.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = DynamicObject.hpp; sourceTree = "<group>"; };
+		1674A5DB1BB996AC000F3B3D /* Car.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Car.cpp; sourceTree = "<group>"; };
+		1674A5DC1BB996AC000F3B3D /* Car.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Car.hpp; sourceTree = "<group>"; };
+		1674A5DF1BB997FD000F3B3D /* Obstacle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Obstacle.cpp; sourceTree = "<group>"; };
+		1674A5E01BB997FD000F3B3D /* Obstacle.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Obstacle.hpp; sourceTree = "<group>"; };
+		1674A5E21BB998FA000F3B3D /* Butter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Butter.cpp; sourceTree = "<group>"; };
+		1674A5E31BB998FA000F3B3D /* Butter.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Butter.hpp; sourceTree = "<group>"; };
+		1674A5E51BB99997000F3B3D /* Orange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Orange.cpp; sourceTree = "<group>"; };
+		1674A5E61BB99997000F3B3D /* Orange.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Orange.hpp; sourceTree = "<group>"; };
+		1674A5E91BB99A7B000F3B3D /* PerspectiveCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PerspectiveCamera.cpp; sourceTree = "<group>"; };
+		1674A5EA1BB99A7B000F3B3D /* PerspectiveCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PerspectiveCamera.hpp; sourceTree = "<group>"; };
+		1674A5EC1BB99F14000F3B3D /* OrthogonalCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrthogonalCamera.cpp; sourceTree = "<group>"; };
+		1674A5ED1BB99F14000F3B3D /* OrthogonalCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OrthogonalCamera.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,14 +113,13 @@
 		167023701BB6EA5A00C233E2 /* Proj1 */ = {
 			isa = PBXGroup;
 			children = (
+				1674A5E81BB99A41000F3B3D /* Camera */,
 				1674A5D71BB993A3000F3B3D /* GameObjects */,
 				167023711BB6EA5A00C233E2 /* main.cpp */,
 				1670237C1BB6EB0D00C233E2 /* Vector3.cpp */,
 				1670237D1BB6EB0D00C233E2 /* Vector3.hpp */,
 				1670237F1BB6FC4B00C233E2 /* Entity.cpp */,
 				167023801BB6FC4B00C233E2 /* Entity.hpp */,
-				162876EA1BB81FE4001A3ED4 /* Camera.cpp */,
-				162876EB1BB81FE4001A3ED4 /* Camera.hpp */,
 				162876F01BB823F4001A3ED4 /* GameManager.cpp */,
 				162876F11BB823F4001A3ED4 /* GameManager.hpp */,
 				162876F31BB82635001A3ED4 /* LightSource.cpp */,
@@ -119,8 +139,31 @@
 				1674A5D21BB991AC000F3B3D /* River.hpp */,
 				1674A5D41BB9932A000F3B3D /* Roadside.cpp */,
 				1674A5D51BB9932A000F3B3D /* Roadside.hpp */,
+				1674A5D81BB994A0000F3B3D /* DynamicObject.cpp */,
+				1674A5D91BB994A0000F3B3D /* DynamicObject.hpp */,
+				1674A5DB1BB996AC000F3B3D /* Car.cpp */,
+				1674A5DC1BB996AC000F3B3D /* Car.hpp */,
+				1674A5DF1BB997FD000F3B3D /* Obstacle.cpp */,
+				1674A5E01BB997FD000F3B3D /* Obstacle.hpp */,
+				1674A5E21BB998FA000F3B3D /* Butter.cpp */,
+				1674A5E31BB998FA000F3B3D /* Butter.hpp */,
+				1674A5E51BB99997000F3B3D /* Orange.cpp */,
+				1674A5E61BB99997000F3B3D /* Orange.hpp */,
 			);
 			name = GameObjects;
+			sourceTree = "<group>";
+		};
+		1674A5E81BB99A41000F3B3D /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				162876EA1BB81FE4001A3ED4 /* Camera.cpp */,
+				162876EB1BB81FE4001A3ED4 /* Camera.hpp */,
+				1674A5E91BB99A7B000F3B3D /* PerspectiveCamera.cpp */,
+				1674A5EA1BB99A7B000F3B3D /* PerspectiveCamera.hpp */,
+				1674A5EC1BB99F14000F3B3D /* OrthogonalCamera.cpp */,
+				1674A5ED1BB99F14000F3B3D /* OrthogonalCamera.hpp */,
+			);
+			name = Camera;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,11 +224,18 @@
 			files = (
 				1674A5D01BB99118000F3B3D /* StaticObject.cpp in Sources */,
 				162876EC1BB81FE4001A3ED4 /* Camera.cpp in Sources */,
+				1674A5DA1BB994A0000F3B3D /* DynamicObject.cpp in Sources */,
 				162876F21BB823F4001A3ED4 /* GameManager.cpp in Sources */,
 				162876F51BB82635001A3ED4 /* LightSource.cpp in Sources */,
+				1674A5EE1BB99F14000F3B3D /* OrthogonalCamera.cpp in Sources */,
 				1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */,
+				1674A5DD1BB996AC000F3B3D /* Car.cpp in Sources */,
+				1674A5E41BB998FA000F3B3D /* Butter.cpp in Sources */,
+				1674A5E11BB997FD000F3B3D /* Obstacle.cpp in Sources */,
+				1674A5EB1BB99A7B000F3B3D /* PerspectiveCamera.cpp in Sources */,
 				167023811BB6FC4B00C233E2 /* Entity.cpp in Sources */,
 				167023721BB6EA5A00C233E2 /* main.cpp in Sources */,
+				1674A5E71BB99997000F3B3D /* Orange.cpp in Sources */,
 				162876EF1BB821C9001A3ED4 /* GameObject.cpp in Sources */,
 				1674A5D61BB9932A000F3B3D /* Roadside.cpp in Sources */,
 				1674A5D31BB991AC000F3B3D /* River.cpp in Sources */,

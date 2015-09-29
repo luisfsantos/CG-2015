@@ -26,4 +26,5 @@ public:
     Vector3 getSpeed ();
 };
 
+
 #endif /* DynamicObject_hpp */

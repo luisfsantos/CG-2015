@@ -20,3 +20,4 @@ Car::~Car() {
 void Car::draw() {
     //coisas
 }
+

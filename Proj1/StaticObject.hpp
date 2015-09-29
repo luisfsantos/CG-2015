@@ -19,4 +19,5 @@ public:
     ~StaticObject();
 };
 
+
 #endif /* StaticObject_hpp */

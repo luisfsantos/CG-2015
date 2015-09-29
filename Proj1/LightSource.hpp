@@ -45,3 +45,4 @@ public:
 
 #endif /* LightSource_hpp */
 
+

@@ -21,5 +21,6 @@ public:
     void update(double);
 };
 
+
 #endif /* GameObject_hpp */
 

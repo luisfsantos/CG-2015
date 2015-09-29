@@ -27,4 +27,5 @@ public:
     void computeVisualizationMatrix();
 };
 
+
 #endif /* OrthogonalCamera_hpp */

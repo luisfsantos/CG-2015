@@ -26,4 +26,5 @@ public:
     void computeVisualizationMatrix();
 };
 
+
 #endif /* Camera_hpp */

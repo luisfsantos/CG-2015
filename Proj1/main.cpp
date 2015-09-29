@@ -30,7 +30,6 @@ void display() {
     glFlush();
 }
 
-
 void timer(int value) {
     glutPostRedisplay();      // Post re-paint request to activate display()
     glutTimerFunc(MILLIS, timer, 0); // next timer call milliseconds later

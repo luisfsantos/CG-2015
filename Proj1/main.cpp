@@ -17,6 +17,7 @@
 /* Initialize OpenGL Graphics */
 void initGL() {
     glClearColor(0.0, 0.0, 0.0, 0.0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
     glEnable(GL_LIGHT0);
@@ -25,7 +26,12 @@ void initGL() {
 
 void display() {
     Orange::Orange rog;
+    Orange::Orange rog2;
+    rog.setPosition(50, 40, 5);
+    rog2.setPosition(50, 70, -5);
     rog.draw();
+    rog2.draw();
+    
     glutSwapBuffers();
     glFlush();
 }
@@ -39,7 +45,7 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integ
     glViewport(0, 0, (GLsizei) width, (GLsizei) height);
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
-    gluPerspective(40.0, (GLfloat) width/(GLfloat) height, 1.0, 20.0);
+    glOrtho(0, 100, 0, 100, -20.0, 20.0);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
@@ -47,7 +53,7 @@ void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integ
 int main(int argc, char** argv) {
     glutInit(&argc, argv);            // Initialize GLUT
     glutInitDisplayMode(GLUT_DOUBLE); // Enable double buffered mode
-    glutInitWindowSize(640, 480);   // Set the window's initial width & height
+    glutInitWindowSize(600, 600);   // Set the window's initial width & height
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     glutCreateWindow("Micro-Machines");          // Create window with the given title
     glutDisplayFunc(display);       // Register callback handler for window re-paint event

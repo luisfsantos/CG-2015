@@ -17,13 +17,13 @@ Orange::~Orange() {
 }
 
 void Orange::draw() {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    
     glPushMatrix();
-    glTranslatef(0.0, 0.0, -1.0);
+    glTranslatef(_position.getX(), _position.getY(), _position.getZ());
     glRotated((GLdouble) 0, 1.0, 0.0, 0.0);
     glDisable(GL_LIGHTING);
     glColor3f(1.0, 0.2, 0.0);
-    glutSolidSphere(0.2, 100, 10);
+    glutSolidSphere(20, 100, 10);
     glEnable(GL_LIGHTING);
     glPopMatrix();
     

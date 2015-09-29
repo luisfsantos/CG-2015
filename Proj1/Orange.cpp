@@ -24,7 +24,6 @@ void Orange::draw() {
     glDisable(GL_LIGHTING);
     glColor3f(1.0, 0.2, 0.0);
     glutSolidSphere(20, 100, 10);
-    glEnable(GL_LIGHTING);
     glPopMatrix();
     
 }

@@ -15,6 +15,7 @@
 
 class Entity
 {
+protected:
     Vector3 _position;
 public:
     Entity();

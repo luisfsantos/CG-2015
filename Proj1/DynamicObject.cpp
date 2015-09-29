@@ -17,7 +17,7 @@ DynamicObject::~DynamicObject() {
 }
 
 void DynamicObject::update(double delta_t) {
-    
+    _position = _position + _speed * delta_t;
 }
 
 void DynamicObject::setSpeed(const Vector3& speed) {

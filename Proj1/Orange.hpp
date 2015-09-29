@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "Obstacle.hpp"
+#include <GLUT/GLUT.h>
 
 class Orange : public Obstacle
 {

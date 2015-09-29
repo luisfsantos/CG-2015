@@ -17,5 +17,5 @@ void GameObject::draw() {
 }
 
 void GameObject::update(double delta_t) {
-    //fill this in depending on what its supposed to do
+    
 }

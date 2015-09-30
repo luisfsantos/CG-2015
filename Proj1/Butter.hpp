@@ -17,7 +17,7 @@ class Butter : public Obstacle
 public:
     Butter();
     ~Butter();
-    void draw();
+    virtual void draw();
 };
 
 #endif /* Butter_hpp */

@@ -18,7 +18,7 @@ class Orange : public Obstacle
 public:
     Orange();
     ~Orange();
-    void draw();
+    virtual void draw();
 };
 
 #endif /* Orange_hpp */

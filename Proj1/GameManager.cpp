@@ -9,9 +9,8 @@
 #include "GameManager.hpp"
 
 
-
 GameManager::GameManager() {
-    //fill this in depending on what its supposed to do
+    //glEnable(GL_DEPTH_TEST);
 }
 
 GameManager::~GameManager() {
@@ -19,11 +18,18 @@ GameManager::~GameManager() {
 }
 
 void GameManager::display() {
-    //fill this in depending on what its supposed to do
+    std::vector<GameObject*>::iterator iter;
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
+        (*iter)->draw();
+    }
+    //basicamente isto so que com iterador
+    glutSwapBuffers();
+    glFlush();
 }
 
 void GameManager::reshape(GLsizei w, GLsizei h) {
-    //fill this in depending on what its supposed to do
+    _active_camera->update(w,h);
 }
 
 void GameManager::keyPressed() {
@@ -43,5 +49,8 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
-    //fill this in depending on what its supposed to do
+    _active_camera = new OrthogonalCamera(0, 100, 0, 100, -40., 40.);
+    _cameras.push_back(_active_camera);
+    _game_objects.push_back(new Car());
+    _game_objects[0]->setPosition(50, 50, 0);
 }

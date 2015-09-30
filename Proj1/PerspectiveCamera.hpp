@@ -20,9 +20,9 @@ private:
 public:
     PerspectiveCamera(double, double, double, double);
     ~PerspectiveCamera();
-    void update();
-    void computeProjectionMatrix();
-    void computeVisualizationMatrix();
+    void update(GLint, GLint);
+    void computeProjectionMatrix(GLint, GLint);
+    void computeVisualizationMatrix(GLint, GLint);
 
 };
 

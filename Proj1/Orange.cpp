@@ -23,7 +23,8 @@ void Orange::draw() {
     glRotated((GLdouble) 0, 1.0, 0.0, 0.0);
     glDisable(GL_LIGHTING);
     glColor3f(1.0, 0.2, 0.0);
-    glutSolidSphere(20, 100, 10);
+    glutSolidSphere(30, 100, 100);
+    glEnable(GL_LIGHTING);
     glPopMatrix();
     
 }

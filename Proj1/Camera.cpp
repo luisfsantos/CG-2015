@@ -13,18 +13,22 @@ Camera::Camera(double near, double far) {
     _far = far;
 }
 
+Camera::Camera () {
+    
+}
+
 Camera::~Camera() {
 
 }
 
-void Camera::update() {
+void Camera::update(GLint, GLint) {
     //fill this in depending on what its supposed to do
 }
 
-void Camera::computeProjectionMatrix() {
+void Camera::computeProjectionMatrix(GLint, GLint) {
     //fill this in depending on what its supposed to do
 }
 
-void Camera::computeVisualizationMatrix() {
+void Camera::computeVisualizationMatrix(GLint, GLint) {
     //fill this in depending on what its supposed to do
 }

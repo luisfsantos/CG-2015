@@ -8,7 +8,6 @@
 
 #ifndef OrthogonalCamera_hpp
 #define OrthogonalCamera_hpp
-
 #include <stdio.h>
 #include "Camera.hpp"
 
@@ -22,9 +21,9 @@ private:
 public:
     OrthogonalCamera(double, double, double, double, double, double);
     ~OrthogonalCamera();
-    void update();
-    void computeProjectionMatrix();
-    void computeVisualizationMatrix();
+    void update(GLint, GLint);
+    void computeProjectionMatrix(GLint, GLint);
+    void computeVisualizationMatrix(GLint, GLint);
 };
 
 

@@ -11,11 +11,3 @@
 GameObject::GameObject() {}
 
 GameObject::~GameObject() {}
-
-void GameObject::draw() {
-    //fill this in depending on what its supposed to do
-}
-
-void GameObject::update(double delta_t) {
-    
-}

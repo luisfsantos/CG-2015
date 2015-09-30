@@ -8,7 +8,7 @@
 
 #ifndef Camera_hpp
 #define Camera_hpp
-
+#include <GLUT/GLUT.h>
 #include <stdio.h>
 #include "Entity.hpp"
 
@@ -18,12 +18,15 @@ class Camera : public Entity
 protected:
     double _near;
     double _far;
+    double _xwindow = 500;
+    double _ywindow = 500;
 public:
     Camera(double, double);
+    Camera();
     ~Camera();
-    void update();
-    void computeProjectionMatrix();
-    void computeVisualizationMatrix();
+    virtual void update(GLint, GLint);
+    virtual void computeProjectionMatrix(GLint, GLint);
+    virtual void computeVisualizationMatrix(GLint, GLint);
 };
 
 

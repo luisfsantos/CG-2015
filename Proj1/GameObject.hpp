@@ -11,14 +11,15 @@
 
 #include <stdio.h>
 #include "Entity.hpp"
+#include <GLUT/GLUT.h>
 
 class GameObject : public Entity
 {
 public:
     GameObject();
     ~GameObject();
-    void draw();
-    void update(double);
+    virtual void draw() {};
+    virtual void update(double) {};
 };
 
 

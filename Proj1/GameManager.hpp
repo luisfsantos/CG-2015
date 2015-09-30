@@ -15,14 +15,18 @@
 #include "Camera.hpp"
 #include "GameObject.hpp"
 #include "LightSource.hpp"
+#include "OrthogonalCamera.hpp"
+#include "Orange.hpp"
+#include "Car.hpp"
 
 class GameManager
 {
     
 private:
-    std::vector<Camera> _cameras;
-    std::vector<GameObject> _game_objects;
-    std::vector<LightSource> _light_sources;
+    std::vector<Camera*> _cameras;
+    std::vector<GameObject*> _game_objects;
+    std::vector<LightSource*> _light_sources;
+    Camera* _active_camera;
 public:
     GameManager();
     ~GameManager();

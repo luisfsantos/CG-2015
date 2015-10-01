@@ -8,7 +8,11 @@
 
 #ifndef Camera_hpp
 #define Camera_hpp
-#include <GLUT/GLUT.h>
+#if defined(__APPLE__)|| defined(MACOSX)
+    #include <GLUT/GLUT.h>
+#else
+    #include <GL/glut.h>
+#endif
 #include <stdio.h>
 #include "Entity.hpp"
 

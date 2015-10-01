@@ -11,7 +11,11 @@
 
 #include <stdio.h>
 #include "Obstacle.hpp"
+#if defined(__APPLE__)|| defined(MACOSX)
 #include <GLUT/GLUT.h>
+#else
+#include <GL/glut.h>
+#endif
 
 class Orange : public Obstacle
 {

@@ -7,7 +7,11 @@
 //
 
 #include <iostream>
+#if defined(__APPLE__)|| defined(MACOSX)
 #include <GLUT/GLUT.h>
+#else
+#include <GL/glut.h>
+#endif
 #include "Vector3.hpp"
 #include "LightSource.hpp"
 #include "GameManager.hpp"

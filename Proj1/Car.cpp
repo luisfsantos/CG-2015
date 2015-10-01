@@ -28,7 +28,7 @@ void Car::draw() {
     glPushMatrix();
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
     glScaled(scale, scale, scale);
-    glRotated(90, 0, 0, 1);
+    //glRotated(90, 0, 0, 1);
     //glRotated(90, 0, 1, 0);
     
     // main blue strip

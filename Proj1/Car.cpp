@@ -18,6 +18,7 @@ Car::~Car() {
 }
 
 void Car::draw() {
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     Vector3::Vector3 lbWheel(-2, -2.3, 0);
     Vector3::Vector3 lfWheel(-2, 2, 0);
     Vector3::Vector3 rbWheel(2, -2.3, 0);
@@ -32,31 +33,49 @@ void Car::draw() {
     
     // main blue strip
     glPushMatrix();
-    glColor3f(0.0, 0.0, 1.0);
+    glColor3ub(0, 157, 224);
     glTranslated(0, 0, 0.3);
     glScaled(3, 7, 1);
     glutSolidCube(1);
     glPopMatrix();
     
+    //head of driver
+    glPushMatrix();
+    glColor3ub(236, 238, 239);
+    glTranslated(0, 0.2, 1.4);
+    glutSolidSphere(0.5, 20, 20);
+    glPopMatrix();
+    
     //red top strip
     glPushMatrix();
-    glColor3f(1.0, 0.2, 0.0);
+    glColor3ub(70, 85, 95);
     glTranslated(0, -2, 1.5);
     glScaled(3, 3, 1.4);
     glutSolidCube(1);
     glPopMatrix();
     
-    //head of driver
+    //two white strips on either side of the driver
+    //1
     glPushMatrix();
-    glColor3f(0.8, 0.9, 0.8);
-    glTranslated(0, 0, 1.4);
-    glutSolidSphere(0.5, 100, 100);
+    glColor3ub(70, 85, 95);
+    glTranslated(-1.1, 1.45, 0.95);
+    glScaled(0.3, 3.9, 0.3);
+    glutSolidCube(1);
+    glPopMatrix();
+    //2
+    glPushMatrix();
+    glColor3ub(70, 85, 95);
+    glTranslated(1.1, 1.45, 0.95);
+    glScaled(0.3, 3.9, 0.3);
+    glutSolidCube(1);
     glPopMatrix();
     
+    
+    
     this->drawWheel(lbWheel, 0.85);
-    this->drawWheel(lfWheel, 0.75);
+    this->drawWheel(lfWheel, 0.65);
     this->drawWheel(rbWheel, 0.85);
-    this->drawWheel(rfWheel, 0.75);
+    this->drawWheel(rfWheel, 0.65);
     
     glPopMatrix();
 }
@@ -67,6 +86,6 @@ void Car::drawWheel (Vector3 translate, double width) {
     glTranslated(translate.getX(), translate.getY(), translate.getZ());
     glScaled(width, 0.75, 0.75);
     glRotated(90, 0, 1, 0);
-    glutSolidTorus(0.5, 1, 100, 100);
+    glutSolidTorus(0.5, 1, 20, 20);
     glPopMatrix();
 }

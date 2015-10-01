@@ -50,8 +50,11 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
-    _active_camera = new OrthogonalCamera(0, 200, 0, 200, -40., 40.);
+    _active_camera = new OrthogonalCamera(0, 1280, 0, 720, -40., 40.);
     _cameras.push_back(_active_camera);
     _game_objects.push_back(new Car());
-    _game_objects[0]->setPosition(50, 50, 0);
+    _game_objects.push_back(new Orange());
+    _game_objects[0]->setPosition(300, 300, 0);
+    _game_objects[1]->setPosition(80, 80, 0);
+    
 }

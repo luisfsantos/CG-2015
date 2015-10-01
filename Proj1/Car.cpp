@@ -18,36 +18,54 @@ Car::~Car() {
 }
 
 void Car::draw() {
-    /*
+    /***************************************
      DECLARING VARIABLES
      Object variables
-     */
+     **************************************/
+    
+    //special colors
+    int tecnico_Blue [3] =  {0, 157, 224};
+    int tecnico_Gray [3] =  {70, 85, 95};
     
     //main undercarriage
-    int undercarriage_C [3] = {0, 157, 224};
+    int *undercarriage_C = tecnico_Blue;
     Vector3::Vector3 undercarriage_T (0, 0, 0.3);
     Vector3::Vector3 undercarriage_S (3, 7, 1);
     
+    //back engine compartment
+    int *backEngine_C = tecnico_Gray;
+    Vector3::Vector3 backEngine_T(0, -2, 1.5);
+    Vector3::Vector3 backEngine_S(3, 3, 1.4);
+    
+    //strips on either side of driver
+    Vector3::Vector3 leftStrip_T(-1.1, 1.45, 0.95);
+    Vector3::Vector3 rightStrip_T(1.1, 1.45, 0.95);
+    Vector3::Vector3 bothStrip_S(0.3, 3.9, 0.3);
     
     
     //wheels
-    Vector3::Vector3 lbWheel(-2, -2.3, 0);
-    Vector3::Vector3 lfWheel(-2, 2, 0);
-    Vector3::Vector3 rbWheel(2, -2.3, 0);
-    Vector3::Vector3 rfWheel(2, 2, 0);
+    int allWheel_C [3] = {0, 0, 0};
+    Vector3::Vector3 lbWheel_T(-2, -2.5, 0);
+    Vector3::Vector3 lfWheel_T(-2, 2.15, 0);
+    Vector3::Vector3 rbWheel_T(2, -2.5, 0);
+    Vector3::Vector3 rfWheel_T(2, 2.15, 0);
+    Vector3::Vector3 back_S(0.89, 0.75, 0.75);
+    Vector3::Vector3 front_S(0.69, 0.75, 0.75);
     
     //final scaling of the object
     int scale = 10;
     
-    /*
+    /****************************************
      METHOD CALLS
      Creating the objects
-     */
+     ***************************************/
     
     //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glPushMatrix();
+    
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
     glScaled(scale, scale, scale);
+    
     //glRotated(90, 0, 0, 1);
     //glRotated(90, 0, 1, 0);
     
@@ -61,45 +79,37 @@ void Car::draw() {
     glutSolidSphere(0.5, 20, 20);
     glPopMatrix();
     
-    //red top strip
-    glPushMatrix();
-    glColor3ub(70, 85, 95);
-    glTranslated(0, -2, 1.5);
-    glScaled(3, 3, 1.4);
-    glutSolidCube(1);
-    glPopMatrix();
+    //back engine compartment
+    this->drawCubeObj(backEngine_C, backEngine_T, backEngine_S);
     
-    //two white strips on either side of the driver
+    
+    // strips on either side of the driver
     //1
-    glPushMatrix();
-    glColor3ub(70, 85, 95);
-    glTranslated(-1.1, 1.45, 0.95);
-    glScaled(0.3, 3.9, 0.3);
-    glutSolidCube(1);
-    glPopMatrix();
+    this->drawCubeObj(tecnico_Gray, leftStrip_T, bothStrip_S);
     //2
-    glPushMatrix();
-    glColor3ub(70, 85, 95);
-    glTranslated(1.1, 1.45, 0.95);
-    glScaled(0.3, 3.9, 0.3);
-    glutSolidCube(1);
-    glPopMatrix();
+    this->drawCubeObj(tecnico_Gray, rightStrip_T, bothStrip_S);
     
     
-    
-    this->drawWheel(lbWheel, 0.85);
-    this->drawWheel(lfWheel, 0.65);
-    this->drawWheel(rbWheel, 0.85);
-    this->drawWheel(rfWheel, 0.65);
+    /**********
+     WHEELS
+     *********/
+    // left back
+    this->drawWheel(allWheel_C, lbWheel_T, back_S);
+    // left front
+    this->drawWheel(allWheel_C, lfWheel_T, front_S);
+    // right back
+    this->drawWheel(allWheel_C, rbWheel_T, back_S);
+    // right front
+    this->drawWheel(allWheel_C, rfWheel_T, front_S);
     
     glPopMatrix();
 }
 
-void Car::drawWheel (Vector3 translate, double width) {
+void Car::drawWheel (int color[], Vector3 translate, Vector3 scale) {
     glPushMatrix();
-    glColor3f(0.0, 0.0, 0.0);
+    glColor3f(color[0], color[1], color[2]);
     glTranslated(translate.getX(), translate.getY(), translate.getZ());
-    glScaled(width, 0.75, 0.75);
+    glScaled(scale.getX(), scale.getY(), scale.getZ());
     glRotated(90, 0, 1, 0);
     glutSolidTorus(0.5, 1, 20, 20);
     glPopMatrix();

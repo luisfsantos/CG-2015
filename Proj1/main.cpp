@@ -32,7 +32,7 @@ void timer(int value) {
 }
 
 GameManager *manager = new GameManager();
-int xwindow = 500, ywindow = 500;
+int xwindow = 1280, ywindow = 720;
 
 void display() {
     manager->display();

@@ -47,7 +47,7 @@ Vector3 Vector3::operator*(double num) {
     x1 = this->Vector3::_x * num;
     y1 = this->Vector3::_y * num;
     z1 = this->Vector3::_z * num;
-    Vector3::Vector3 aux(x1, y1, z1);
+    Vector3 aux(x1, y1, z1);
     return aux;
 }
 
@@ -56,7 +56,7 @@ Vector3 Vector3::operator+(const Vector3& vec) {
     x1 = this->Vector3::_x + vec._x;
     y1 = this->Vector3::_y + vec._y;
     z1 = this->Vector3::_z + vec._z;
-    Vector3::Vector3 aux(x1, y1, z1);
+    Vector3 aux(x1, y1, z1);
     return aux;
 }
 
@@ -65,6 +65,6 @@ Vector3 Vector3::operator-(const Vector3& vec) {
     x1 = this->Vector3::_x - vec._x;
     y1 = this->Vector3::_y - vec._y;
     z1 = this->Vector3::_z - vec._z;
-    Vector3::Vector3 aux(x1, y1, z1);
+    Vector3 aux(x1, y1, z1);
     return aux;
 }

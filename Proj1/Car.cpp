@@ -29,28 +29,28 @@ void Car::draw() {
     
     //main undercarriage
     int *undercarriage_C = tecnico_Blue;
-    Vector3::Vector3 undercarriage_T (0, 0, 0.3);
-    Vector3::Vector3 undercarriage_S (3, 7, 1);
+    Vector3 undercarriage_T (0, 0, 0.3);
+    Vector3 undercarriage_S (3, 7, 1);
     
     //back engine compartment
     int *backEngine_C = tecnico_Gray;
-    Vector3::Vector3 backEngine_T(0, -2, 1.5);
-    Vector3::Vector3 backEngine_S(3, 3, 1.4);
+    Vector3 backEngine_T(0, -2, 1.5);
+    Vector3 backEngine_S(3, 3, 1.4);
     
     //strips on either side of driver
-    Vector3::Vector3 leftStrip_T(-1.1, 1.45, 0.95);
-    Vector3::Vector3 rightStrip_T(1.1, 1.45, 0.95);
-    Vector3::Vector3 bothStrip_S(0.3, 3.9, 0.3);
+    Vector3 leftStrip_T(-1.1, 1.45, 0.95);
+    Vector3 rightStrip_T(1.1, 1.45, 0.95);
+    Vector3 bothStrip_S(0.3, 3.9, 0.3);
     
     
     //wheels
     int allWheel_C [3] = {0, 0, 0};
-    Vector3::Vector3 lbWheel_T(-2, -2.5, 0);
-    Vector3::Vector3 lfWheel_T(-2, 2.15, 0);
-    Vector3::Vector3 rbWheel_T(2, -2.5, 0);
-    Vector3::Vector3 rfWheel_T(2, 2.15, 0);
-    Vector3::Vector3 back_S(0.89, 0.75, 0.75);
-    Vector3::Vector3 front_S(0.69, 0.75, 0.75);
+    Vector3 lbWheel_T(-2, -2.5, 0);
+    Vector3 lfWheel_T(-2, 2.15, 0);
+    Vector3 rbWheel_T(2, -2.5, 0);
+    Vector3 rfWheel_T(2, 2.15, 0);
+    Vector3 back_S(0.89, 0.75, 0.75);
+    Vector3 front_S(0.69, 0.75, 0.75);
     
     //final scaling of the object
     int scale = 10;

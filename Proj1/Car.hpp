@@ -20,6 +20,7 @@ public:
     ~Car();
     virtual void draw();
     void drawWheel(Vector3, double);
+    void drawCubeObj (int [], Vector3, Vector3);
 };
 #endif /* Car_hpp */
 

@@ -18,26 +18,41 @@ Car::~Car() {
 }
 
 void Car::draw() {
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    /*
+     DECLARING VARIABLES
+     Object variables
+     */
+    
+    //main undercarriage
+    int undercarriage_C [3] = {0, 157, 224};
+    Vector3::Vector3 undercarriage_T (0, 0, 0.3);
+    Vector3::Vector3 undercarriage_S (3, 7, 1);
+    
+    
+    
+    //wheels
     Vector3::Vector3 lbWheel(-2, -2.3, 0);
     Vector3::Vector3 lfWheel(-2, 2, 0);
     Vector3::Vector3 rbWheel(2, -2.3, 0);
     Vector3::Vector3 rfWheel(2, 2, 0);
+    
+    //final scaling of the object
     int scale = 10;
     
+    /*
+     METHOD CALLS
+     Creating the objects
+     */
+    
+    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
     glPushMatrix();
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
     glScaled(scale, scale, scale);
     //glRotated(90, 0, 0, 1);
     //glRotated(90, 0, 1, 0);
     
-    // main blue strip
-    glPushMatrix();
-    glColor3ub(0, 157, 224);
-    glTranslated(0, 0, 0.3);
-    glScaled(3, 7, 1);
-    glutSolidCube(1);
-    glPopMatrix();
+    // main undercarriage
+    this->drawCubeObj(undercarriage_C, undercarriage_T, undercarriage_S);
     
     //head of driver
     glPushMatrix();
@@ -87,5 +102,14 @@ void Car::drawWheel (Vector3 translate, double width) {
     glScaled(width, 0.75, 0.75);
     glRotated(90, 0, 1, 0);
     glutSolidTorus(0.5, 1, 20, 20);
+    glPopMatrix();
+}
+
+void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
+    glPushMatrix();
+    glColor3ub(color[0], color[1], color[2]);
+    glTranslated(translate.getX(), translate.getY(), translate.getZ());
+    glScaled(scale.getX(), scale.getY(), scale.getZ());
+    glutSolidCube(1);
     glPopMatrix();
 }

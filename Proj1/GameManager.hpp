@@ -21,6 +21,7 @@
 #include "OrthogonalCamera.hpp"
 #include "Orange.hpp"
 #include "Car.hpp"
+#include "Roadside.hpp"
 #include <math.h> 
 #include <cmath>
 

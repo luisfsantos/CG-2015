@@ -35,7 +35,7 @@ void GameManager::reshape(GLsizei w, GLsizei h) {
 
 void GameManager::keyPressed(bool *keys) {
     
-    double rate_D = 10;
+    double rate_D = 20;
     double max_A = 4;
     double min_A = -3;
     double rate_A = 0.5;
@@ -85,9 +85,11 @@ void GameManager::init() {
     _cars.push_back(new Car());
     _game_objects.push_back(_cars[0]);
     _game_objects.push_back(new Orange());
+    _game_objects.push_back(new Roadside());
     _game_objects[0]->setPosition(400, 400, 0);
     _cars[0]->setDirection(90);
     _cars[0]->setAccel(0);
     _game_objects[1]->setPosition(80, 80, 0);
+    _game_objects[2]->setPosition(50, 0, 0);
     
 }

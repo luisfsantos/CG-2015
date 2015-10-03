@@ -19,7 +19,7 @@ public:
     Roadside ();
     ~Roadside();
     void draw ();
-    void drawTorus(Vector3);
+    void drawTorus(double, double, double);
 };
 
 

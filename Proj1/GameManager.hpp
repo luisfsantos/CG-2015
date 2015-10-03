@@ -14,10 +14,13 @@
 #include <vector>
 #include "Camera.hpp"
 #include "GameObject.hpp"
+#include "DynamicObject.hpp"
 #include "LightSource.hpp"
 #include "OrthogonalCamera.hpp"
 #include "Orange.hpp"
 #include "Car.hpp"
+#include <math.h> 
+#include <cmath>
 
 class GameManager
 {
@@ -26,15 +29,16 @@ private:
     std::vector<Camera*> _cameras;
     std::vector<GameObject*> _game_objects;
     std::vector<LightSource*> _light_sources;
+    std::vector<Car*> _cars;
     Camera* _active_camera;
 public:
     GameManager();
     ~GameManager();
     void display();
     void reshape(GLsizei, GLsizei);
-    void keyPressed();
+    void keyPressed(bool *);
     void onTimer();
-    void idle();
+    void idle(bool *);
     void update();
     void init();
     

@@ -24,6 +24,8 @@ public:
     ~GameObject();
     virtual void draw() {};
     virtual void update(double) {};
+    virtual void setSpeed(double, double, double) {};
+    virtual void setSpeed(Vector3) {};
 };
 
 

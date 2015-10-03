@@ -9,7 +9,7 @@
 #include "DynamicObject.hpp"
 
 DynamicObject::DynamicObject () {
-    
+    this->setSpeed(0, 0, 0);
 }
 
 DynamicObject::~DynamicObject() {
@@ -30,4 +30,20 @@ void DynamicObject::setSpeed(double x, double y, double z) {
 
 Vector3 DynamicObject::getSpeed() {
     return _speed;
+}
+
+double DynamicObject::getDirection() {
+    return _direction;
+}
+
+void DynamicObject::setDirection(double direction) {
+    _direction = direction;
+}
+
+double DynamicObject::getAccel() {
+    return _accel;
+}
+
+void DynamicObject::setAccel (double accel) {
+    _accel = accel;
 }

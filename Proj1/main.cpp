@@ -16,9 +16,11 @@
 #include "LightSource.hpp"
 #include "GameManager.hpp"
 #include "Orange.hpp"
-#define MILLIS 20
+#define MILLIS 15
 
-
+GameManager *manager = new GameManager();
+int xwindow = 1280, ywindow = 720;
+bool keys[256];
 /* Initialize OpenGL Graphics */
 
 void initGL() {
@@ -31,19 +33,28 @@ void initGL() {
 }
 
 void timer(int value) {
-    glutPostRedisplay();      // Post re-paint request to activate display()
+    glutPostRedisplay();// Post re-paint request to activate display()
+    manager->onTimer();
     glutTimerFunc(MILLIS, timer, 0); // next timer call milliseconds later
 }
-
-GameManager *manager = new GameManager();
-int xwindow = 1280, ywindow = 720;
 
 void display() {
     manager->display();
 }
-
+void idle(){
+    manager->idle(keys);
+}
 void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
     manager->reshape(width, height);
+}
+
+void myKeyboard(unsigned char key, int x, int y) {
+    keys[key] = true;
+    manager->keyPressed(keys);
+}
+void myKeyboardUp(unsigned char key, int x, int y) {
+    keys[key] = false;
+    manager->keyPressed(keys);
 }
 
 int main(int argc, char** argv) {
@@ -56,9 +67,12 @@ int main(int argc, char** argv) {
     
     glutDisplayFunc(display);       // Register callback handler for window re-paint event
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
+    glutKeyboardFunc(myKeyboard);
+    glutKeyboardUpFunc(myKeyboardUp);
     manager->init();
     initGL();                       // Our own OpenGL initialization
-    //glutTimerFunc(0, timer, 0);     // First timer call immediately [NEW]
+    glutTimerFunc(0, timer, 0);     // First timer call immediately [NEW]
+    glutIdleFunc(idle);
     glutMainLoop();                 // Enter the infinite event-processing loop
     return 0;
 }

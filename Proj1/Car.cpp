@@ -53,7 +53,7 @@ void Car::draw() {
     Vector3 front_S(0.69, 0.75, 0.75);
     
     //final scaling of the object
-    int scale = 10;
+    int scale = 4;
     
     /****************************************
      METHOD CALLS
@@ -65,7 +65,7 @@ void Car::draw() {
     
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
     glScaled(scale, scale, scale);
-    
+    glRotated(_direction-90, 0, 0, 1);
     //glRotated(90, 0, 0, 1);
     //glRotated(90, 0, 1, 0);
     
@@ -123,3 +123,16 @@ void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
     glutSolidCube(1);
     glPopMatrix();
 }
+
+
+void Car::update(double delta_t, double direction) {
+    
+}
+
+
+
+
+
+
+
+

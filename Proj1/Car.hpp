@@ -21,6 +21,7 @@ public:
     virtual void draw();
     void drawWheel(int [], Vector3, Vector3);
     void drawCubeObj (int [], Vector3, Vector3);
+    void update (double, double);
 };
 #endif /* Car_hpp */
 

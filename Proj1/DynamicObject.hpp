@@ -15,15 +15,21 @@
 
 class DynamicObject : public GameObject
 {
-private:
+protected:
     Vector3 _speed;
+    double _accel;
+    double _direction;
 public:
     DynamicObject ();
     ~DynamicObject ();
-    void update (double);
-    void setSpeed (const Vector3&);
-    void setSpeed (double, double, double);
+    virtual void update (double);
+    virtual void setSpeed (const Vector3&);
+    virtual void setSpeed (double, double, double);
     Vector3 getSpeed ();
+    double getDirection();
+    void setDirection(double);
+    double getAccel();
+    void setAccel (double);
 };
 
 

@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include "StaticObject.hpp"
+#include "Vector3.hpp"
 
 class Roadside : public StaticObject
 {
@@ -18,7 +19,7 @@ public:
     Roadside ();
     ~Roadside();
     void draw ();
-    
+    void drawTorus(Vector3);
 };
 
 

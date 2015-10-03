@@ -8,6 +8,8 @@
 
 #ifndef GameManager_hpp
 #define GameManager_hpp
+#define _USE_MATH_DEFINES
+
 
 #include <stdio.h>
 #include <stdlib.h>

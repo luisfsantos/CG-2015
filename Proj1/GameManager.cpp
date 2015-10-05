@@ -24,8 +24,7 @@ void GameManager::display() {
     for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
         (*iter)->draw();
     }
-    glutSwapBuffers();
-    //basicamente isto so que com iterador
+    
     glFlush();
 }
 
@@ -49,14 +48,15 @@ void GameManager::keyPressed(bool *keys) {
 }
 
 void GameManager::onTimer() {
-    _cars[0]->setSpeed(cos(( _cars[0]->getDirection() * M_PI ) / 180.0 ) * _cars[0]->getAccel(), sin(( _cars[0]->getDirection() * M_PI ) / 180.0 )* _cars[0]->getAccel(), 0);
-    this->update();//fill this in depending on what its supposed to do
+    this->update();
+    glutSwapBuffers();
+    glutPostRedisplay();// Post re-paint request to activate display()
 }
 
 void GameManager::idle(bool *keys) {
     int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
     int deltaTime = timeSinceStart - oldTime;
-    double daccel = 0.3;
+    double daccel = 0.2;
     oldTime = timeSinceStart;
     if(!keys['w'] && !keys['s'] && deltaTime > 20 && _cars[0]->getAccel() != 0) {
         if (_cars[0]->getAccel() < daccel && _cars[0]->getAccel() > -daccel) {
@@ -73,6 +73,7 @@ void GameManager::idle(bool *keys) {
 
 void GameManager::update() {
     std::vector<GameObject*>::iterator iter;
+    _cars[0]->setSpeed(cos(( _cars[0]->getDirection() * M_PI ) / 180.0 ) * _cars[0]->getAccel(), sin(( _cars[0]->getDirection() * M_PI ) / 180.0 )* _cars[0]->getAccel(), 0);
     for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
         (*iter)->update(1);
     }
@@ -86,10 +87,9 @@ void GameManager::init() {
     _game_objects.push_back(_cars[0]);
     _game_objects.push_back(new Orange());
     _game_objects.push_back(new Roadside());
-    _game_objects[0]->setPosition(400, 400, 0);
+    _game_objects[0]->setPosition(150, 300, 0);
     _cars[0]->setDirection(90);
     _cars[0]->setAccel(0);
     _game_objects[1]->setPosition(80, 80, 0);
-    _game_objects[2]->setPosition(50, 0, 0);
-    
+    _game_objects[2]->setPosition(0, -30, 0);
 }

@@ -33,9 +33,8 @@ void initGL() {
 }
 
 void timer(int value) {
-    glutPostRedisplay();// Post re-paint request to activate display()
     manager->onTimer();
-    glutTimerFunc(MILLIS, timer, 0); // next timer call milliseconds later
+    glutTimerFunc(MILLIS, timer, 5); // next timer call milliseconds later
 }
 
 void display() {
@@ -44,6 +43,7 @@ void display() {
 void idle(){
     manager->idle(keys);
 }
+
 void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
     manager->reshape(width, height);
 }

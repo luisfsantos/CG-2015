@@ -12,6 +12,8 @@
 #include <stdio.h>
 #include "DynamicObject.hpp"
 #include "Vector3.hpp"
+#include <math.h>
+#include <cmath>
 
 class Car : public DynamicObject
 {
@@ -21,7 +23,7 @@ public:
     virtual void draw();
     void drawWheel(int [], Vector3, Vector3);
     void drawCubeObj (int [], Vector3, Vector3);
-    void update (double, double);
+    void update (double);
 };
 #endif /* Car_hpp */
 

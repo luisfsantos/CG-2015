@@ -60,7 +60,7 @@ void Car::draw() {
      Creating the objects
      ***************************************/
     
-    //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    
     glPushMatrix();
     
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
@@ -125,8 +125,9 @@ void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
 }
 
 
-void Car::update(double delta_t, double direction) {
-    
+void Car::update(double delta_t) {
+    this->setSpeed(cos(( this->getDirection() * M_PI ) / 180.0 ) * this->getAccel(), sin(( this->getDirection() * M_PI ) / 180.0 )* this->getAccel(), 0);
+    _position = _position + _speed * delta_t;
 }
 
 

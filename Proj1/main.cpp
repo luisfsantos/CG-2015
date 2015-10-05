@@ -20,7 +20,7 @@
 
 GameManager *manager = new GameManager();
 int xwindow = 1280, ywindow = 720;
-bool keys[256];
+bool keys[260];
 /* Initialize OpenGL Graphics */
 
 void initGL() {
@@ -52,6 +52,17 @@ void myKeyboard(unsigned char key, int x, int y) {
     keys[key] = true;
     manager->keyPressed(keys);
 }
+
+void myKeyboard_S(int key, int x, int y) {
+    keys[(key%100 + 256)] = true;
+    manager->keyPressed(keys);
+}
+
+void myKeyboardUp_S(int key, int x, int y) {
+    keys[(key%100 + 256)] = false;
+    manager->keyPressed(keys);
+}
+
 void myKeyboardUp(unsigned char key, int x, int y) {
     keys[key] = false;
     manager->keyPressed(keys);
@@ -69,6 +80,8 @@ int main(int argc, char** argv) {
     glutReshapeFunc(reshape);       // Register callback handler for window re-size event
     glutKeyboardFunc(myKeyboard);
     glutKeyboardUpFunc(myKeyboardUp);
+    glutSpecialFunc(myKeyboard_S);
+    glutSpecialUpFunc(myKeyboardUp_S);
     manager->init();
     initGL();                       // Our own OpenGL initialization
     glutTimerFunc(0, timer, 0);     // First timer call immediately [NEW]

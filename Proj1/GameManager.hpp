@@ -25,6 +25,16 @@
 #include <math.h> 
 #include <cmath>
 
+#define KEY_A               97
+#define KEY_LEFT			256
+#define KEY_UP              257
+#define KEY_RIGHT			258
+#define KEY_DOWN			259
+#define KEY_RIGHT_2			102
+#define KEY_UP_2            101
+#define KEY_LEFT_2			115
+#define KEY_DOWN_2			103
+
 class GameManager
 {
     

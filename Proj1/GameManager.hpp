@@ -44,6 +44,7 @@ private:
     std::vector<LightSource*> _light_sources;
     std::vector<Car*> _cars;
     Camera* _active_camera;
+    bool* _keys;
 public:
     GameManager();
     ~GameManager();
@@ -54,6 +55,7 @@ public:
     void idle(bool *);
     void update();
     void init();
+    void setKeys(bool *);
     
 };
 

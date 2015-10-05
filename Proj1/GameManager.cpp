@@ -34,29 +34,7 @@ void GameManager::reshape(GLsizei w, GLsizei h) {
 }
 
 void GameManager::keyPressed(bool *keys) {
-    
-    double rate_D = 20;
-    double max_A = 4;
-    double min_A = -3;
-    double rate_A = 0.5;
-    if (keys[KEY_A]) {
-        (polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
-    }
-    if(keys[KEY_UP]) _cars[0]->setAccel(_cars[0]->getAccel()+rate_A);
-    if(keys[KEY_LEFT]) _cars[0]->setDirection(_cars[0]->getDirection()+rate_D);
-    if(keys[KEY_RIGHT]) _cars[0]->setDirection(_cars[0]->getDirection()-rate_D);
-    if(keys[KEY_DOWN]) _cars[0]->setAccel(_cars[1]->getAccel()-rate_A);
-    if(_cars[0]->getAccel() > max_A) _cars[0]->setAccel(max_A);
-    if(_cars[0]->getAccel() < min_A) _cars[0]->setAccel(min_A);
-    
-    /**/
-    if(keys[KEY_UP_2]) _cars[1]->setAccel(_cars[1]->getAccel()+rate_A);
-    if(keys[KEY_LEFT_2]) _cars[1]->setDirection(_cars[1]->getDirection()+rate_D);
-    if(keys[KEY_RIGHT_2]) _cars[1]->setDirection(_cars[1]->getDirection()-rate_D);
-    if(keys[KEY_DOWN_2]) _cars[1]->setAccel(_cars[1]->getAccel()-rate_A);
-    if(_cars[1]->getAccel() > max_A) _cars[1]->setAccel(max_A);
-    if(_cars[1]->getAccel() < min_A) _cars[1]->setAccel(min_A);
-    /**/
+    _keys = keys;
 }
 
 void GameManager::onTimer() {
@@ -97,6 +75,31 @@ void GameManager::idle(bool *keys) {
 }
 
 void GameManager::update() {
+    
+    double rate_D = 6;
+    double max_A = 4;
+    double min_A = -4;
+    double rate_A = 0.1;
+    if (_keys[KEY_A]) {
+        (polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
+    }
+    if(_keys[KEY_UP]) _cars[0]->setAccel(_cars[0]->getAccel()+rate_A);
+    if(_keys[KEY_LEFT]) _cars[0]->setDirection(_cars[0]->getDirection()+rate_D);
+    if(_keys[KEY_RIGHT]) _cars[0]->setDirection(_cars[0]->getDirection()-rate_D);
+    if(_keys[KEY_DOWN]) _cars[0]->setAccel(_cars[1]->getAccel()-rate_A);
+    if(_cars[0]->getAccel() > max_A) _cars[0]->setAccel(max_A);
+    if(_cars[0]->getAccel() < min_A) _cars[0]->setAccel(min_A);
+    
+    /**/
+    if(_keys[KEY_UP_2]) _cars[1]->setAccel(_cars[1]->getAccel()+rate_A);
+    if(_keys[KEY_LEFT_2]) _cars[1]->setDirection(_cars[1]->getDirection()+rate_D);
+    if(_keys[KEY_RIGHT_2]) _cars[1]->setDirection(_cars[1]->getDirection()-rate_D);
+    if(_keys[KEY_DOWN_2]) _cars[1]->setAccel(_cars[1]->getAccel()-rate_A);
+    if(_cars[1]->getAccel() > max_A) _cars[1]->setAccel(max_A);
+    if(_cars[1]->getAccel() < min_A) _cars[1]->setAccel(min_A);
+    /**/
+    
+    
     std::vector<GameObject*>::iterator iter;
     for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
         (*iter)->update(1);
@@ -124,4 +127,8 @@ void GameManager::init() {
     _game_objects[1]->setPosition(80, 80, 0);
     _game_objects[2]->setPosition(135, 300, 0);
     _game_objects[3]->setPosition(105, 300, 0);
+}
+
+void GameManager::setKeys(bool * keys){
+    _keys=keys;
 }

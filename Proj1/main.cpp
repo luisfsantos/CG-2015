@@ -82,7 +82,9 @@ int main(int argc, char** argv) {
     glutKeyboardUpFunc(myKeyboardUp);
     glutSpecialFunc(myKeyboard_S);
     glutSpecialUpFunc(myKeyboardUp_S);
+    glutIgnoreKeyRepeat(1);
     manager->init();
+    manager->setKeys(keys);
     initGL();                       // Our own OpenGL initialization
     glutTimerFunc(0, timer, 0);     // First timer call immediately [NEW]
     glutIdleFunc(idle);

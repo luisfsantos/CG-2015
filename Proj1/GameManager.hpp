@@ -33,7 +33,7 @@
 #define KEY_RIGHT_2			102
 #define KEY_UP_2            101
 #define KEY_LEFT_2			115
-#define KEY_DOWN_2			103
+#define KEY_DOWN_2			100
 
 class GameManager
 {

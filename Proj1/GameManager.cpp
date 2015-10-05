@@ -35,6 +35,9 @@ void GameManager::reshape(GLsizei w, GLsizei h) {
 
 void GameManager::keyPressed(bool *keys) {
     _keys = keys;
+    if (_keys[KEY_A]) {
+        (polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
+    }
 }
 
 void GameManager::onTimer() {
@@ -76,17 +79,15 @@ void GameManager::idle(bool *keys) {
 
 void GameManager::update() {
     
-    double rate_D = 6;
-    double max_A = 4;
-    double min_A = -4;
+    double rate_D = 4;
+    double max_A = 5;
+    double min_A = -3;
     double rate_A = 0.1;
-    if (_keys[KEY_A]) {
-        (polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
-    }
+    
     if(_keys[KEY_UP]) _cars[0]->setAccel(_cars[0]->getAccel()+rate_A);
     if(_keys[KEY_LEFT]) _cars[0]->setDirection(_cars[0]->getDirection()+rate_D);
     if(_keys[KEY_RIGHT]) _cars[0]->setDirection(_cars[0]->getDirection()-rate_D);
-    if(_keys[KEY_DOWN]) _cars[0]->setAccel(_cars[1]->getAccel()-rate_A);
+    if(_keys[KEY_DOWN]) _cars[0]->setAccel(_cars[0]->getAccel()-rate_A);
     if(_cars[0]->getAccel() > max_A) _cars[0]->setAccel(max_A);
     if(_cars[0]->getAccel() < min_A) _cars[0]->setAccel(min_A);
     

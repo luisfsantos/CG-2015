@@ -38,6 +38,9 @@ void GameManager::keyPressed(bool *keys) {
     if (_keys[KEY_A]) {
         (polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
     }
+    if (_keys[KEY_B]) {
+        init();
+    }
 }
 
 void GameManager::onTimer() {

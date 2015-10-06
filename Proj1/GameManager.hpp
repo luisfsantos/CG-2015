@@ -26,6 +26,7 @@
 #include <cmath>
 
 #define KEY_A               97
+#define KEY_B               98
 #define KEY_LEFT			256
 #define KEY_UP              257
 #define KEY_RIGHT			258

@@ -10,7 +10,8 @@
 #include "Car.hpp"
 
 Car::Car() {
-    
+    setDirection(90);
+    setAccel(0);
 }
 
 Car::~Car() {

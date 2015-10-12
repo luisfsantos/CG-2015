@@ -289,10 +289,10 @@ void Roadside::drawTable() {
     bool color = true;
     int w=1280, h=720, n=10, m=5;
     int sw = w/n, sh = h/m; //square width and height respectively
-    //for each width and height draw a rectangle with a specific color
+    //for each width and eight draw a rectangle with a specific color
     glPushMatrix();
     glColor3ub(234,234,234);
-    glTranslated(w/2,h/2, -1);
+    glTranslated(w/2,h/2, -1.1);
     glScaled(w, h, 2);
     glRotated(0, 0, 0, 0);
     glutSolidCube(1);

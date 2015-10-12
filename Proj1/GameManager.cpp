@@ -117,22 +117,41 @@ void GameManager::init() {
     _cars.push_back(new Car());
     _cars.push_back(new Car());
     _game_objects.push_back(new Roadside());
-    _game_objects.push_back(new Orange());
+   
     _game_objects.push_back(_cars[0]);
     _game_objects.push_back(_cars[1]);
+    
+    _game_objects.push_back(new Orange());
+    _game_objects.push_back(new Orange());
+    _game_objects.push_back(new Orange());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
     _game_objects.push_back(new Butter());
     
     
-    _cars[0]->setDirection(90);
-    _cars[0]->setAccel(0);
-    _cars[1]->setDirection(90);
-    _cars[1]->setAccel(0);
-    
     _game_objects[0]->setPosition(0, 0, 0);
-    _game_objects[1]->setPosition(80, 80, 0);
-    _game_objects[2]->setPosition(135, 300, 0);
-    _game_objects[3]->setPosition(105, 300, 0);
-    _game_objects[4]->setPosition(650, 450, 7);
+    _game_objects[1]->setPosition(135, 300, 0);
+    _game_objects[2]->setPosition(105, 300, 0);
+    
+    //orange
+    _game_objects[3]->setPosition(800, 360, 10);
+    _game_objects[4]->setPosition(130, 640, 10);
+    _game_objects[5]->setPosition(1050, 100, 11);
+    
+    //butter
+    _game_objects[6]->setPosition(400, 220, 2.5);
+    _game_objects[6]->setDirection(45);
+    _game_objects[7]->setPosition(200, 450, 2.5);
+    _game_objects[7]->setDirection(40);
+    _game_objects[8]->setPosition(850, 425, 2.5);
+    _game_objects[8]->setDirection(130);
+    _game_objects[9]->setPosition(1220, 400, 2.5);
+    _game_objects[9]->setDirection(90);
+    _game_objects[10]->setPosition(650, 550, 2.5);
+
+    
 }
 
 void GameManager::setKeys(bool * keys){

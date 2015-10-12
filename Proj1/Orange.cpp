@@ -19,9 +19,9 @@ Orange::~Orange() {
 void Orange::draw() {
     
     glPushMatrix();
-    glTranslatef(_position.getX(), _position.getY(), _position.getZ());
+    glTranslatef(_position.getX(), _position.getY(), _position.getZ()/2*5);
     glColor3ub(255, 128, 0);
-    glutSolidSphere(30, 20, 20);
+    glutSolidSphere(_position.getZ()*5, 20, 20);
     glPopMatrix();
     
 }

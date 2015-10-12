@@ -292,8 +292,8 @@ void Roadside::drawTable() {
     //for each width and height draw a rectangle with a specific color
     glPushMatrix();
     glColor3ub(234,234,234);
-    glTranslated(1280/2,720/2, -1);
-    glScaled(1280, 720, 2);
+    glTranslated(w/2,h/2, -1);
+    glScaled(w, h, 2);
     glRotated(0, 0, 0, 0);
     glutSolidCube(1);
     glPopMatrix();

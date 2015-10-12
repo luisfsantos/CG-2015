@@ -11,6 +11,7 @@
 		162876EF1BB821C9001A3ED4 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162876ED1BB821C9001A3ED4 /* GameObject.cpp */; settings = {ASSET_TAGS = (); }; };
 		162876F21BB823F4001A3ED4 /* GameManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162876F01BB823F4001A3ED4 /* GameManager.cpp */; settings = {ASSET_TAGS = (); }; };
 		162876F51BB82635001A3ED4 /* LightSource.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 162876F31BB82635001A3ED4 /* LightSource.cpp */; settings = {ASSET_TAGS = (); }; };
+		1652DD351BCBB6DE0046D490 /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1652DD331BCBB6DE0046D490 /* Table.cpp */; settings = {ASSET_TAGS = (); }; };
 		167023721BB6EA5A00C233E2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 167023711BB6EA5A00C233E2 /* main.cpp */; };
 		167023791BB6EA6700C233E2 /* GLUT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 167023781BB6EA6700C233E2 /* GLUT.framework */; };
 		1670237B1BB6EA6E00C233E2 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1670237A1BB6EA6E00C233E2 /* OpenGL.framework */; };
@@ -49,6 +50,8 @@
 		162876F11BB823F4001A3ED4 /* GameManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = GameManager.hpp; sourceTree = "<group>"; };
 		162876F31BB82635001A3ED4 /* LightSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LightSource.cpp; sourceTree = "<group>"; };
 		162876F41BB82635001A3ED4 /* LightSource.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = LightSource.hpp; sourceTree = "<group>"; };
+		1652DD331BCBB6DE0046D490 /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
+		1652DD341BCBB6DE0046D490 /* Table.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Table.hpp; sourceTree = "<group>"; };
 		1670236E1BB6EA5A00C233E2 /* Proj1 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Proj1; sourceTree = BUILT_PRODUCTS_DIR; };
 		167023711BB6EA5A00C233E2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		167023781BB6EA6700C233E2 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = System/Library/Frameworks/GLUT.framework; sourceTree = SDKROOT; };
@@ -129,6 +132,8 @@
 				1674A5D21BB991AC000F3B3D /* River.hpp */,
 				1674A5D41BB9932A000F3B3D /* Roadside.cpp */,
 				1674A5D51BB9932A000F3B3D /* Roadside.hpp */,
+				1652DD331BCBB6DE0046D490 /* Table.cpp */,
+				1652DD341BCBB6DE0046D490 /* Table.hpp */,
 			);
 			name = Static;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 				162876F21BB823F4001A3ED4 /* GameManager.cpp in Sources */,
 				162876F51BB82635001A3ED4 /* LightSource.cpp in Sources */,
 				1674A5EE1BB99F14000F3B3D /* OrthogonalCamera.cpp in Sources */,
+				1652DD351BCBB6DE0046D490 /* Table.cpp in Sources */,
 				1670237E1BB6EB0D00C233E2 /* Vector3.cpp in Sources */,
 				1674A5DD1BB996AC000F3B3D /* Car.cpp in Sources */,
 				1674A5E41BB998FA000F3B3D /* Butter.cpp in Sources */,

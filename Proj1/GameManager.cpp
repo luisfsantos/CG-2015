@@ -120,6 +120,7 @@ void GameManager::init() {
     _game_objects.push_back(new Orange());
     _game_objects.push_back(_cars[0]);
     _game_objects.push_back(_cars[1]);
+    _game_objects.push_back(new Butter());
     
     
     _cars[0]->setDirection(90);
@@ -131,6 +132,7 @@ void GameManager::init() {
     _game_objects[1]->setPosition(80, 80, 0);
     _game_objects[2]->setPosition(135, 300, 0);
     _game_objects[3]->setPosition(105, 300, 0);
+    _game_objects[4]->setPosition(650, 450, 7);
 }
 
 void GameManager::setKeys(bool * keys){

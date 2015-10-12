@@ -20,6 +20,7 @@ public:
     ~Roadside();
     void draw ();
     void drawTorus(double, double, double);
+    void drawTable();
 };
 
 

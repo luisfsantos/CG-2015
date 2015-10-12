@@ -22,6 +22,8 @@
 #include "Orange.hpp"
 #include "Car.hpp"
 #include "Roadside.hpp"
+#include "Table.hpp"
+#include "Butter.hpp"
 #include <math.h> 
 #include <cmath>
 

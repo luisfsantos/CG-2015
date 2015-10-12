@@ -238,6 +238,15 @@ int colors[6][3] = {
     {255, 194, 133}
 };
 
+int color[6][3] = {
+    {255, 204, 102},
+    {255, 204, 102},
+    {255, 204, 102},
+    {255, 204, 102},
+    {255, 204, 102},
+    {255, 204, 102}
+};
+
 
 Roadside::Roadside() {
     
@@ -249,12 +258,13 @@ Roadside::~Roadside() {
 
 void Roadside::draw() {
     
+    drawTable();
     glPushMatrix();
     glTranslatef(_position.getX()-50, _position.getY()-200, _position.getZ());
     glScaled(1000, 1000, 800);
     for (int i=0; i<219; i++) {
         glPushMatrix();
-        glColor3ub(colors[i%6][0],colors[i%6][1],colors[i%6][2]);
+        glColor3ub(color[i%6][0],color[i%6][1],color[i%6][2]);
         glTranslated(positions[i][0], positions[i][1], 0);
         glScaled(0.004, 0.004, 0.004);
         glRotated(0, 0, 0, 0);
@@ -273,4 +283,36 @@ void Roadside::drawTorus(double x, double y, double z) {
     glRotated(0, 0, 0, 0);
     glutSolidTorus(0.6, 1, 16, 16);
     glPopMatrix();
+}
+
+void Roadside::drawTable() {
+    bool color = true;
+    int w=1280, h=720, n=10, m=5;
+    int sw = w/n, sh = h/m; //square width and height respectively
+    //for each width and height draw a rectangle with a specific color
+    glPushMatrix();
+    glColor3ub(234,234,234);
+    glTranslated(1280/2,720/2, -1);
+    glScaled(1280, 720, 2);
+    glRotated(0, 0, 0, 0);
+    glutSolidCube(1);
+    glPopMatrix();
+    
+    
+    for(int i = 0; i < 10; ++i) {
+        for(int j = 0; j < 5; ++j) {
+            //oscillate the color per square of the board
+            if(color)
+                glColor3ub(255, 255, 255);
+            else
+                glColor3ub(51, 153, 255);
+            color = !color;
+            
+            //draw a rectangle in the ith row and jth column
+            glRecti(i*sw, j*sh, (i+1)*sw, (j+1)*sh);
+            
+        }
+        if(m % 2 == 0) color = !color; //switch color order at end of row if necessary
+    }
+     
 }

@@ -112,7 +112,7 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
-    _active_camera = new OrthogonalCamera(0, 1280, 0, 720, -40., 40.);
+    _active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
     _cameras.push_back(_active_camera);
     _cars.push_back(new Car());
     _cars.push_back(new Car());

@@ -41,7 +41,7 @@ void display() {
     manager->display();
 }
 void idle(){
-    manager->idle(keys);
+    manager->idle();
 }
 
 void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer

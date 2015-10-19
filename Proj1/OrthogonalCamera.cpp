@@ -35,13 +35,7 @@ void OrthogonalCamera::computeVisualizationMatrix(GLint w, GLint h){
     float xmin = _left, xmax = _right, ymin = _bottom, ymax = _top;
     float ratio = (xmax - xmin) / (ymax - ymin);
     float aspect = (float) w / h;
-    float xscale =(xmax-xmin)/_xwindow, yscale=(ymax-ymin)/_ywindow;
-   /*if ( ratio < aspect )
-    { float delta = ((ymax-ymin) * aspect - (xmax - xmin)) / 2;
-        glOrtho( xmin-delta, xmax+delta, ymin, ymax,-10,100); }
-    else
-    { float delta = ((xmax-xmin) / aspect - (ymax - ymin)) / 2;
-        glOrtho( xmin, xmax, ymin-delta, ymax+delta,-10,100); }*/
+    float xscale =(xmax-xmin)/_right, yscale=(ymax-ymin)/_top;
     float c = (xmax + xmin) * .5;
     xmax = c + xscale * w * .5;
     xmin = c - xscale * w * .5;

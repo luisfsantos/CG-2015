@@ -22,8 +22,6 @@ class Camera : public Entity
 protected:
     double _near;
     double _far;
-    double _xwindow = 1280;
-    double _ywindow = 720;
 public:
     Camera(double, double);
     Camera();

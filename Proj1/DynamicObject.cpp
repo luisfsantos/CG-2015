@@ -9,7 +9,13 @@
 #include "DynamicObject.hpp"
 
 DynamicObject::DynamicObject () {
-    this->setSpeed(0, 0, 0);
+    setSpeed(0, 0, 0);
+    setMovement(false, false, false, false);
+    setDirection(0);
+    setAbsSpeed(0);
+    _accelaration = 0.2;
+    _turnSpeed = 2;
+    _maxSpeed = 5;
 }
 
 DynamicObject::~DynamicObject() {
@@ -17,8 +23,9 @@ DynamicObject::~DynamicObject() {
 }
 
 void DynamicObject::update(double delta_t) {
-    _position = _position + _speed * delta_t;
+    
 }
+
 
 void DynamicObject::setSpeed(const Vector3& speed) {
     _speed = speed;
@@ -40,10 +47,42 @@ void DynamicObject::setDirection(double direction) {
     _direction = direction;
 }
 
-double DynamicObject::getAccel() {
-    return _accel;
+double DynamicObject::getAbsSpeed() {
+    return _absSpeed;
 }
 
-void DynamicObject::setAccel (double accel) {
-    _accel = accel;
+void DynamicObject::setAbsSpeed (double absSpeed) {
+    _absSpeed = absSpeed;
 }
+
+void DynamicObject::accelarate(double rate) {
+    if (_absSpeed<_maxSpeed) {
+        _absSpeed += rate*_accelaration;
+    } else {
+        _absSpeed = _maxSpeed;
+    }
+    
+}
+
+void DynamicObject::brake(double rate){
+    if (_absSpeed > -_maxSpeed*0.75) {
+        _absSpeed -= rate*_accelaration;
+    } else {
+        _absSpeed = -_maxSpeed*0.75;
+    }
+}
+
+void DynamicObject::turn(int direction) {
+    _direction += direction*_turnSpeed;
+}
+
+void DynamicObject::setMovement(bool up, bool down, bool left, bool right) {
+    _movement[UP] = up;
+    _movement[DOWN] = down;
+    _movement[LEFT] = left;
+    _movement[RIGHT] = right;
+}
+
+
+
+

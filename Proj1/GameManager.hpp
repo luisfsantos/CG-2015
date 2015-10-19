@@ -55,7 +55,7 @@ public:
     void reshape(GLsizei, GLsizei);
     void keyPressed(bool *);
     void onTimer();
-    void idle(bool *);
+    void idle();
     void update();
     void init();
     void setKeys(bool *);

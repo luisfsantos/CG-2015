@@ -9,7 +9,7 @@
 #include "Butter.hpp"
 
 Butter::Butter() {
-    setAccel(0);
+    setAbsSpeed(0);
     setDirection(0);
     setSpeed(0,0,0);
 }

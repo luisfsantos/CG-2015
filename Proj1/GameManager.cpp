@@ -41,69 +41,21 @@ void GameManager::keyPressed(bool *keys) {
     if (_keys[KEY_B]) {
         init();
     }
+    
+    _cars[0]->setMovement(_keys[KEY_UP], _keys[KEY_DOWN], _keys[KEY_LEFT], _keys[KEY_RIGHT]);
 }
 
 void GameManager::onTimer() {
-    this->update();
+    update();
     glutSwapBuffers();
     glutPostRedisplay();// Post re-paint request to activate display()
 }
 
-void GameManager::idle(bool *keys) {
-    int timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
-    int deltaTime = timeSinceStart - oldTime;
-    double daccel = 0.2;
-    oldTime = timeSinceStart;
-
-    if(!keys[KEY_UP] && !keys[KEY_DOWN] && deltaTime > 20 && _cars[0]->getAccel() != 0) {
-        if (_cars[0]->getAccel() < daccel && _cars[0]->getAccel() > -daccel) {
-            _cars[0]->setAccel(0);
-        }
-        else if (_cars[0]->getAccel() < 0) {
-            _cars[0]->setAccel(_cars[0]->getAccel()+daccel);
-        }
-        else {
-            _cars[0]->setAccel(_cars[0]->getAccel()-daccel);
-        }
-    }
+void GameManager::idle() {
     
-    if(!keys[KEY_UP_2] && !keys[KEY_DOWN_2] && deltaTime > 20 && _cars[1]->getAccel() != 0) {
-        if (_cars[1]->getAccel() < daccel && _cars[1]->getAccel() > -daccel) {
-            _cars[1]->setAccel(0);
-        }
-        else if (_cars[1]->getAccel() < 0) {
-            _cars[1]->setAccel(_cars[1]->getAccel()+daccel);
-        }
-        else {
-            _cars[1]->setAccel(_cars[1]->getAccel()-daccel);
-        }
-    }
 }
 
 void GameManager::update() {
-    
-    double rate_D = 4;
-    double max_A = 5;
-    double min_A = -3;
-    double rate_A = 0.1;
-    
-    if(_keys[KEY_UP]) _cars[0]->setAccel(_cars[0]->getAccel()+rate_A);
-    if(_keys[KEY_LEFT]) _cars[0]->setDirection(_cars[0]->getDirection()+rate_D);
-    if(_keys[KEY_RIGHT]) _cars[0]->setDirection(_cars[0]->getDirection()-rate_D);
-    if(_keys[KEY_DOWN]) _cars[0]->setAccel(_cars[0]->getAccel()-rate_A);
-    if(_cars[0]->getAccel() > max_A) _cars[0]->setAccel(max_A);
-    if(_cars[0]->getAccel() < min_A) _cars[0]->setAccel(min_A);
-    
-    /**/
-    if(_keys[KEY_UP_2]) _cars[1]->setAccel(_cars[1]->getAccel()+rate_A);
-    if(_keys[KEY_LEFT_2]) _cars[1]->setDirection(_cars[1]->getDirection()+rate_D);
-    if(_keys[KEY_RIGHT_2]) _cars[1]->setDirection(_cars[1]->getDirection()-rate_D);
-    if(_keys[KEY_DOWN_2]) _cars[1]->setAccel(_cars[1]->getAccel()-rate_A);
-    if(_cars[1]->getAccel() > max_A) _cars[1]->setAccel(max_A);
-    if(_cars[1]->getAccel() < min_A) _cars[1]->setAccel(min_A);
-    /**/
-    
-    
     std::vector<GameObject*>::iterator iter;
     for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
         (*iter)->update(1);
@@ -115,11 +67,9 @@ void GameManager::init() {
     _active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
     _cameras.push_back(_active_camera);
     _cars.push_back(new Car());
-    _cars.push_back(new Car());
     _game_objects.push_back(new Roadside());
    
     _game_objects.push_back(_cars[0]);
-    _game_objects.push_back(_cars[1]);
     
     _game_objects.push_back(new Orange());
     _game_objects.push_back(new Orange());
@@ -132,24 +82,23 @@ void GameManager::init() {
     
     
     _game_objects[0]->setPosition(0, 0, 0);
-    _game_objects[1]->setPosition(135, 300, 0);
-    _game_objects[2]->setPosition(105, 300, 0);
+    _game_objects[1]->setPosition(105, 300, 0);
     
     //orange
-    _game_objects[3]->setPosition(800, 360, 10);
-    _game_objects[4]->setPosition(130, 640, 10);
-    _game_objects[5]->setPosition(1050, 100, 11);
+    _game_objects[2]->setPosition(800, 360, 10);
+    _game_objects[3]->setPosition(130, 640, 10);
+    _game_objects[4]->setPosition(1050, 100, 11);
     
     //butter
-    _game_objects[6]->setPosition(400, 220, 2.5);
-    _game_objects[6]->setDirection(45);
-    _game_objects[7]->setPosition(200, 450, 2.5);
-    _game_objects[7]->setDirection(40);
-    _game_objects[8]->setPosition(850, 425, 2.5);
-    _game_objects[8]->setDirection(130);
-    _game_objects[9]->setPosition(1220, 400, 2.5);
-    _game_objects[9]->setDirection(90);
-    _game_objects[10]->setPosition(650, 550, 2.5);
+    _game_objects[5]->setPosition(400, 220, 2.5);
+    _game_objects[5]->setDirection(45);
+    _game_objects[6]->setPosition(200, 450, 2.5);
+    _game_objects[6]->setDirection(40);
+    _game_objects[7]->setPosition(850, 425, 2.5);
+    _game_objects[7]->setDirection(130);
+    _game_objects[8]->setPosition(1220, 400, 2.5);
+    _game_objects[8]->setDirection(90);
+    _game_objects[9]->setPosition(650, 550, 2.5);
 
     
 }

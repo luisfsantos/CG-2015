@@ -126,23 +126,18 @@ void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
 }
 
 void Car::update(double delta_t) {
-    if (_movement[UP]) {
-        accelarate(1);
-    } if (_movement[DOWN]) {
-        brake(1);
-    } if (_movement[LEFT]) {
-        turn(1);
-    } if (_movement[RIGHT]) {
-        turn(-1);
-    } if (_absSpeed!=0 && !_movement[UP] && !_movement[DOWN]) {
-        if (_absSpeed< -_accelaration) {
-            accelarate(0.5);
-        } else if (_absSpeed>_accelaration) {
-            brake(0.5);
-        } else {
-            _absSpeed = 0;
-        }
+    
+    if (_movement[UP]) accelarate(1);
+    if (_movement[DOWN]) brake(1);
+    if (_movement[LEFT]) turn(L);
+    if (_movement[RIGHT]) turn(R);
+    
+    if (_absSpeed!=0 && !_movement[UP] && !_movement[DOWN]) {
+        if (_absSpeed< -_accelaration) accelarate(0.4);
+        else if (_absSpeed>_accelaration) brake(0.4);
+        else _absSpeed = 0;
     }
+    
     setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);
     _position = _position + _speed * delta_t;
 }

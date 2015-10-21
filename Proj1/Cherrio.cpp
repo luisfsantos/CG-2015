@@ -9,11 +9,12 @@
 #include "Cherrio.hpp"
 
 Cherrio::Cherrio(){
-    _width = 0.6;
+    _innerR = 0.6;
 }
 
-Cherrio::Cherrio(double x, double y, double z){
-    _width = 0.6*0.004;
+Cherrio::Cherrio(double x, double y, double z, double innerR, double outerR){
+    _innerR = innerR;
+    _outerR = outerR;
     setPosition(x, y, z);
 }
 
@@ -24,7 +25,7 @@ Cherrio::~Cherrio(){
 void Cherrio::draw(){
     glPushMatrix();
     glColor3ub(255, 204, 102);
-    glTranslated(_position.getX(), _position.getY(), _position.getZ()+_width);
-    glutSolidTorus(_width, 0.004, 16, 16);
+    glTranslated(_position.getX(), _position.getY(), _position.getZ()+_innerR);
+    glutSolidTorus(_innerR, _outerR, 16, 16);
     glPopMatrix();
 }

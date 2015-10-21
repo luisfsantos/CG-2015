@@ -16,10 +16,11 @@
 class Cherrio :public StaticObject
 {
 private:
-    double _width;
+    double _innerR;
+    double _outerR;
 public:
     Cherrio();
-    Cherrio(double, double, double);
+    Cherrio(double, double, double, double, double);
     ~Cherrio();
     void draw();
 };

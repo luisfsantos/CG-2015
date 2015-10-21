@@ -23,7 +23,7 @@ Roadside::Roadside() {
 
 Roadside::Roadside(double positions[][3], int size) {
     for (int i=0; i<size; i++) {
-        _cherrios.push_back(new Cherrio(positions[i][0], positions[i][1], positions[i][2]));
+        _cherrios.push_back(new Cherrio(positions[i][0], positions[i][1], positions[i][2], 0.6*0.004, 0.004));
     }
 }
 

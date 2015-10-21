@@ -233,6 +233,7 @@ double track1 [219][3] = {
     
 };
 
+
 GameManager::GameManager() {
     //glEnable(GL_DEPTH_TEST);
 }

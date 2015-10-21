@@ -27,6 +27,7 @@
 		1674A5E71BB99997000F3B3D /* Orange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5E51BB99997000F3B3D /* Orange.cpp */; settings = {ASSET_TAGS = (); }; };
 		1674A5EB1BB99A7B000F3B3D /* PerspectiveCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5E91BB99A7B000F3B3D /* PerspectiveCamera.cpp */; settings = {ASSET_TAGS = (); }; };
 		1674A5EE1BB99F14000F3B3D /* OrthogonalCamera.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1674A5EC1BB99F14000F3B3D /* OrthogonalCamera.cpp */; settings = {ASSET_TAGS = (); }; };
+		16AE8C5D1BD68DB2006E4E1F /* Cherrio.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -80,6 +81,8 @@
 		1674A5EA1BB99A7B000F3B3D /* PerspectiveCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = PerspectiveCamera.hpp; sourceTree = "<group>"; };
 		1674A5EC1BB99F14000F3B3D /* OrthogonalCamera.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OrthogonalCamera.cpp; sourceTree = "<group>"; };
 		1674A5ED1BB99F14000F3B3D /* OrthogonalCamera.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = OrthogonalCamera.hpp; sourceTree = "<group>"; };
+		16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cherrio.cpp; sourceTree = "<group>"; };
+		16AE8C5C1BD68DB2006E4E1F /* Cherrio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cherrio.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,8 @@
 				1674A5D51BB9932A000F3B3D /* Roadside.hpp */,
 				1652DD331BCBB6DE0046D490 /* Table.cpp */,
 				1652DD341BCBB6DE0046D490 /* Table.hpp */,
+				16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */,
+				16AE8C5C1BD68DB2006E4E1F /* Cherrio.hpp */,
 			);
 			name = Static;
 			sourceTree = "<group>";
@@ -221,6 +226,7 @@
 				1670236A1BB6EA5A00C233E2 /* Sources */,
 				1670236B1BB6EA5A00C233E2 /* Frameworks */,
 				1670236C1BB6EA5A00C233E2 /* CopyFiles */,
+				165658921BD7AECC004128E6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -262,11 +268,28 @@
 		};
 /* End PBXProject section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		165658921BD7AECC004128E6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1670236A1BB6EA5A00C233E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16AE8C5D1BD68DB2006E4E1F /* Cherrio.cpp in Sources */,
 				1674A5D01BB99118000F3B3D /* StaticObject.cpp in Sources */,
 				162876EC1BB81FE4001A3ED4 /* Camera.cpp in Sources */,
 				1674A5DA1BB994A0000F3B3D /* DynamicObject.cpp in Sources */,

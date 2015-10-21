@@ -12,6 +12,14 @@ Butter::Butter() {
     setAbsSpeed(0);
     setDirection(0);
     setSpeed(0,0,0);
+    _height = 25;
+}
+
+Butter::Butter(double height) {
+    setAbsSpeed(0);
+    setDirection(0);
+    setSpeed(0,0,0);
+    _height = height;
 }
 
 Butter::~Butter() {
@@ -21,10 +29,9 @@ Butter::~Butter() {
 void Butter::draw() {
     glPushMatrix();
     glColor3ub(253, 228, 85);
-    glTranslated(_position.getX(), _position.getY(), _position.getZ()/2*10);
+    glTranslated(_position.getX(), _position.getY(), _position.getZ()+_height/2);
     glRotated(_direction, 0, 0, 1);
-    glRotated(90, 1, 0, 0);
-    glScaled(1.628*1.628, 1, 1.628);
-    glutSolidCube(_position.getZ()*10);
+    glScaled(1.628*1.628, 1.628, 1);
+    glutSolidCube(_height);
     glPopMatrix();
 }

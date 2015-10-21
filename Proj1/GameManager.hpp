@@ -19,6 +19,7 @@
 #include "DynamicObject.hpp"
 #include "LightSource.hpp"
 #include "OrthogonalCamera.hpp"
+#include "PerspectiveCamera.hpp"
 #include "Orange.hpp"
 #include "Car.hpp"
 #include "Roadside.hpp"
@@ -37,6 +38,8 @@
 #define KEY_UP_2            101
 #define KEY_LEFT_2			115
 #define KEY_DOWN_2			100
+
+
 
 class GameManager
 {

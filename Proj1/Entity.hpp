@@ -22,7 +22,7 @@ public:
     ~Entity();
     Vector3* getPosition();
     Vector3* setPosition(double, double, double);
-    Vector3* setPosition(const Vector3&);
+    Vector3* setPosition(Vector3);
 };
 
 #endif /* Entity_hpp */

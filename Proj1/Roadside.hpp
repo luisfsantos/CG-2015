@@ -10,16 +10,20 @@
 #define Roadside_hpp
 
 #include <stdio.h>
+#include <vector>
 #include "StaticObject.hpp"
 #include "Vector3.hpp"
+#include "Cherrio.hpp"
 
 class Roadside : public StaticObject
 {
+private:
+    std::vector<Cherrio*> _cherrios;
 public:
     Roadside ();
+    Roadside (double [][3], int);
     ~Roadside();
     void draw ();
-    void drawTorus(double, double, double);
     void drawTable();
 };
 

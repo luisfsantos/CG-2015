@@ -19,8 +19,11 @@
 
 class Orange : public Obstacle
 {
+private:
+    double _radius;
 public:
     Orange();
+    Orange(double);
     ~Orange();
     virtual void draw();
 };

@@ -24,11 +24,7 @@ bool keys[260];
 /* Initialize OpenGL Graphics */
 
 void initGL() {
-    glClearColor(1.0, 1.0, 1.0, 0.0);
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glShadeModel(GL_SMOOTH);
-    //glEnable(GL_LIGHTING);
-    //glEnable(GL_LIGHT0);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -70,7 +66,7 @@ void myKeyboardUp(unsigned char key, int x, int y) {
 
 int main(int argc, char** argv) {
     glutInit(&argc, argv);            // Initialize GLUT
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB); // Enable double buffered mode
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH); // Enable double buffered mode
     glutInitWindowSize(xwindow, ywindow);   // Set the window's initial width & height
     glutInitWindowPosition(50, 50); // Position the window's initial top-left corner
     

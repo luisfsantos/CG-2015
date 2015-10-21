@@ -12,16 +12,19 @@ Orange::Orange() {
     
 }
 
+Orange::Orange(double radius) {
+    _radius = radius;
+}
+
 Orange::~Orange() {
     
 }
 
 void Orange::draw() {
-    
     glPushMatrix();
-    glTranslatef(_position.getX(), _position.getY(), _position.getZ()/2*5);
+    glTranslatef(_position.getX(), _position.getY(), _position.getZ()+_radius);
     glColor3ub(255, 128, 0);
-    glutSolidSphere(_position.getZ()*5, 20, 20);
+    glutSolidSphere(_radius, 20, 20);
     glPopMatrix();
     
 }

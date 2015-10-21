@@ -14,8 +14,11 @@
 
 class Butter : public Obstacle
 {
+private:
+    double _height;
 public:
     Butter();
+    Butter(double);
     ~Butter();
     virtual void draw();
 };

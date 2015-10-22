@@ -21,7 +21,6 @@ class Orange : public Obstacle
 {
 private:
     double _radius;
-    double _length;
 public:
     Orange();
     Orange(double);

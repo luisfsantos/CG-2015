@@ -13,6 +13,7 @@ Butter::Butter() {
     setDirection(0);
     setSpeed(0,0,0);
     _height = 25;
+    setBoundingBox(25*1.628, 25*1.628*1.628);
 }
 
 Butter::Butter(double height) {

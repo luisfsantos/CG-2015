@@ -17,12 +17,18 @@ class Entity
 {
 protected:
     Vector3 _position;
+    double _halfHeight, _Height;
+    double _halfWidth, _Width;
 public:
     Entity();
     ~Entity();
     Vector3* getPosition();
     Vector3* setPosition(double, double, double);
     Vector3* setPosition(Vector3);
+    void setBoundingBox(double, double);
+    virtual bool isIntersecting(Entity);
+    double getHalfWidth();
+    double getHalfHeight();
 };
 
 #endif /* Entity_hpp */

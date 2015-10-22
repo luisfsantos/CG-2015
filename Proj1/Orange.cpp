@@ -14,6 +14,7 @@ Orange::Orange() {
 
 Orange::Orange(double radius) {
     _radius = radius;
+    setBoundingBox(_radius, _radius);
 }
 
 Orange::~Orange() {
@@ -21,7 +22,7 @@ Orange::~Orange() {
 }
 
 void Orange::draw() {    
-	lengh = _radius * 3/4;
+	float lengh = _radius * 3/4;
 	glPushMatrix();
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ()+_radius);
 	//Sphere

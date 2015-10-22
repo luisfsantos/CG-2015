@@ -50,7 +50,7 @@ void Roadside::drawTable() {
     int sw = w/n, sh = h/m; //square width and height respectively
     //for each width and eight draw a rectangle with a specific color
     glPushMatrix();
-    glColor3ub(255,255,255);
+    glColor3ub(234,234,234);
     glTranslated(w/2,h/2, -10);
     glScaled(w, h, 20);
     glRotated(0, 0, 0, 0);

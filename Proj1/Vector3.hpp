@@ -30,6 +30,8 @@ public:
     Vector3 operator*(double);
     Vector3 operator+(const Vector3&);
     Vector3 operator-(const Vector3&);
+    double dot(Vector3);
+    Vector3* perp();
 };
 
 #endif /* Vector3_hpp */

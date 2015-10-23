@@ -284,12 +284,12 @@ void GameManager::update() {
         (*iter)->update(1);
     }
     //fill this in depending on what its supposed to do
-    
-    if (_cars[0]->isIntersecting(*_game_objects[2])) {
-        _cars[0]->setPosition(105, 300, 0);
-        _cars[0]->setAbsSpeed(0);
-        _cars[0]->setDirection(90);
+    for ( iter = _game_objects.begin() + 1; iter != _game_objects.end(); ++iter){
+        if ((_cars[0])->isIntersecting(**iter)) {
+            (*iter)->collide(_cars[0]);
+        }
     }
+    
 }
 
 void GameManager::init() {
@@ -297,39 +297,40 @@ void GameManager::init() {
     _active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
     _cameras.push_back(_active_camera);
     _cars.push_back(new Car());
-    _game_objects.push_back(new Roadside(track1, 219));
+    
    
     _game_objects.push_back(_cars[0]);
-    
-    _game_objects.push_back(new Orange(30));
-    _game_objects.push_back(new Orange(30));
-    _game_objects.push_back(new Orange(55));
+    _game_objects.push_back(new Roadside(track1, 219));
+    _game_objects.push_back(new Orange(800, 360, 0, 30));
+    _game_objects.push_back(new Orange(130, 640, 0, 30));
+    _game_objects.push_back(new Orange(1050, 100, 0, 55));
     _game_objects.push_back(new Butter());
     _game_objects.push_back(new Butter());
     _game_objects.push_back(new Butter());
     _game_objects.push_back(new Butter());
     _game_objects.push_back(new Butter());
     
-    _cars[0]->setBoundingBox(6, 3);
     
-    _cameras[0]->setPosition(1280/2, -500, 800);
-    _game_objects[0]->setPosition(-60, -200, 0);
-    _game_objects[1]->setPosition(105, 300, 0);
     
-    //orange
-    _game_objects[2]->setPosition(800, 360, 0);
-    _game_objects[3]->setPosition(130, 640, 0);
-    _game_objects[4]->setPosition(1050, 100, 0);
+    _cameras[0]->setPosition(0, -500, 800);
     
+    //non dynamic
+    _game_objects[0]->setPosition(105, 300, 0);
+    _game_objects[1]->setPosition(-60, -200, 0);
+    
+    
+    /*
+     Dynamic Objects
+     */
     //butter
     _game_objects[5]->setPosition(400, 220, 0);
-    _game_objects[5]->setDirection(45);
+    _game_objects[5]->setRotation(45);
     _game_objects[6]->setPosition(200, 450, 0);
-    _game_objects[6]->setDirection(40);
+    _game_objects[6]->setRotation(40);
     _game_objects[7]->setPosition(850, 425, 0);
-    _game_objects[7]->setDirection(130);
+    _game_objects[7]->setRotation(130);
     _game_objects[8]->setPosition(1220, 400, 0);
-    _game_objects[8]->setDirection(90);
+    _game_objects[8]->setRotation(90);
     _game_objects[9]->setPosition(650, 550, 0);
 
     

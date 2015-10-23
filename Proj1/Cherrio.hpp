@@ -10,10 +10,10 @@
 #define Cherrio_hpp
 
 #include <stdio.h>
-#include "StaticObject.hpp"
+#include "DynamicObject.hpp"
 #include "Vector3.hpp"
 
-class Cherrio :public StaticObject
+class Cherrio :public DynamicObject
 {
 private:
     double _innerR;

@@ -14,7 +14,7 @@
 #include <vector>
 #include "Vector3.hpp"
 #include "Projection.hpp"
-
+#include <GL/glut.h>
 
 class Entity
 {

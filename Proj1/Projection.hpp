@@ -9,7 +9,7 @@
 #ifndef Projection_hpp
 #define Projection_hpp
 
-#include <stdio.h>
+//#include <stdio.h>
 
 class Projection {
     double _min;

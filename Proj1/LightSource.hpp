@@ -8,7 +8,7 @@
 
 #ifndef LightSource_hpp
 #define LightSource_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "Vector3.hpp"
 #if defined(__APPLE__)|| defined(MACOSX)

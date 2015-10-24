@@ -8,7 +8,7 @@
 
 #ifndef Orange_hpp
 #define Orange_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "Obstacle.hpp"
 #if defined(__APPLE__)|| defined(MACOSX)

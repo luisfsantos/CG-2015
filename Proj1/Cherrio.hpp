@@ -8,7 +8,7 @@
 
 #ifndef Cherrio_hpp
 #define Cherrio_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "Obstacle.hpp"
 #include "Vector3.hpp"

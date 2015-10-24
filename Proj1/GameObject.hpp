@@ -8,7 +8,7 @@
 
 #ifndef GameObject_hpp
 #define GameObject_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "Entity.hpp"
 #if defined(__APPLE__)|| defined(MACOSX)

@@ -12,7 +12,7 @@
 
 
 #include <stdio.h>
-#include <stdlib.h>
+//#include <stdlib.h>
 #include <vector>
 #include "Camera.hpp"
 #include "GameObject.hpp"
@@ -28,6 +28,7 @@
 #include "Cherrio.hpp"
 #include <math.h> 
 #include <cmath>
+//#include <GL/glut.h>
 
 #define KEY_A               97
 #define KEY_B               98

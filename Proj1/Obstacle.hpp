@@ -8,7 +8,7 @@
 
 #ifndef Obstacle_hpp
 #define Obstacle_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "DynamicObject.hpp"
 ;

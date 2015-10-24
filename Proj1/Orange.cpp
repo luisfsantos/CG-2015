@@ -14,30 +14,19 @@ Orange::Orange() {
 
 Orange::Orange(double x, double y, double z, double radius) {
     _radius = radius;
-<<<<<<< HEAD
     _position.set(x, y, z);
     setBoundingBox(_radius, _radius);
     _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()-_halfHeight,0));
     _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()-_halfHeight,0));
     _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
     _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
-=======
     _direction = 0;
->>>>>>> refs/remotes/origin/pedro
 }
 
 Orange::~Orange() {
     
 }
 
-<<<<<<< HEAD
-void Orange::draw() {
-	float lengh = _radius * 3/4;
-	glPushMatrix();
-	glTranslatef(_position.getX(), _position.getY(), _position.getZ()+_radius);
-	//Sphere
-	glPushMatrix();
-=======
 void Orange::update(double delta_t) {
 	//setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);
 	_position = _position + _speed * delta_t;
@@ -61,84 +50,9 @@ void Orange::setSpeed(double x, double y, double z) {
     _right.set(-y, x, z);
     //checkMagnitude();
 }
-/*
-void Orange::checkMagnitude() {
-	double w = _direction;
-	double x = _right.getX();
-	double y = _right.getY();
-	double z = _right.getZ();
-	if((w*w + x*x + y*y + z*z) < 0.9999 || 1.0001 < (w*w + x*x + y*y + z*z)) normalize();
-}
-
-double Orange::getMagnitude() {
-	double w = _direction;
-	double x = _right.getX();
-	double y = _right.getY();
-	double z = _right.getZ();
-	return sqrt(w*w + x*x + y*y + z*z);
-}
-
-void Orange::normalize() {
-	double m = getMagnitude();
-	_direction /= m;
-	_right.set(_right.getX()/m, _right.getY()/m, _right.getZ()/m);
-}
-
-void Orange::addRotation(Vector3 local, double angle) {
-	double lr1 = cosf(angle/2);
-	Vector3 lr2;
-	lr2.set(	
-		local.getX() * sinf(angle/2),
-	   	local.getY() * sinf(angle/2),
-	   	local.getZ() * sinf(angle/2));
-	_direction = (
-		lr1*_direction - 
-		lr2.getX()*_right.getX() - 
-		lr2.getY()*_right.getY() - 
-		lr2.getZ()*_right.getZ());
-	_right.setX(
-		lr1*_right.getX() + 
-		lr2.getX()*_direction + 
-		lr2.getY()*_right.getZ() - 
-		lr2.getZ()*_right.getY());
-	_right.setY(
-		lr1*_right.getY() - 
-		lr2.getX()*_right.getZ() + 
-		lr2.getY()*_direction + 
-		lr2.getZ()*_right.getX());
-	_right.setZ(
-		lr1*_right.getZ() + 
-		lr2.getX()*_right.getY() - 
-		lr2.getY()*_right.getX() + 
-		lr2.getZ()*_direction);
-	checkMagnitude();
-}*/
 
 void Orange::draw() {    
 	double lengh = _radius * 3/4;
-	//last Rotation matrix
-	/*const GLdouble a = 1 - 2*(_right.getY()*_right.getY()) - 2*(_right.getZ()*_right.getZ());
-	//Matrix4 rot(
-	const GLdouble *m = {
-		(const GLdouble)a, 
-		(const GLdouble)(2*(_right.getX()*_right.getY()) 	+ 2*(_direction*_right.getZ())), 
-		(const GLdouble)(2*(_right.getX()*_right.getZ()) 	- 2*(_direction*_right.getY())), 
-		(const GLdouble)0, 
->>>>>>> refs/remotes/origin/pedro
-
-		(const GLdouble)(2*(_right.getX()*_right.getY())		- 2*(_direction*_right.getZ())), 
-		(const GLdouble)(1 - 2*(_right.getX()*_right.getX())	- 2*(_right.getZ()*_right.getZ())), 
-		(const GLdouble)(2*(_right.getY()*_right.getZ()) 	- 2*(_direction*_right.getX())), 
-		(const GLdouble)0, 
-
-		(const GLdouble)(2*(_right.getX()*_right.getZ())		+ 2*(_direction*_right.getY())), 
-		(const GLdouble)(2*(_right.getY()*_right.getZ())		+ 2*(_direction*_right.getX())), 
-		(const GLdouble)(1 - 2*(_right.getX()*_right.getX())	- 2*(_right.getY()*_right.getY())), 
-		(const GLdouble)0,
-
-		(const GLdouble)0, (const GLdouble)0, (const GLdouble)0, (const GLdouble)1};*/ 
-
-
 	glPushMatrix();
 	glTranslated(_position.getX(), _position.getY(), _position.getZ()+_radius);
 	//glMultMatrixd(m);

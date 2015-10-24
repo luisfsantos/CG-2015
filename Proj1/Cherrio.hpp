@@ -10,10 +10,10 @@
 #define Cherrio_hpp
 
 #include <stdio.h>
-#include "DynamicObject.hpp"
+#include "Obstacle.hpp"
 #include "Vector3.hpp"
 
-class Cherrio :public DynamicObject
+class Cherrio :public Obstacle
 {
 private:
     double _innerR;
@@ -23,6 +23,7 @@ public:
     Cherrio(double, double, double, double, double);
     ~Cherrio();
     void draw();
+    void update(double);
 };
 
 #endif /* Cherrio_hpp */

@@ -58,7 +58,7 @@ public:
     void setRotation(double);
     
     void setMovement(bool, bool, bool, bool);
-    virtual void collide(GameObject) {};
+    virtual void collide(GameObject *) {};
 };
 
 

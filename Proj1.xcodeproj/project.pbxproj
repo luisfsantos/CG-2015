@@ -115,6 +115,8 @@
 		1618F03D1BBD358C0059CFD9 /* Dynamic */ = {
 			isa = PBXGroup;
 			children = (
+				16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */,
+				16AE8C5C1BD68DB2006E4E1F /* Cherrio.hpp */,
 				1674A5E21BB998FA000F3B3D /* Butter.cpp */,
 				1674A5E31BB998FA000F3B3D /* Butter.hpp */,
 				1674A5DB1BB996AC000F3B3D /* Car.cpp */,
@@ -140,8 +142,6 @@
 				1674A5D51BB9932A000F3B3D /* Roadside.hpp */,
 				1652DD331BCBB6DE0046D490 /* Table.cpp */,
 				1652DD341BCBB6DE0046D490 /* Table.hpp */,
-				16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */,
-				16AE8C5C1BD68DB2006E4E1F /* Cherrio.hpp */,
 			);
 			name = Static;
 			sourceTree = "<group>";

@@ -38,6 +38,7 @@ Butter::~Butter() {
 }
 
 void Butter::draw() {
+  
     glPushMatrix();
     glTranslated(_position.getX(), _position.getY(), _position.getZ()+_height/2);
     glRotated(_rotation, 0, 0, 1);

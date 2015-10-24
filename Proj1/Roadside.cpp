@@ -21,9 +21,10 @@ Roadside::Roadside() {
     
 }
 
-Roadside::Roadside(double positions[][3], int size) {
+Roadside::Roadside(double positions[][3], int size, double x, double y, double z) {
+    _position.set(x, y, z);
     for (int i=0; i<size; i++) {
-        _cherrios.push_back(new Cherrio(positions[i][0], positions[i][1], positions[i][2], 0.6*0.004, 0.004));
+        _cherrios.push_back(new Cherrio(positions[i][0]+x, positions[i][1]+y, positions[i][2]+z, 2.4, 4));
     }
 }
 
@@ -35,8 +36,7 @@ void Roadside::draw() {
     std::vector<Cherrio*>::iterator iter;
     drawTable();
     glPushMatrix();
-    glTranslatef(_position.getX(), _position.getY(), _position.getZ());
-    glScaled(1000, 1000, 800);
+    //glTranslatef(_position.getX(), _position.getY(), _position.getZ());
     for ( iter = _cherrios.begin() ; iter != _cherrios.end(); ++iter){
         (*iter)->draw();
     }
@@ -58,4 +58,9 @@ void Roadside::drawTable() {
     glPopMatrix();
 
      
+}
+
+
+std::vector<Cherrio*> Roadside::getCherrios() {
+    return _cherrios;
 }

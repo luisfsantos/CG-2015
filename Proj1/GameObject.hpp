@@ -27,6 +27,9 @@ public:
     virtual void setSpeed(double, double, double) {};
     virtual void setSpeed(Vector3) {};
     virtual void setDirection(double) {};
+    virtual void setAbsSpeed(double) {};
+    virtual void setRotation(double) {};
+    virtual void collide(GameObject *) {};
 };
 
 

@@ -9,19 +9,23 @@
 #include "Orange.hpp"
 
 Orange::Orange() {
-    
 }
 
-Orange::Orange(double radius) {
+Orange::Orange(double x, double y, double z, double radius) {
     _radius = radius;
+    _position.set(x, y, z);
     setBoundingBox(_radius, _radius);
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
 }
 
 Orange::~Orange() {
     
 }
 
-void Orange::draw() {    
+void Orange::draw() {
 	float lengh = _radius * 3/4;
 	glPushMatrix();
 	glTranslatef(_position.getX(), _position.getY(), _position.getZ()+_radius);
@@ -49,4 +53,11 @@ void Orange::draw() {
 	glPopMatrix();
 
 	glPopMatrix();
+}
+
+void Orange::collide(GameObject* car) {
+    ((DynamicObject*)car)->setPosition(105, 300, 0);
+    ((DynamicObject*)car)->setAbsSpeed(0);
+    ((DynamicObject*)car)->setDirection(90);
+    ((DynamicObject*)car)->setMovement(false, false, false, false);
 }

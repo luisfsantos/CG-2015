@@ -17,14 +17,15 @@
 
 class Roadside : public StaticObject
 {
-private:
+public:
     std::vector<Cherrio*> _cherrios;
 public:
     Roadside ();
-    Roadside (double [][3], int);
+    Roadside (double [][3], int, double, double, double);
     ~Roadside();
     void draw ();
     void drawTable();
+    std::vector<Cherrio*> getCherrios();
 };
 
 

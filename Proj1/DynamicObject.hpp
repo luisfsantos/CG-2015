@@ -37,6 +37,7 @@ protected:
     double _accelaration;
     double _maxSpeed;
     double _direction;
+    double _rotation;
     double _turnSpeed;
     bool _movement[4]; //0-up 1-down 2-left 3-right
 public:
@@ -54,8 +55,10 @@ public:
     void accelarate(double);
     void brake(double);
     void turn(int);
+    void setRotation(double);
     
     void setMovement(bool, bool, bool, bool);
+    virtual void collide(GameObject *) {};
 };
 
 

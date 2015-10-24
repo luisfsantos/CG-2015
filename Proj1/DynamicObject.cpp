@@ -76,6 +76,10 @@ void DynamicObject::turn(int direction) {
     _direction += direction*_turnSpeed;
 }
 
+void DynamicObject::setRotation(double rotation) {
+    _rotation = rotation;
+}
+
 void DynamicObject::setMovement(bool up, bool down, bool left, bool right) {
     _movement[UP] = up;
     _movement[DOWN] = down;

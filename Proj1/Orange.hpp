@@ -23,9 +23,10 @@ private:
     double _radius;
 public:
     Orange();
-    Orange(double);
+    Orange(double, double, double, double);
     ~Orange();
     virtual void draw();
+    void collide(GameObject *);
 };
 
 #endif /* Orange_hpp */

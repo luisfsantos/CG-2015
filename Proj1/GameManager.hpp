@@ -47,8 +47,10 @@ class GameManager
 private:
     std::vector<Camera*> _cameras;
     std::vector<GameObject*> _game_objects;
+    std::vector<DynamicObject*> _dynamic_objects;
     std::vector<LightSource*> _light_sources;
     std::vector<Car*> _cars;
+    Roadside* _road;
     Camera* _active_camera;
     bool* _keys;
 public:

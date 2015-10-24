@@ -12,6 +12,11 @@
 Car::Car() {
     setDirection(90);
     setAbsSpeed(0);
+    setBoundingBox(16, 9);
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
 }
 
 Car::~Car() {
@@ -127,6 +132,8 @@ void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
 
 void Car::update(double delta_t) {
     double _angle = (((getDirection()-90) * M_PI ) / 180.0);
+    int i = 0;
+    std::vector<Vector3*>::iterator iter;
     if (_movement[UP]) accelarate(1);
     if (_movement[DOWN]) brake(1);
     if (_movement[LEFT]) turn(L);
@@ -143,6 +150,18 @@ void Car::update(double delta_t) {
     
     setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);
     _position = _position + _speed * delta_t;
+    for (iter = _vertices.begin(); iter != _vertices.end(); ++iter, i++) {
+        double temp [4][2] = {{-_Width, _Height},{-_Width, -_Height},{_Width, -_Height},{_Width, _Height}};
+        double tempX = temp[i][0];
+        double tempY = temp[i][1];
+        
+        // now apply rotation
+        float rotatedX = tempX*cos(_angle) - tempY*sin(_angle);
+        float rotatedY = tempX*sin(_angle) + tempY*cos(_angle);
+        
+        // translate back
+        (*iter)->set(rotatedX + _position.getX(), rotatedY + _position.getY(), 0);
+    }
 }
 
 

@@ -17,6 +17,7 @@ class Obstacle : public DynamicObject
 public:
     Obstacle();
     ~Obstacle();
+    void collide(GameObject *);
 };
 
 #endif /* Obstacle_hpp */

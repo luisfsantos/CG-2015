@@ -21,6 +21,8 @@ public:
     Butter(double);
     ~Butter();
     virtual void draw();
+    void update(double);
+    void collide(GameObject*);
 };
 
 #endif /* Butter_hpp */

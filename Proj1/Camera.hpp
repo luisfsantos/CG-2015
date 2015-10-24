@@ -16,7 +16,6 @@
     #include <GL/glut.h>
 #endif
 #include "Entity.hpp"
-#include <GL/glut.h>
 
 class Camera : public Entity
 {

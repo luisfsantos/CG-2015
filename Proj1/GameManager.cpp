@@ -320,6 +320,8 @@ void GameManager::init() {
     _game_objects[2]->setPosition(800, 360, 0);
     _game_objects[3]->setPosition(130, 640, 0);
     _game_objects[4]->setPosition(1050, 100, 0);
+	_game_objects[3]->setSpeed(1, -0.5, 0);
+    _game_objects[4]->setSpeed(0, 1, 0);
     
     //butter
     _game_objects[5]->setPosition(400, 220, 0);

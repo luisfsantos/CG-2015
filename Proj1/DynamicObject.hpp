@@ -8,7 +8,7 @@
 
 #ifndef DynamicObject_hpp
 #define DynamicObject_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "GameObject.hpp"
 #include "Vector3.hpp"

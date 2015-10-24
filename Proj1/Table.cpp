@@ -26,9 +26,9 @@ void Table::draw(){
         for(int j = 0; j < 5; ++j) {
             //oscillate the color per square of the board
             if(color)
-                glColor3ub(256, 256, 256);
+                glColor3ub(255, 255, 255);
             else
-                glColor3ub(0, 0, 256);
+                glColor3ub(0, 0, 255);
             color = !color;
             
             //draw a rectangle in the ith row and jth column

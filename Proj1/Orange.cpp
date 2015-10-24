@@ -21,6 +21,7 @@ Orange::Orange(double x, double y, double z, double radius) {
     _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
     _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
     _direction = 0;
+    _rotation = 0;
 }
 
 Orange::~Orange() {
@@ -28,7 +29,7 @@ Orange::~Orange() {
 }
 
 void Orange::update(double delta_t) {
-	setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);	 
+	//setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);	 
 	_position = _position + _speed * delta_t;
 	double modulo = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
 	_rotation += ((modulo * delta_t) / _radius) * (180/M_PI);
@@ -42,12 +43,16 @@ void Orange::update(double delta_t) {
 void Orange::setSpeed(const Vector3& speed) {
     _speed = speed;
     _right.set(_speed.getY(), -_speed.getX(), 0);
+    _absSpeed = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
+	_direction = atan(_speed.getY() / _speed.getX());
     //checkMagnitude();
 }
 
 void Orange::setSpeed(double x, double y, double z) {
     _speed.set(x, y, z);
     _right.set(-y, x, z);
+    _absSpeed = sqrt(x*x + y*y);
+	_direction = atan(y / x);
     //checkMagnitude();
 }
 
@@ -89,7 +94,17 @@ void Orange::collide(GameObject* car) {
 }
 
 void Orange::reset() {
-	setPosition(rand() % 1280, rand() % 720, 0);
-	double random = rand() % 360;
+	double x;
+	double y;
+	do {
+		x = rand() % 1280; 
+	} while ( x < 0 || x > 1280);
+	do {
+		y = rand() % 1280; 
+	} while ( y < 0 || y > 720);
+
+
+	setPosition(x, y, 0);
+	_direction = rand() % 360;
 	setSpeed(cos((getDirection() * M_PI) / 180.0) * getAbsSpeed(), sin((getDirection() * M_PI) / 180.0)* getAbsSpeed(), 0);
 }

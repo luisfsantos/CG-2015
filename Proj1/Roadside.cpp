@@ -59,14 +59,14 @@ void Roadside::drawTable() {
     glPopMatrix();   
 }
 
-bool Roadside::isIntersecting(Orange orange) {
+bool Roadside::isIntersecting(GameObject orange) {
     bool test1 = false, test2 = false;
-    test1 = (orange.getPosition.getX() + orange.getHalfWidth() <= 0
+    test1 = (orange.getPosition()->getX() + orange.getHalfWidth() < 0
             ||
-			orange.getPosition.getX() - orange.getHalfHeight() >= 1280);
-    test2 = (orange.getPosition.getY() + orange.getHalfWidth() <= 0
+			orange.getPosition()->getX() - orange.getHalfHeight() > 1280);
+    test2 = (orange.getPosition()->getY() + orange.getHalfWidth() < 0
             ||
-			orange.getPosition.getX() - orange.getHalfHeight() >= 720);
+			orange.getPosition()->getY() - orange.getHalfHeight() > 720);
     return test1 || test2;
 }
 

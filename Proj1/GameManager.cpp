@@ -295,11 +295,11 @@ void GameManager::update() {
 			(*iter2)->collide(_cars[0]);
 		}
 	}
-	for( iter3 = _game_objects.begin() + 2; iter !=  _game_objects.begin() + 5; ++iter)
-	if(_game_objects[0]->isIntersecting(**iter3)){
-		(*iter)->reset();
-	};
-	
+	for( iter3 = _game_objects.begin() + 2; iter3 !=  _game_objects.begin() + 5; ++iter3) {
+		if(_road->isIntersecting(**iter3)){
+			(*iter3)->reset();
+		};
+	}
 }
 
 void GameManager::init() {
@@ -324,9 +324,9 @@ void GameManager::init() {
 	
 	//non dynamic
 	_game_objects[0]->setPosition(105, 300, 0);
-
-	_game_objects[3]->setSpeed(1, -0.5, 0);
-	_game_objects[4]->setSpeed(0, 1, 0);
+	_game_objects[2]->setSpeed(-1, 1, 0);
+	_game_objects[3]->setSpeed(1, -1, 0);
+	_game_objects[4]->setSpeed(1, 1, 0);
 
 	/*
 	 Dynamic Objects

@@ -14,6 +14,7 @@
 #include "Vector3.hpp"
 #include "Cherrio.hpp"
 #include "Orange.hpp"
+#include "GameObject.hpp"
 
 class Roadside : public StaticObject
 {
@@ -25,7 +26,7 @@ public:
     ~Roadside();
     void draw ();
     void drawTable();
-    bool isIntersecting(Orange);
+    bool isIntersecting(GameObject);
     std::vector<Cherrio*> getCherrios();
 };
 

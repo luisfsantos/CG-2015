@@ -8,12 +8,12 @@
 
 #ifndef Roadside_hpp
 #define Roadside_hpp
-
 #include <stdio.h>
 #include <vector>
 #include "StaticObject.hpp"
 #include "Vector3.hpp"
 #include "Cherrio.hpp"
+#include "Orange.hpp"
 
 class Roadside : public StaticObject
 {
@@ -25,6 +25,7 @@ public:
     ~Roadside();
     void draw ();
     void drawTable();
+    bool isIntersecting(Orange);
     std::vector<Cherrio*> getCherrios();
 };
 

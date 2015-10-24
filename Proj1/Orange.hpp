@@ -41,6 +41,7 @@ public:
     //end quaternion
     virtual void draw();
     void collide(GameObject *);
+    void reset();
 };
 
 #endif /* Orange_hpp */

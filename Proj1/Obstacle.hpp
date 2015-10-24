@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include "DynamicObject.hpp"
-
+;
 class Obstacle : public DynamicObject
 {
 public:

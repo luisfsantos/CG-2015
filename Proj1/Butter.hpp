@@ -8,7 +8,7 @@
 
 #ifndef Butter_hpp
 #define Butter_hpp
-
+#include <stdlib.h>
 #include <stdio.h>
 #include "Obstacle.hpp"
 

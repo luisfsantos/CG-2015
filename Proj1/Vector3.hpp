@@ -25,6 +25,9 @@ public:
     double getX();
     double getY();
     double getZ();
+    void setX(double x);
+    void setY(double y);
+    void setZ(double z);
     void set(double, double, double);
     Vector3 operator=(const Vector3&);
     Vector3 operator*(double);

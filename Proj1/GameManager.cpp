@@ -317,11 +317,20 @@ void GameManager::init() {
     
     
     
+<<<<<<< HEAD
     _cameras[0]->setPosition(0, -500, 800);
     
     //non dynamic
     _game_objects[0]->setPosition(105, 300, 0);
     
+=======
+    //orange
+    _game_objects[2]->setPosition(800, 360, 0);
+    _game_objects[3]->setPosition(130, 640, 0);
+    _game_objects[4]->setPosition(1050, 100, 0);
+	_game_objects[3]->setSpeed(1, -0.5, 0);
+    _game_objects[4]->setSpeed(0, 1, 0);
+>>>>>>> refs/remotes/origin/pedro
     
     /*
      Dynamic Objects

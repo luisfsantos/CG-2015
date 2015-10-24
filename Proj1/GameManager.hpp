@@ -25,6 +25,7 @@
 #include "Roadside.hpp"
 #include "Table.hpp"
 #include "Butter.hpp"
+#include "Cherrio.hpp"
 #include <math.h> 
 #include <cmath>
 

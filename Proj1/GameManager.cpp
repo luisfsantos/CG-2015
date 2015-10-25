@@ -303,6 +303,7 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
+<<<<<<< HEAD
 	
 	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
@@ -327,6 +328,30 @@ void GameManager::init() {
 	_game_objects[2]->setSpeed(-1, 1, 0);
 	_game_objects[3]->setSpeed(1, -1, 0);
 	_game_objects[4]->setSpeed(1, 1, 0);
+=======
+    
+    //_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
+	_active_camera = new PerspectiveCamera(71.5, 16 / 9, 0.01, 2000);
+	_cameras.push_back(_active_camera);
+    _cars.push_back(new Car());
+    
+    _road = new Roadside(track1, 209, -60, -200, 0);
+    _game_objects.push_back(_cars[0]);
+    _game_objects.push_back(_road);
+    _game_objects.push_back(new Orange(800, 360, 0, 30));
+    _game_objects.push_back(new Orange(130, 640, 0, 30));
+    _game_objects.push_back(new Orange(1050, 100, 0, 55));
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    _game_objects.push_back(new Butter());
+    
+    
+    
+    //non dynamic
+    _game_objects[0]->setPosition(105, 300, 0);
+>>>>>>> refs/remotes/origin/madruga
 
 	/*
 	 Dynamic Objects

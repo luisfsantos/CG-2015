@@ -28,11 +28,15 @@ void PerspectiveCamera::update(GLint w, GLint h){
 }
 
 void PerspectiveCamera::computeProjectionMatrix(GLint w, GLint h){
-
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(_fovy, _aspect, _near, _far);
 }
 
 void PerspectiveCamera::computeVisualizationMatrix(GLint w, GLint h){
-
+	gluLookAt(1280 / 2, -200, 200, 1280 / 2, 720 / 2, 0, 0, 1, 0);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 }
 
 

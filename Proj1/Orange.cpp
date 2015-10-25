@@ -29,8 +29,9 @@ Orange::~Orange() {
 }
 
 void Orange::update(double delta_t) {
-	//setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);	 
-	_position = _position + _speed * delta_t;
+    std::vector<Vector3*>::iterator iter;
+    int i = 0;
+    _position = _position + _speed * delta_t;
 	double modulo = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
 	_rotation += ((modulo * delta_t) / _radius) * (180/M_PI);
 	//addRotation(_right, angle);
@@ -38,6 +39,14 @@ void Orange::update(double delta_t) {
 		_rotation -= 360;
 		if(_rotation < 360) _rotation = 0;
 	}
+    for (iter = _vertices.begin(); iter != _vertices.end(); ++iter, i++) {
+        double temp [4][2] = {{-_Width, _Height},{-_Width, -_Height},{_Width, -_Height},{_Width, _Height}};
+        double tempX = temp[i][0];
+        double tempY = temp[i][1];
+        
+        // translate back
+        (*iter)->set(tempX + _position.getX(), tempY + _position.getY(), 0);
+    }
 }
 
 void Orange::setSpeed(const Vector3& speed) {

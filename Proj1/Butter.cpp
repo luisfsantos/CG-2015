@@ -83,6 +83,5 @@ void Butter::collide(GameObject* car) {
     } else {
         ((DynamicObject*)car)->setAbsSpeed(2);
     }
-    //((DynamicObject*)car)->setAbsSpeed(-2);
-    //((DynamicObject*)car)->setMovement(false, false, false, false);
+    ((DynamicObject*)car)->setMovement(false, false, false, false);
 }

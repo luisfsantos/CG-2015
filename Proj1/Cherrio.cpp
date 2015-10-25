@@ -63,3 +63,16 @@ void Cherrio::update(double delta_t) {
         (*iter)->set(rotatedX + _position.getX(), rotatedY + _position.getY(), 0);
     }
 }
+
+void Cherrio::collide(GameObject* car) {
+    setDirection(((DynamicObject*)car)->getDirection());
+    setAbsSpeed(((DynamicObject*)car)->getAbsSpeed()*1.5);
+    update(1);
+    setAbsSpeed(0);
+    if (((DynamicObject*)car)->getAbsSpeed() > 0) {
+        ((DynamicObject*)car)->setAbsSpeed(-1);
+    } else {
+        ((DynamicObject*)car)->setAbsSpeed(1);
+    }
+    ((DynamicObject*)car)->setMovement(false, false, false, false);
+}

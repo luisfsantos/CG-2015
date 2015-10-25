@@ -24,6 +24,7 @@ public:
     ~Cherrio();
     void draw();
     void update(double);
+    void collide(GameObject*);
 };
 
 #endif /* Cherrio_hpp */

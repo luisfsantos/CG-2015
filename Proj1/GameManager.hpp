@@ -62,7 +62,7 @@ public:
     GameManager();
     ~GameManager();
     void display();
-    void reshape(GLsizei, GLsizei);
+    void reshape();
     void keyPressed(bool *);
     void onTimer();
     void idle();

@@ -26,9 +26,9 @@ public:
     Camera(double, double);
     Camera();
     ~Camera();
-    virtual void update(GLint, GLint);
-    virtual void computeProjectionMatrix(GLint, GLint);
-    virtual void computeVisualizationMatrix(GLint, GLint);
+    virtual void update();
+    virtual void computeProjectionMatrix();
+    virtual void computeVisualizationMatrix();
 };
 
 

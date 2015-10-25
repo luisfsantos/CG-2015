@@ -251,8 +251,8 @@ void GameManager::display() {
 	glFlush();
 }
 
-void GameManager::reshape(GLsizei w, GLsizei h) {
-	_active_camera->update(w,h);
+void GameManager::reshape() {
+	_active_camera->update();
 }
 
 void GameManager::keyPressed(bool *keys) {
@@ -265,15 +265,15 @@ void GameManager::keyPressed(bool *keys) {
 	}
 	if (_keys[KEY_1]) {
 		_active_camera = _cameras[0];
-		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+		_active_camera->update();
 	}
 	if (_keys[KEY_2]){
 		_active_camera=_cameras[1];
-		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+		_active_camera->update();
 	}
 	if (_keys[KEY_3]){
 		_active_camera=_cameras[2];
-		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+		_active_camera->update();
 	}
 	_cars[0]->setMovement(_keys[KEY_UP], _keys[KEY_DOWN], _keys[KEY_LEFT], _keys[KEY_RIGHT]);
 }

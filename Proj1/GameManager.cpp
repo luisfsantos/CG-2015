@@ -263,7 +263,18 @@ void GameManager::keyPressed(bool *keys) {
 	if (_keys[KEY_B]) {
 		init();
 	}
-	
+	if (_keys[KEY_1]) {
+		_active_camera = _cameras[0];
+		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+	}
+	if (_keys[KEY_2]){
+		_active_camera=_cameras[1];
+		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+	}
+	if (_keys[KEY_3]){
+		_active_camera=_cameras[2];
+		_active_camera->update(glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+	}
 	_cars[0]->setMovement(_keys[KEY_UP], _keys[KEY_DOWN], _keys[KEY_LEFT], _keys[KEY_RIGHT]);
 }
 
@@ -303,11 +314,13 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
-	
-	//_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
-	_active_camera = new PerspectiveCamera(70, 16 / 9, 100, 2000);
+
+	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
-    _cars.push_back(new Car());
+	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0));
+	_cameras[1]->setPosition(1280/2,-100,1000);
+	
+	_cars.push_back(new Car());
 	
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);
@@ -344,7 +357,11 @@ void GameManager::init() {
 	_game_objects[8]->setRotation(90);
 	_game_objects[9]->setPosition(650, 550, 0);
 
+	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 10, /*_cars[0]->getPosition()->getZ()+*/ 1000,
+			_cars[0]->getPosition()->getX() + cos(_cars[0]->getDirection()), _cars[0]->getPosition()->getY() + sin(_cars[0]->getDirection()), 0));
 	
+	_cameras[2]->setPosition(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY()-100, _cars[0]->getPosition()->getZ()+1000);
+
 }
 
 void GameManager::setKeys(bool * keys){

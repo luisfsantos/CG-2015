@@ -21,6 +21,7 @@ Orange::Orange(double x, double y, double z, double radius) {
     _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
     _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
     _direction = 0;
+    _rotation = 0;
 }
 
 Orange::~Orange() {
@@ -28,26 +29,30 @@ Orange::~Orange() {
 }
 
 void Orange::update(double delta_t) {
-	//setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);
+	//setSpeed(cos((getDirection() * M_PI ) / 180.0 ) * getAbsSpeed(), sin((getDirection() * M_PI ) / 180.0 )* getAbsSpeed(), 0);	 
 	_position = _position + _speed * delta_t;
-	setAbsSpeed(sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY()));
-	_direction += ((_absSpeed * delta_t) / _radius) * (180/M_PI);
+	double modulo = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
+	_rotation += ((modulo * delta_t) / _radius) * (180/M_PI);
 	//addRotation(_right, angle);
-	if(_direction >= 360) {
-		_direction -= 360;
-		if(_direction < 360) _direction = 0;
+	if(_rotation >= 360) {
+		_rotation -= 360;
+		if(_rotation < 360) _rotation = 0;
 	}
 }
 
 void Orange::setSpeed(const Vector3& speed) {
     _speed = speed;
     _right.set(_speed.getY(), -_speed.getX(), 0);
+    _absSpeed = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
+	_direction = atan(_speed.getY() / _speed.getX());
     //checkMagnitude();
 }
 
 void Orange::setSpeed(double x, double y, double z) {
     _speed.set(x, y, z);
     _right.set(-y, x, z);
+    _absSpeed = sqrt(x*x + y*y);
+	_direction = atan(y / x);
     //checkMagnitude();
 }
 
@@ -56,7 +61,7 @@ void Orange::draw() {
 	glPushMatrix();
 	glTranslated(_position.getX(), _position.getY(), _position.getZ()+_radius);
 	//glMultMatrixd(m);
-	glRotated(_direction, _right.getX(), _right.getY(), _right.getZ());
+	glRotated(_rotation, _right.getX(), _right.getY(), _right.getZ());
 		//Sphere
 		glPushMatrix();
 		glColor3ub(255, 128, 0);
@@ -86,4 +91,20 @@ void Orange::collide(GameObject* car) {
     ((DynamicObject*)car)->setAbsSpeed(0);
     ((DynamicObject*)car)->setDirection(90);
     ((DynamicObject*)car)->setMovement(false, false, false, false);
+}
+
+void Orange::reset() {
+	double x;
+	double y;
+	do {
+		x = rand() % 1280; 
+	} while ( x < 0 || x > 1280);
+	do {
+		y = rand() % 1280; 
+	} while ( y < 0 || y > 720);
+
+
+	setPosition(x, y, 0);
+	_direction = rand() % 360;
+	setSpeed(cos((getDirection() * M_PI) / 180.0) * getAbsSpeed(), sin((getDirection() * M_PI) / 180.0)* getAbsSpeed(), 0);
 }

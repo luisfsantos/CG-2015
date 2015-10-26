@@ -30,6 +30,9 @@
 #include <cmath>
 //#include <GL/glut.h>
 
+#define KEY_1				49
+#define KEY_2				50
+#define KEY_3				51
 #define KEY_A               97
 #define KEY_B               98
 #define KEY_LEFT			256
@@ -59,7 +62,7 @@ public:
     GameManager();
     ~GameManager();
     void display();
-    void reshape(GLsizei, GLsizei);
+    void reshape();
     void keyPressed(bool *);
     void onTimer();
     void idle();

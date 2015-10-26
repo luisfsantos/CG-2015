@@ -17,12 +17,16 @@ class PerspectiveCamera : public Camera
 private:
     double _fovy;
     double _aspect;
+	double _eyeX;
+	double _eyeY;
+	double _eyeZ;
 public:
-    PerspectiveCamera(double, double, double, double);
+    PerspectiveCamera(double, double, double, double,double, double, double);
     ~PerspectiveCamera();
-    void update(GLint, GLint);
-    void computeProjectionMatrix(GLint, GLint);
-    void computeVisualizationMatrix(GLint, GLint);
+    void update();
+    void computeProjectionMatrix();
+    void computeVisualizationMatrix();
+	void setEye(double, double, double);
 
 };
 

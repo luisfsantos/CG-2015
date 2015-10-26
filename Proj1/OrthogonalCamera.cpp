@@ -20,28 +20,28 @@ OrthogonalCamera::~OrthogonalCamera() {
     
 }
 
-void OrthogonalCamera::update(GLint w, GLint h){
-    glViewport( 0, 0, w, h);
-    computeProjectionMatrix(w,h);
-    computeVisualizationMatrix(w,h);
+void OrthogonalCamera::update(){
+	glViewport(0, 0, glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
+	computeProjectionMatrix( );
+	computeVisualizationMatrix( );
 }
 
-void OrthogonalCamera::computeProjectionMatrix(GLint w, GLint h){
+void OrthogonalCamera::computeProjectionMatrix(){
     glMatrixMode( GL_PROJECTION);
     glLoadIdentity();
 }
 
-void OrthogonalCamera::computeVisualizationMatrix(GLint w, GLint h){
+void OrthogonalCamera::computeVisualizationMatrix(){
     float xmin = _left, xmax = _right, ymin = _bottom, ymax = _top;
     float ratio = (xmax - xmin) / (ymax - ymin);
-    float aspect = (float) w / h;
+	float aspect = (float)glutGet(GLUT_WINDOW_WIDTH) / glutGet(GLUT_WINDOW_HEIGHT);
     float xscale =(xmax-xmin)/_right, yscale=(ymax-ymin)/_top;
     float c = (xmax + xmin) * .5;
-    xmax = c + xscale * w * .5;
-    xmin = c - xscale * w * .5;
+	xmax = c + xscale * glutGet(GLUT_WINDOW_WIDTH) * .5;
+	xmin = c - xscale * glutGet(GLUT_WINDOW_WIDTH) * .5;
     c = (ymax + ymin) * .5;
-    ymax = c + yscale * h * .5;
-    ymin = c - yscale * h * .5;
+	ymax = c + yscale * glutGet(GLUT_WINDOW_HEIGHT) * .5;
+	ymin = c - yscale * glutGet(GLUT_WINDOW_HEIGHT) * .5;
     glOrtho(xmin, xmax, ymin, ymax, _near, _far);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();

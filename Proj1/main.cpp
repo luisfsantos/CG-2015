@@ -41,7 +41,7 @@ void idle(){
 }
 
 void reshape(GLsizei width, GLsizei height) {  // GLsizei for non-negative integer
-    manager->reshape(width, height);
+    manager->reshape();
 }
 
 void myKeyboard(unsigned char key, int x, int y) {

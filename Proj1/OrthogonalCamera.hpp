@@ -21,9 +21,9 @@ private:
 public:
     OrthogonalCamera(double, double, double, double, double, double);
     ~OrthogonalCamera();
-    void update(GLint, GLint);
-    void computeProjectionMatrix(GLint, GLint);
-    void computeVisualizationMatrix(GLint, GLint);
+    void update();
+    void computeProjectionMatrix();
+    void computeVisualizationMatrix();
 };
 
 

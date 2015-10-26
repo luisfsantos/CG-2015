@@ -21,14 +21,14 @@ Camera::~Camera() {
 
 }
 
-void Camera::update(GLint, GLint) {
+void Camera::update() {
     //fill this in depending on what its supposed to do
 }
 
-void Camera::computeProjectionMatrix(GLint, GLint) {
+void Camera::computeProjectionMatrix() {
     //fill this in depending on what its supposed to do
 }
 
-void Camera::computeVisualizationMatrix(GLint, GLint) {
+void Camera::computeVisualizationMatrix() {
     //fill this in depending on what its supposed to do
 }

@@ -45,7 +45,7 @@ void PerspectiveCamera::computeProjectionMatrix(){
 
 void PerspectiveCamera::computeVisualizationMatrix(){
 	//gluLookAt(1280 / 2, -100, 1000, 1280 / 2, 720 / 2, 0, 0, 1, 0);
-	gluLookAt(_position.getX(), _position.getY(), _position.getZ(), _eyeX, _eyeY, _eyeZ, 0, 1, 0);
+	gluLookAt(_position.getX(), _position.getY(), _position.getZ(), _eyeX, _eyeY, _eyeZ, 0, 0, 1);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }

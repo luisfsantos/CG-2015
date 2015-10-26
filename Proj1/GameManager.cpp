@@ -312,8 +312,8 @@ void GameManager::update() {
 			(*iter3)->reset();
 		};
 	}
-	_cameras[2]->setEye(_cars[0]->getPosition()->getX() + cos(_cars[0]->getDirection()), _cars[0]->getPosition()->getY() + sin(_cars[0]->getDirection()), _cars[0]->getPosition()->getZ());
-	_cameras[2]->setPosition(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY() - 100, _cars[0]->getPosition()->getZ() + 1000);
+	_cameras[2]->setEye(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), _cars[0]->getPosition()->getZ());
+	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 100);
 	_active_camera->update();
 }
 

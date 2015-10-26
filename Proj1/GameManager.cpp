@@ -292,6 +292,7 @@ void GameManager::update() {
 	std::vector<GameObject*>::iterator iter;
 	std::vector<Cherrio*>::iterator iter2;
 	std::vector<GameObject*>::iterator iter3;
+	std::vector<Camera*>::iterator iter4;
 	for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
 		(*iter)->update(1);
 	}
@@ -311,6 +312,9 @@ void GameManager::update() {
 			(*iter3)->reset();
 		};
 	}
+	_cameras[2]->setEye(_cars[0]->getPosition()->getX() + cos(_cars[0]->getDirection()), _cars[0]->getPosition()->getY() + sin(_cars[0]->getDirection()), _cars[0]->getPosition()->getZ());
+	_cameras[2]->setPosition(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY() - 100, _cars[0]->getPosition()->getZ() + 1000);
+	_active_camera->update();
 }
 
 void GameManager::init() {
@@ -357,7 +361,7 @@ void GameManager::init() {
 	_game_objects[8]->setRotation(90);
 	_game_objects[9]->setPosition(650, 550, 0);
 
-	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 10, /*_cars[0]->getPosition()->getZ()+*/ 1000,
+	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 10, 2000,
 			_cars[0]->getPosition()->getX() + cos(_cars[0]->getDirection()), _cars[0]->getPosition()->getY() + sin(_cars[0]->getDirection()), 0));
 	
 	_cameras[2]->setPosition(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY()-100, _cars[0]->getPosition()->getZ()+1000);

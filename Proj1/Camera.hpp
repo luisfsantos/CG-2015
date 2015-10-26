@@ -29,6 +29,7 @@ public:
     virtual void update();
     virtual void computeProjectionMatrix();
     virtual void computeVisualizationMatrix();
+	virtual void setEye(double, double, double);
 };
 
 

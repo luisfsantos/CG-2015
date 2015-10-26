@@ -26,6 +26,7 @@ public:
     void update();
     void computeProjectionMatrix();
     void computeVisualizationMatrix();
+	void setEye(double, double, double);
 
 };
 

@@ -25,6 +25,12 @@ PerspectiveCamera::~PerspectiveCamera() {
 }
 
 
+void PerspectiveCamera::setEye(double eyeX, double eyeY, double eyeZ){
+	_eyeX = eyeX;
+	_eyeY = eyeY;
+	_eyeZ = eyeZ;
+}
+
 void PerspectiveCamera::update(){
 	glViewport(0, 0, glutGet(GLUT_WINDOW_WIDTH), glutGet(GLUT_WINDOW_HEIGHT));
 	computeProjectionMatrix();

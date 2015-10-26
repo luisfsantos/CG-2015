@@ -30,7 +30,7 @@ public:
     virtual void setAbsSpeed(double) {};
     virtual void setRotation(double) {};
     virtual void collide(GameObject *) {};
-    virtual void reset() {};
+    virtual void reset(double) {};
 };
 
 

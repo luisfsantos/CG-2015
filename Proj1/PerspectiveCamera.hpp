@@ -20,8 +20,11 @@ private:
 	double _eyeX;
 	double _eyeY;
 	double _eyeZ;
+    double _upX;
+    double _upY;
+    double _upZ;
 public:
-    PerspectiveCamera(double, double, double, double,double, double, double);
+    PerspectiveCamera(double, double, double, double,double, double, double, double, double, double);
     ~PerspectiveCamera();
     void update();
     void computeProjectionMatrix();

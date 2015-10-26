@@ -10,7 +10,7 @@
 
 #include "PerspectiveCamera.hpp"
 
-PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, double eyeX, double eyeY, double eyeZ)
+PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, double zFar, double eyeX, double eyeY, double eyeZ, double upX, double upY, double upZ)
 : Camera(zNear, zFar)
 {
     _fovy = fovy;
@@ -18,6 +18,9 @@ PerspectiveCamera::PerspectiveCamera(double fovy, double aspect, double zNear, d
 	_eyeX = eyeX;
 	_eyeY = eyeY;
 	_eyeZ = eyeZ;
+    _upX = upX;
+    _upY = upY;
+    _upZ = upZ;
 }
 
 PerspectiveCamera::~PerspectiveCamera() {
@@ -45,7 +48,7 @@ void PerspectiveCamera::computeProjectionMatrix(){
 
 void PerspectiveCamera::computeVisualizationMatrix(){
 	//gluLookAt(1280 / 2, -100, 1000, 1280 / 2, 720 / 2, 0, 0, 1, 0);
-	gluLookAt(_position.getX(), _position.getY(), _position.getZ(), _eyeX, _eyeY, _eyeZ, 0, 0, 1);
+	gluLookAt(_position.getX(), _position.getY(), _position.getZ(), _eyeX, _eyeY, _eyeZ, _upX, _upY, _upZ);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 }

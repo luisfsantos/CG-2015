@@ -9,6 +9,7 @@
 #include "GameManager.hpp"
 
 int oldTime = 0;
+double orangeVel = 1.4;
 GLenum polygonMode = GL_FILL;
 double track1 [209][3] = {
 	{1018.45, 716.482, 0},
@@ -285,7 +286,18 @@ void GameManager::onTimer() {
 }
 
 void GameManager::idle() {
-	
+    double timeSinceStart = glutGet(GLUT_ELAPSED_TIME);
+    double deltaTime = timeSinceStart - oldTime;
+    
+    if (deltaTime > 10000) {
+        orangeVel += 0.5;
+        /*
+        _game_objects[2]->setAbsSpeed(orangeVel);
+        _game_objects[3]->setAbsSpeed(orangeVel);
+        _game_objects[4]->setAbsSpeed(orangeVel);
+         */
+        oldTime = timeSinceStart;
+    }
 }
 
 void GameManager::update() {
@@ -309,11 +321,11 @@ void GameManager::update() {
 	}
 	for( iter3 = _game_objects.begin() + 2; iter3 !=  _game_objects.begin() + 5; ++iter3) {
 		if(_road->isIntersecting(**iter3)){
-			(*iter3)->reset();
+			(*iter3)->reset(orangeVel);
 		};
 	}
 	_cameras[2]->setEye(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), _cars[0]->getPosition()->getZ());
-	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 100);
+	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 80);
 	_active_camera->update();
 }
 
@@ -321,8 +333,8 @@ void GameManager::init() {
 
 	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
-	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0));
-	_cameras[1]->setPosition(1280/2,-100,1000);
+	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 1, 0));
+	_cameras[1]->setPosition(1280/2,720/2,1000);
 	
 	_cars.push_back(new Car());
 	
@@ -361,10 +373,8 @@ void GameManager::init() {
 	_game_objects[8]->setRotation(90);
 	_game_objects[9]->setPosition(650, 550, 0);
 
-	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 10, 2000,
-			_cars[0]->getPosition()->getX() + cos(_cars[0]->getDirection()), _cars[0]->getPosition()->getY() + sin(_cars[0]->getDirection()), 0));
-	
-	_cameras[2]->setPosition(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY()-100, _cars[0]->getPosition()->getZ()+1000);
+	_cameras.push_back(new PerspectiveCamera(75, 1280/720, 10, 2000,
+			_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), 0, 0, 0, 1));
 
 }
 

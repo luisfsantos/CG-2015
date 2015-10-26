@@ -65,7 +65,11 @@ void Orange::setSpeed(double x, double y, double z) {
     //checkMagnitude();
 }
 
-void Orange::draw() {    
+void Orange::setAbsSpeed(double abs) {
+    setSpeed(cos((getDirection() * M_PI) / 180.0) * abs, sin((getDirection() * M_PI) / 180.0)* abs, 0);
+}
+
+void Orange::draw() {
 	double lengh = _radius * 3/4;
 	glPushMatrix();
 	glTranslated(_position.getX(), _position.getY(), _position.getZ()+_radius);
@@ -102,7 +106,7 @@ void Orange::collide(GameObject* car) {
     ((DynamicObject*)car)->setMovement(false, false, false, false);
 }
 
-void Orange::reset() {
+void Orange::reset(double abs) {
 	double x;
 	double y;
 	do {
@@ -115,5 +119,5 @@ void Orange::reset() {
 
 	setPosition(x, y, 0);
 	_direction = rand() % 360;
-	setSpeed(cos((getDirection() * M_PI) / 180.0) * getAbsSpeed(), sin((getDirection() * M_PI) / 180.0)* getAbsSpeed(), 0);
+	setSpeed(cos((getDirection() * M_PI) / 180.0) * abs, sin((getDirection() * M_PI) / 180.0)* abs, 0);
 }

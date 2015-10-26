@@ -23,6 +23,7 @@ Car::~Car() {
 }
 
 void Car::draw() {
+    
     /***************************************
      DECLARING VARIABLES
      Object variables 

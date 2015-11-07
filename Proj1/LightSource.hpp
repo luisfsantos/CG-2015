@@ -22,9 +22,9 @@ class LightSource
 private:
     Vector3 _direction;
     Vector3 _position;
-    double _ambient[4];
-    double _diffuse[4];
-    double _specular[4];
+    GLfloat _ambient[4];
+    GLfloat _diffuse[4];
+    GLfloat _specular[4];
     double _cut_off;
     double _exponent;
     GLenum _num;
@@ -41,8 +41,11 @@ public:
     void setCutOff (double);
     void setExponent (double);
     void setAmbient (const Vector3&);
+    void setAmbient (GLfloat, GLfloat, GLfloat, GLfloat);
     void setDiffuse (const Vector3&);
+    void setDiffuse (GLfloat, GLfloat, GLfloat, GLfloat);
     void setSpecular (const Vector3&);
+    void setSpecular (GLfloat, GLfloat, GLfloat, GLfloat);
     void draw();
     
 };

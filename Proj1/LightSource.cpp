@@ -10,6 +10,12 @@
 
 LightSource::LightSource(GLenum number) {
     _num = number;
+    setAmbient(0.0, 0.0, 0.0, 1.0);
+    setDiffuse(1.0, 1.0, 1.0, 1.0);
+    setSpecular(1.0, 1.0, 1.0, 1.0);
+    setState(true);
+    setExponent(0);
+    setCutOff(180);
 }
 
 LightSource::~LightSource() {
@@ -53,6 +59,13 @@ void LightSource::setAmbient(const Vector3& ambient) {
     _ambient[3] = 1;
 }
 
+void LightSource::setAmbient(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+    _ambient[0] = x;
+    _ambient[1] = y;
+    _ambient[2] = z;
+    _ambient[3] = y;
+}
+
 void LightSource::setDiffuse(const Vector3& diffuse) {
     Vector3 aux;
     aux = diffuse;
@@ -60,6 +73,13 @@ void LightSource::setDiffuse(const Vector3& diffuse) {
     _diffuse[1] = aux.getY();
     _diffuse[2] = aux.getZ();
     _diffuse[3] = 1;
+}
+
+void LightSource::setDiffuse(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+    _diffuse[0] = x;
+    _diffuse[1] = y;
+    _diffuse[2] = z;
+    _diffuse[3] = w;
 }
 
 void LightSource::setSpecular(const Vector3& specular) {
@@ -71,9 +91,26 @@ void LightSource::setSpecular(const Vector3& specular) {
     _specular[3] = 1;
 }
 
-void draw() {
-    //fill this in depending on what its supposed to do
+void LightSource::setSpecular(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+    _specular[0] = x;
+    _specular[1] = y;
+    _specular[2] = z;
+    _specular[3] = w;
 }
+
+void LightSource::draw() {
+    GLfloat position[] = {static_cast<GLfloat>(_position.getX()), static_cast<GLfloat>(_position.getY()), static_cast<GLfloat>(_position.getZ()), 0.0};
+    GLfloat direction[] = {static_cast<GLfloat>(_direction.getX()), static_cast<GLfloat>(_direction.getY()), static_cast<GLfloat>(_direction.getZ())};
+    glLightfv(_num, GL_AMBIENT, _ambient);
+    glLightfv(_num, GL_DIFFUSE, _diffuse);
+    glLightfv(_num, GL_SPECULAR, _specular);
+    glLightfv(_num, GL_POSITION, position);
+    glLightf(_num, GL_SPOT_CUTOFF, _cut_off);
+    glLightfv(_num, GL_SPOT_DIRECTION, direction);
+    glLightf(_num, GL_SPOT_EXPONENT, _exponent);
+
+}
+
 
 
 

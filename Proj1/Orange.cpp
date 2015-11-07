@@ -72,6 +72,16 @@ void Orange::setAbsSpeed(double abs) {
 void Orange::draw() {
 	double lengh = _radius * 3/4;
 	glPushMatrix();
+    /* comment the material*/
+    GLfloat amb[]={0.23f,0.23f,0.23f,1.0f};
+    GLfloat diff[]={1.0f,0.36f,0.0f,1.0f};
+    GLfloat spec[]={0.79f,0.93f,0.6f,1.0f};
+    GLfloat shine=34;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    /*material*/
 	glTranslated(_position.getX(), _position.getY(), _position.getZ()+_radius);
 	//glMultMatrixd(m);
 	glRotated(_rotation, _right.getX(), _right.getY(), _right.getZ());

@@ -383,6 +383,16 @@ void GameManager::init() {
 
 	_cameras.push_back(new PerspectiveCamera(75, 1280/720, 10, 2000,
 			_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), 0, 0, 0, 1));
+    /*
+     LIGHT SOURCES INITIALIZATIONS
+     */
+    //AMBIENT
+    Vector3 ambient_ambient(0.5, 0.5, 0.5);
+    Vector3 ambient_position (0, 0, 1);
+    _light_sources.push_back(new LightSource(GL_LIGHT0));
+    _light_sources[0]->setAmbient(ambient_ambient);
+    _light_sources[0]->setPosition(ambient_position);
+    _light_sources[0]->draw();
 
 }
 

@@ -26,7 +26,7 @@ void Car::draw() {
     
     /***************************************
      DECLARING VARIABLES
-     Object variables 
+     Object variables
      **************************************/
     
     //special colors
@@ -51,12 +51,12 @@ void Car::draw() {
     
     //wheels
     int allWheel_C [3] = {0, 0, 0};
-    Vector3 lbWheel_T(-2, -2.5, 1);
-    Vector3 lfWheel_T(-2, 2.15, 1);
-    Vector3 rbWheel_T(2, -2.5, 1);
-    Vector3 rfWheel_T(2, 2.15, 1);
-    Vector3 back_S(0.89, 0.75, 0.75);
-    Vector3 front_S(0.69, 0.75, 0.75);
+    Vector3 lbWheel_T(-2, -2.5, (1.25*sin(60*M_PI/180))+0.01);
+    Vector3 lfWheel_T(-1.8, 2.15, (1.25*sin(60*M_PI/180))+0.01);
+    Vector3 rbWheel_T(2, -2.5, (1.25*sin(60*M_PI/180))+0.01);
+    Vector3 rfWheel_T(1.8, 2.15, (1.25*sin(60*M_PI/180))+0.01);
+    Vector3 back_S(1, 1.25, 1.25);
+    Vector3 front_S(0.6, 1.25, 1.25);
     
     //final scaling of the object
     int scale = 4;
@@ -72,53 +72,109 @@ void Car::draw() {
     glTranslated(_position.getX(), _position.getY(), _position.getZ()); //move car around
     glScaled(scale, scale, scale);
     glRotated(_direction-90, 0, 0, 1);
-    //glRotated(90, 0, 0, 1);
-    //glRotated(90, 0, 1, 0);
     
     // main undercarriage
-    this->drawCubeObj(undercarriage_C, undercarriage_T, undercarriage_S);
+    drawUnder();
     
     //head of driver
     glPushMatrix();
     glColor3ub(236, 238, 239);
-    glTranslated(0, 0.2, 1.4);
+    glTranslated(0, 0.2, 1.7);
     glutSolidSphere(0.5, 20, 20);
     glPopMatrix();
     
     //back engine compartment
-    this->drawCubeObj(backEngine_C, backEngine_T, backEngine_S);
-    
-    
+    drawCage();
     // strips on either side of the driver
-    //1
-    this->drawCubeObj(tecnico_Gray, leftStrip_T, bothStrip_S);
-    //2
-    this->drawCubeObj(tecnico_Gray, rightStrip_T, bothStrip_S);
-    
+    drawStrips();
     
     /**********
      WHEELS
      *********/
     // left back
-    this->drawWheel(allWheel_C, lbWheel_T, back_S);
+    drawWheel(allWheel_C, lbWheel_T, back_S, false);
     // left front
-    this->drawWheel(allWheel_C, lfWheel_T, front_S);
+    drawWheel(allWheel_C, lfWheel_T, front_S, false);
     // right back
-    this->drawWheel(allWheel_C, rbWheel_T, back_S);
+    drawWheel(allWheel_C, rbWheel_T, back_S, true);
     // right front
-    this->drawWheel(allWheel_C, rfWheel_T, front_S);
+    drawWheel(allWheel_C, rfWheel_T, front_S, true);
     
     glPopMatrix();
 }
 
-void Car::drawWheel (int color[], Vector3 translate, Vector3 scale) {
+void Car::drawWheel (int color[], Vector3 translate, Vector3 scale, bool r) {
+    /*
+     glPushMatrix();
+     glColor3f(color[0], color[1], color[2]);
+     glTranslated(translate.getX(), translate.getY(), translate.getZ());
+     glScaled(scale.getX(), scale.getY(), scale.getZ());
+     glRotated(90, 0, 1, 0);
+     glutSolidTorus(0.5, 1, 20, 20);
+     glPopMatrix();*/
     glPushMatrix();
-    glColor3f(color[0], color[1], color[2]);
+    glColor3ub(0, 0, 0);
     glTranslated(translate.getX(), translate.getY(), translate.getZ());
     glScaled(scale.getX(), scale.getY(), scale.getZ());
-    glRotated(90, 0, 1, 0);
-    glutSolidTorus(0.5, 1, 20, 20);
+    if(r) glRotated(180, 0, 0, 1);
+    glRotated(90, 0, 0, 1);
+    //wheel side panels
+    glPushMatrix();
+    glTranslated(0, 0.25, 0);
+    glPushMatrix();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( 1, 0, 0);
+    glVertex3f( cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glVertex3f( -cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( -cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glVertex3f( -1, 0, 0);
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( -1, 0, 0);
+    glVertex3f( -cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( -cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glVertex3f( cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glEnd();
+    glBegin(GL_TRIANGLES);
+    glVertex3f( 0, 0, 0);
+    glVertex3f( cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glVertex3f( 1, 0, 0);
+    glEnd();
     glPopMatrix();
+    glPopMatrix();
+    //wheel top panels
+    glPushMatrix();
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(1, -0.25, 0);
+    glVertex3f(1, 0.25, 0);
+    glVertex3f(cos(60*M_PI/180), -0.25, sin(60*M_PI/180));
+    glVertex3f(cos(60*M_PI/180), 0.25, sin(60*M_PI/180));
+    glVertex3f( -cos(60*M_PI/180), -0.25, sin(60*M_PI/180));
+    glVertex3f( -cos(60*M_PI/180), 0.25, sin(60*M_PI/180));
+    glVertex3f( -1, -0.25, 0);
+    glVertex3f( -1, 0.25, 0);
+    glVertex3f( -cos(60*M_PI/180), -0.25, -sin(60*M_PI/180));
+    glVertex3f( -cos(60*M_PI/180), 0.25, -sin(60*M_PI/180));
+    glVertex3f( cos(60*M_PI/180), -0.25, -sin(60*M_PI/180));
+    glVertex3f( cos(60*M_PI/180), 0.25, -sin(60*M_PI/180));
+    glVertex3f( 1, -0.25, 0);
+    glVertex3f( 1, 0.25, 0);
+    glEnd();
+    glPopMatrix();
+    glPopMatrix();
+    
 }
 
 void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
@@ -164,8 +220,145 @@ void Car::update(double delta_t) {
     }
 }
 
+void Car::drawUnder() {
+    glPushMatrix();
+    glColor3ub(0, 157, 224);	//Tecnico Blue
+    glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.01);
+    //top front bottom back panels
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(1.5, -3.5, 0.5);
+    glVertex3f(-1.5, -3.5, 0.5);
+    glVertex3f(1.5, -2.5, 0.5);
+    glVertex3f(-1.5, -2.5, 0.5);
+    glVertex3f(1.5, -1.5, 0.5);
+    glVertex3f(-1.5, -1.5, 0.5);
+    glVertex3f(1.5, -0.5, 0.5);
+    glVertex3f(-1.5, -0.5, 0.5);
+    glVertex3f(1.5, 0.5, 0.5);
+    glVertex3f(-1.5, 0.5, 0.5);
+    glVertex3f(1.5, 1.5, 0.5);
+    glVertex3f(-1.5, 1.5, 0.5);
+    glVertex3f(1.5, 2.5, 0.5);
+    glVertex3f(-1.5, 2.5, 0.5);
+    glVertex3f(1.5, 3.5, 0.5);
+    glVertex3f(-1.5, 3.5, 0.5);
+    
+    glVertex3f(1.5, 3.5, -0.5);
+    glVertex3f(-1.5, 3.5, -0.5);
+    glVertex3f(1.5, 2.5, -0.5);
+    glVertex3f(-1.5, 2.5, -0.5);
+    glVertex3f(1.5, 1.5, -0.5);
+    glVertex3f(-1.5, 1.5, -0.5);
+    glVertex3f(1.5, 0.5, -0.5);
+    glVertex3f(-1.5, 0.5, -0.5);
+    glVertex3f(1.5, -0.5, -0.5);
+    glVertex3f(-1.5, -0.5, -0.5);
+    glVertex3f(1.5, -1.5, -0.5);
+    glVertex3f(-1.5, -1.5, -0.5);
+    glVertex3f(1.5, -2.5, -0.5);
+    glVertex3f(-1.5, -2.5, -0.5);
+    glVertex3f(1.5, -3.5, -0.5);
+    glVertex3f(-1.5, -3.5, -0.5);
+    glVertex3f(1.5, -3.5, 0.5);
+    glVertex3f(-1.5, -3.5, 0.5);
+    glEnd();
+    //right side panel
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(1.5, -3.5, -0.5);
+    glVertex3f(1.5, -3.5, 0.5);
+    glVertex3f(1.5, -2.5, -0.5);
+    glVertex3f(1.5, -2.5, 0.5);
+    glVertex3f(1.5, -1.5, -0.5);
+    glVertex3f(1.5, -1.5, 0.5);
+    glVertex3f(1.5, -0.5, -0.5);
+    glVertex3f(1.5, -0.5, 0.5);
+    glVertex3f(1.5, 0.5, -0.5);
+    glVertex3f(1.5, 0.5, 0.5);
+    glVertex3f(1.5, 1.5, -0.5);
+    glVertex3f(1.5, 1.5, 0.5);
+    glVertex3f(1.5, 2.5, -0.5);
+    glVertex3f(1.5, 2.5, 0.5);
+    glVertex3f(1.5, 3.5, -0.5);
+    glVertex3f(1.5, 3.5, 0.5);
+    glEnd();
+    //left side panel
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(-1.5, -3.5, 0.5);
+    glVertex3f(-1.5, -3.5, -0.5);
+    glVertex3f(-1.5, -2.5, 0.5);
+    glVertex3f(-1.5, -2.5, -0.5);
+    glVertex3f(-1.5, -1.5, 0.5);
+    glVertex3f(-1.5, -1.5, -0.5);
+    glVertex3f(-1.5, -0.5, 0.5);
+    glVertex3f(-1.5, -0.5, -0.5);
+    glVertex3f(-1.5, 0.5, 0.5);
+    glVertex3f(-1.5, 0.5, -0.5);
+    glVertex3f(-1.5, 1.5, 0.5);
+    glVertex3f(-1.5, 1.5, -0.5);
+    glVertex3f(-1.5, 2.5, 0.5);
+    glVertex3f(-1.5, 2.5, -0.5);
+    glVertex3f(-1.5, 3.5, 0.5);
+    glVertex3f(-1.5, 3.5, -0.5);
+    glEnd();
+    glPopMatrix();
+}
 
+void Car::drawStrips() {
+    glPushMatrix();
+    glColor3ub(70, 85, 95);	//Tecnico Grey
+    glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
+    //left
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(-0.75, 3.5, 0);
+    glVertex3f(-1.1, 3.5, 0);
+    glVertex3f(-0.75, 2.5, 0);
+    glVertex3f(-1.1, 2.5, 0);
+    glVertex3f(-0.75, 1.5, 0);
+    glVertex3f(-1.1, 1.5, 0);
+    glVertex3f(-0.75, 0.5, 0);
+    glVertex3f(-1.1, 0.5, 0);
+    glVertex3f(-0.75, -0.5, 0);
+    glVertex3f(-1.1, -0.5, 0);
+    glEnd();
+    //right
+    glBegin(GL_TRIANGLE_STRIP);
+    glVertex3f(0.75, 3.5, 0);
+    glVertex3f(1.1, 3.5, 0);
+    glVertex3f(0.75, 2.5, 0);
+    glVertex3f(1.1, 2.5, 0);
+    glVertex3f(0.75, 1.5, 0);
+    glVertex3f(1.1, 1.5, 0);
+    glVertex3f(0.75, 0.5, 0);
+    glVertex3f(1.1, 0.5, 0);
+    glVertex3f(0.75, -0.5, 0);
+    glVertex3f(1.1, -0.5, 0);
+    glEnd();
+    glPopMatrix();
+}
 
-
-
-
+void Car::drawCage() {
+    glPushMatrix();
+    glColor3ub(70, 85, 95);	//Tecnico Grey
+    glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
+    
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(0, -3.5, 0);
+    glVertex3f(1.5, -0.5, 0);
+    glVertex3f(0.6, -0.5, 1);
+    glVertex3f(-0.6, -0.5, 1);
+    glVertex3f(-1.5, -0.5, 0);
+    glEnd();
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(0, -0.5, 0);
+    glVertex3f(0, -0.5, 1);
+    glVertex3f(0.6, -0.5, 1);
+    glVertex3f(1.5, -0.5, 0);
+    glEnd();
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex3f(0, -0.5, 0);
+    glVertex3f(-1.5, -0.5, 0);
+    glVertex3f(0.6, -0.5, 1);
+    glVertex3f(0, -0.5, 1);
+    glEnd();
+    glPopMatrix();
+}

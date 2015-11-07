@@ -27,9 +27,12 @@ public:
     Car();
     ~Car();
     virtual void draw();
-    void drawWheel(int [], Vector3, Vector3);
+    void drawWheel(int [], Vector3, Vector3, bool);
     void drawCubeObj (int [], Vector3, Vector3);
     void update(double);
+    void drawUnder();
+    void drawStrips();
+    void drawCage();
 };
 #endif /* Car_hpp */
 

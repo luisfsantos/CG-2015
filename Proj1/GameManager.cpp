@@ -11,6 +11,8 @@
 int oldTime = 0;
 double orangeVel = 1.4;
 GLenum polygonMode = GL_FILL;
+bool CalculatingLights = true;
+
 double track1 [209][3] = {
 	{1018.45, 716.482, 0},
 	{1003.69, 706.642, 0},
@@ -260,10 +262,16 @@ void GameManager::keyPressed(bool *keys) {
 	_keys = keys;
 	if (_keys[KEY_A]) {
 		(polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
-	}
-	if (_keys[KEY_B]) {
-		init();
-	}
+    }
+    if (_keys[KEY_L]) {
+        if (CalculatingLights == true) {
+            glDisable(GL_LIGHTING);
+            CalculatingLights = false;
+        } else {
+            glEnable(GL_LIGHTING);
+            CalculatingLights = true;
+        }
+    }
 	if (_keys[KEY_1]) {
 		_active_camera = _cameras[0];
 		_active_camera->update();
@@ -308,7 +316,7 @@ void GameManager::update() {
 	for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
 		(*iter)->update(1);
 	}
-	//fill this in depending on what its supposed to do
+
 	for ( iter = _game_objects.begin() + 1; iter != _game_objects.end(); ++iter){
 		if ((_cars[0])->isIntersecting(**iter)) {
 			(*iter)->collide(_cars[0]);

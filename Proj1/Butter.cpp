@@ -38,7 +38,16 @@ Butter::~Butter() {
 }
 
 void Butter::draw() {
-  
+    /* comment the material*/
+    GLfloat amb[]={0.34f,0.34f,0.06f,1.0f};
+    GLfloat diff[]={0.89f,0.89f,0.36f,1.0f};
+    GLfloat spec[]={0.61f,0.61f,0.07f,1.0f};
+    GLfloat shine=57;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    /*material*/
     glPushMatrix();
     glTranslated(_position.getX(), _position.getY(), _position.getZ()+_height/2);
     glRotated(_rotation, 0, 0, 1);

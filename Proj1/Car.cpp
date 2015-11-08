@@ -75,7 +75,15 @@ void Car::draw() {
     
     // main undercarriage
     drawUnder();
-    
+    /* comment the material*/
+    GLfloat amb[]={0.02f,0.02f,0.02f,1.0f};
+    GLfloat diff[]={0.01f,0.01f,0.01f,1.0f};
+    GLfloat spec[]={0.4f,0.4f,0.4f,1.0f};
+    GLfloat shine=10;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     //head of driver
     glPushMatrix();
     glColor3ub(236, 238, 239);
@@ -112,6 +120,15 @@ void Car::drawWheel (int color[], Vector3 translate, Vector3 scale, bool r) {
      glRotated(90, 0, 1, 0);
      glutSolidTorus(0.5, 1, 20, 20);
      glPopMatrix();*/
+    /* comment the material*/
+    GLfloat amb[]={0.02f,0.02f,0.02f,1.0f};
+    GLfloat diff[]={0.01f,0.01f,0.01f,1.0f};
+    GLfloat spec[]={0.4f,0.4f,0.4f,1.0f};
+    GLfloat shine=102;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     glPushMatrix();
     glColor3ub(0, 0, 0);
     glTranslated(translate.getX(), translate.getY(), translate.getZ());
@@ -221,11 +238,21 @@ void Car::update(double delta_t) {
 }
 
 void Car::drawUnder() {
+    /* comment the material*/
+    GLfloat amb[]={0.13f,0.28f,0.5f,1.0f};
+    GLfloat diff[]={0.21f,0.8f,1.0f,1.0f};
+    GLfloat spec[]={0.22f,0.13f,0.06f,1.0f};
+    GLfloat shine=74;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     glPushMatrix();
     glColor3ub(0, 157, 224);	//Tecnico Blue
     glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.01);
     //top front bottom back panels
     glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0, 0, 1);
     glVertex3f(1.5, -3.5, 0.5);
     glVertex3f(-1.5, -3.5, 0.5);
     glVertex3f(1.5, -2.5, 0.5);
@@ -264,6 +291,7 @@ void Car::drawUnder() {
     glEnd();
     //right side panel
     glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(1, 0, 0);
     glVertex3f(1.5, -3.5, -0.5);
     glVertex3f(1.5, -3.5, 0.5);
     glVertex3f(1.5, -2.5, -0.5);
@@ -283,6 +311,7 @@ void Car::drawUnder() {
     glEnd();
     //left side panel
     glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(-1, 0, 0);
     glVertex3f(-1.5, -3.5, 0.5);
     glVertex3f(-1.5, -3.5, -0.5);
     glVertex3f(-1.5, -2.5, 0.5);
@@ -304,11 +333,21 @@ void Car::drawUnder() {
 }
 
 void Car::drawStrips() {
+    /* comment the material*/
+    GLfloat amb[]={0.22f,0.23f,0.24f,1.0f};
+    GLfloat diff[]={0.47f,0.47f,0.47f,1.0f};
+    GLfloat spec[]={0.18f,0.18f,0.18f,1.0f};
+    GLfloat shine=76.8f;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     glPushMatrix();
     glColor3ub(70, 85, 95);	//Tecnico Grey
     glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
     //left
     glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(0, 0, 1);
     glVertex3f(-0.75, 3.5, 0);
     glVertex3f(-1.1, 3.5, 0);
     glVertex3f(-0.75, 2.5, 0);

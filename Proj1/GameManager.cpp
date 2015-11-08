@@ -9,9 +9,13 @@
 #include "GameManager.hpp"
 
 int oldTime = 0;
+bool day = true;
 double orangeVel = 1.4;
 GLenum polygonMode = GL_FILL;
+GLenum shadeMode = GL_SMOOTH;
 bool CalculatingLights = true;
+Vector3 ambient_day(0.5, 0.5, 0.5);
+Vector3 ambient_night(0, 0, 0);
 
 double track1 [209][3] = {
 	{1018.45, 716.482, 0},
@@ -263,6 +267,10 @@ void GameManager::keyPressed(bool *keys) {
 	if (_keys[KEY_A]) {
 		(polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
     }
+    if (_keys[KEY_G]) {
+        (shadeMode == GL_SMOOTH) ? glShadeModel(GL_FLAT) : glShadeModel(GL_SMOOTH);
+        (shadeMode == GL_SMOOTH) ? shadeMode = GL_FLAT : shadeMode = GL_SMOOTH;
+    }
     if (_keys[KEY_L]) {
         if (CalculatingLights == true) {
             glDisable(GL_LIGHTING);
@@ -270,6 +278,17 @@ void GameManager::keyPressed(bool *keys) {
         } else {
             glEnable(GL_LIGHTING);
             CalculatingLights = true;
+        }
+    }
+    if (_keys[KEY_N]) {
+        if (day == true) {
+            _light_sources[0]->setAmbient(ambient_night);
+            _light_sources[0]->draw();
+            day = false;
+        } else {
+            _light_sources[0]->setAmbient(ambient_day);
+            _light_sources[0]->draw();
+            day = true;
         }
     }
 	if (_keys[KEY_1]) {
@@ -298,7 +317,7 @@ void GameManager::idle() {
     double deltaTime = timeSinceStart - oldTime;
     
     if (deltaTime > 10000) {
-        orangeVel += 0.5;
+        orangeVel += 0.2;
         /*
         _game_objects[2]->setAbsSpeed(orangeVel);
         _game_objects[3]->setAbsSpeed(orangeVel);
@@ -338,7 +357,7 @@ void GameManager::update() {
 }
 
 void GameManager::init() {
-
+    glShadeModel(GL_SMOOTH);
 	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
 	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 1, 0));
@@ -387,16 +406,12 @@ void GameManager::init() {
      LIGHT SOURCES INITIALIZATIONS
      */
     //AMBIENT
-    Vector3 ambient_ambient(0.5, 0.5, 0.1);
-    Vector3 ambient_position (1280/2, 720/2, 300);
-    Vector3 ambient_direction (0, 0, 1);
-    Vector3 ambient_difuse(0, 0, 0);
+    Vector3 ambient_day(0.5, 0.5, 0.5);
+    Vector3 ambient_direction (0, 0, -1);
     _light_sources.push_back(new LightSource(GL_LIGHT0));
-    _light_sources[0]->setExponent(0);
-    _light_sources[0]->setCutOff(180);
     _light_sources[0]->setDirection(ambient_direction);
-    _light_sources[0]->setAmbient(ambient_ambient);
-    _light_sources[0]->setPosition(ambient_position);
+    _light_sources[0]->setAmbient(ambient_day);
+    _light_sources[0]->setPosition(1280/2, 720/2, 1000, 0.0);
     _light_sources[0]->draw();
 
 }

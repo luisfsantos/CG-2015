@@ -55,11 +55,11 @@ void LightSource::setDirection(const Vector3& direction) {
     _direction = direction;
 }
 
-void LightSource::setCutOff(double cutoff) {
+void LightSource::setCutOff(GLfloat cutoff) {
     _cut_off = cutoff;
 }
 
-void LightSource::setExponent(double exponent) {
+void LightSource::setExponent(GLfloat exponent) {
     _exponent = exponent;
 }
 

@@ -25,8 +25,8 @@ private:
     GLfloat _ambient[4];
     GLfloat _diffuse[4];
     GLfloat _specular[4];
-    double _cut_off;
-    double _exponent;
+    GLfloat _cut_off;
+    GLfloat _exponent;
     GLenum _num;
     bool _state;
     
@@ -39,8 +39,8 @@ public:
     void setPosition (const Vector3&);
     void setPosition (GLfloat, GLfloat, GLfloat, GLfloat);
     void setDirection (const Vector3&);
-    void setCutOff (double);
-    void setExponent (double);
+    void setCutOff (GLfloat);
+    void setExponent (GLfloat);
     void setAmbient (const Vector3&);
     void setAmbient (GLfloat, GLfloat, GLfloat, GLfloat);
     void setDiffuse (const Vector3&);

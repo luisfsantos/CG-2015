@@ -21,7 +21,7 @@ class LightSource
 {
 private:
     Vector3 _direction;
-    Vector3 _position;
+    GLfloat _position[4];
     GLfloat _ambient[4];
     GLfloat _diffuse[4];
     GLfloat _specular[4];
@@ -37,6 +37,7 @@ public:
     bool setState (bool);
     GLenum getNum ();
     void setPosition (const Vector3&);
+    void setPosition (GLfloat, GLfloat, GLfloat, GLfloat);
     void setDirection (const Vector3&);
     void setCutOff (double);
     void setExponent (double);

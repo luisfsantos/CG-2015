@@ -10,6 +10,7 @@
 
 LightSource::LightSource(GLenum number) {
     _num = number;
+    setPosition(0,0,1,0);
     setAmbient(0.0, 0.0, 0.0, 1.0);
     setDiffuse(1.0, 1.0, 1.0, 1.0);
     setSpecular(1.0, 1.0, 1.0, 1.0);
@@ -35,7 +36,19 @@ GLenum LightSource::getNum() {
 }
 
 void LightSource::setPosition(const Vector3& position) {
-    _position = position;
+    Vector3 aux;
+    aux = position;
+    _position[0] = aux.getX();
+    _position[1] = aux.getY();
+    _position[2] = aux.getZ();
+    _position[3] = 1;
+}
+
+void LightSource::setPosition(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
+    _position[0] = x;
+    _position[1] = y;
+    _position[2] = z;
+    _position[3] = w;
 }
 
 void LightSource::setDirection(const Vector3& direction) {
@@ -63,7 +76,7 @@ void LightSource::setAmbient(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
     _ambient[0] = x;
     _ambient[1] = y;
     _ambient[2] = z;
-    _ambient[3] = y;
+    _ambient[3] = w;
 }
 
 void LightSource::setDiffuse(const Vector3& diffuse) {
@@ -99,12 +112,12 @@ void LightSource::setSpecular(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
 }
 
 void LightSource::draw() {
-    GLfloat position[] = {static_cast<GLfloat>(_position.getX()), static_cast<GLfloat>(_position.getY()), static_cast<GLfloat>(_position.getZ()), 0.0};
     GLfloat direction[] = {static_cast<GLfloat>(_direction.getX()), static_cast<GLfloat>(_direction.getY()), static_cast<GLfloat>(_direction.getZ())};
+    glEnable(_num);
     glLightfv(_num, GL_AMBIENT, _ambient);
     glLightfv(_num, GL_DIFFUSE, _diffuse);
     glLightfv(_num, GL_SPECULAR, _specular);
-    glLightfv(_num, GL_POSITION, position);
+    glLightfv(_num, GL_POSITION, _position);
     glLightf(_num, GL_SPOT_CUTOFF, _cut_off);
     glLightfv(_num, GL_SPOT_DIRECTION, direction);
     glLightf(_num, GL_SPOT_EXPONENT, _exponent);

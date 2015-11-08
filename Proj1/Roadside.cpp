@@ -46,6 +46,17 @@ void Roadside::draw() {
 }
 
 void Roadside::drawTable() {
+    /* comment the material*/
+    
+    GLfloat amb[]={0.1f,0.1f,0.1f,1.0f};
+    GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
+    GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
+    GLfloat shine=10;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    /* comment the material*/
     bool color = true;
     int w=1280, h=720, n=10, m=5;
     int sw = w/n, sh = h/m; //square width and height respectively

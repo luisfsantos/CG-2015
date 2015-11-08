@@ -342,7 +342,7 @@ void GameManager::init() {
 	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
 	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 1, 0));
-	_cameras[1]->setPosition(1280/2,720/2,1000);
+	_cameras[1]->setPosition(1280/2, -200,1000);
 	
 	_cars.push_back(new Car());
 	
@@ -387,9 +387,14 @@ void GameManager::init() {
      LIGHT SOURCES INITIALIZATIONS
      */
     //AMBIENT
-    Vector3 ambient_ambient(0.5, 0.5, 0.5);
-    Vector3 ambient_position (0, 0, 1);
+    Vector3 ambient_ambient(0.5, 0.5, 0.1);
+    Vector3 ambient_position (1280/2, 720/2, 300);
+    Vector3 ambient_direction (0, 0, 1);
+    Vector3 ambient_difuse(0, 0, 0);
     _light_sources.push_back(new LightSource(GL_LIGHT0));
+    _light_sources[0]->setExponent(0);
+    _light_sources[0]->setCutOff(180);
+    _light_sources[0]->setDirection(ambient_direction);
     _light_sources[0]->setAmbient(ambient_ambient);
     _light_sources[0]->setPosition(ambient_position);
     _light_sources[0]->draw();

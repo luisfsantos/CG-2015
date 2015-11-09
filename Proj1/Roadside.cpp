@@ -70,6 +70,48 @@ void Roadside::drawTable() {
     glPopMatrix();   
 }
 
+
+void Roadside::drawTable2() {
+    /* comment the material*/
+    double hw = 720/50;
+    double ww = 1280/50;
+    GLfloat amb[]={0.1f,0.1f,0.1f,1.0f};
+    GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
+    GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
+    GLfloat shine=10;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    /* comment the material*/
+    bool color = true;
+    float x=0, y=0, z = 0;
+    int w=1280, h=720, n=10, m=5;
+    int sw = w/n, sh = h/m; //square width and height respectively
+    //for each width and eight draw a rectangle with a specific color
+    glPushMatrix();
+    //glColor3ub(234,234,234);
+    //glTranslated(w/2,h/2, 0);
+    //glScaled(w, h, 20);
+    for (y=0; y <= h; y += hw) {
+        glBegin(GL_QUADS);
+        
+        for (x=0; x<=w+ww; x += ww) {
+            glNormal3f(0, 0, 1);
+            glVertex3f(x, y, z);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x, y+hw, z);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x+ww, y+hw, z);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x+ww, y, z);
+            
+        }
+        glEnd();
+    }
+    glPopMatrix();
+}
+
 bool Roadside::isIntersecting(GameObject orange) {
     bool test1 = false, test2 = false;
     test1 = (orange.getPosition()->getX() + orange.getHalfWidth() < 0

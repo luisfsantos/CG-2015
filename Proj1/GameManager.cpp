@@ -16,7 +16,7 @@ GLenum shadeMode = GL_SMOOTH;
 bool Candles = true;
 bool CalculatingLights = true;
 Vector3 ambient_day(0.5, 0.5, 0.5);
-Vector3 ambient_night(0.1, 0.1, 0.1);
+Vector3 ambient_night(0.4, 0.4, 0.4);
 Vector3 d_day(1.0, 1.0, 1.0);
 
 double track1 [209][3] = {
@@ -423,6 +423,10 @@ void GameManager::init() {
      */
     //AMBIENT
     Vector3 ambient_direction (0, 0, -1);
+    Vector3 blue(0, 0, 1.0);
+    Vector3 red(1.0, 0, 0);
+    Vector3 green(0, 1.0, 0);
+    Vector3 candle_light(1, 0.58, 0.16);
     _light_sources.push_back(new LightSource(GL_LIGHT0));
     _light_sources[0]->setDirection(ambient_direction);
     _light_sources[0]->setAmbient(ambient_day);
@@ -435,12 +439,12 @@ void GameManager::init() {
     _light_sources.push_back(new LightSource(GL_LIGHT4));
     _light_sources.push_back(new LightSource(GL_LIGHT5));
     _light_sources.push_back(new LightSource(GL_LIGHT6));
-    _game_objects.push_back(new Candle(250, 200, 0, _light_sources[1]));
-    _game_objects.push_back(new Candle(200, 650, 0, _light_sources[2]));
-    _game_objects.push_back(new Candle(1000, 300, 0, _light_sources[3]));
-    _game_objects.push_back(new Candle(1000, 500, 0, _light_sources[4]));
-    _game_objects.push_back(new Candle(650, 250, 0, _light_sources[5]));
-    _game_objects.push_back(new Candle(330, 430, 0, _light_sources[6]));
+    _game_objects.push_back(new Candle(250, 200, 0, _light_sources[1], candle_light));
+    _game_objects.push_back(new Candle(200, 650, 0, _light_sources[2], candle_light));
+    _game_objects.push_back(new Candle(1000, 300, 0, _light_sources[3], candle_light));
+    _game_objects.push_back(new Candle(1000, 500, 0, _light_sources[4], candle_light));
+    _game_objects.push_back(new Candle(650, 250, 0, _light_sources[5], candle_light));
+    _game_objects.push_back(new Candle(330, 430, 0, _light_sources[6], candle_light));
     
     
 }

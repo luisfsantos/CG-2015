@@ -132,33 +132,51 @@ void Car::drawWheel (int color[], Vector3 translate, Vector3 scale, bool r) {
     glTranslated(0, 0.25, 0);
     glPushMatrix();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f(1, 1, 0);
     glVertex3f( 1, 0, 0);
+    glNormal3f(cos(60*M_PI/180),1, sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), 0, sin(60*M_PI/180));
     glEnd();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f(cos(60*M_PI/180), 1, sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glNormal3f(-cos(60*M_PI/180), 1, sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0, sin(60*M_PI/180));
     glEnd();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f(-cos(60*M_PI/180), 1, sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0, sin(60*M_PI/180));
+    glNormal3f(-1, 1, 0);
     glVertex3f( -1, 0, 0);
     glEnd();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f(-1, 1, 0);
     glVertex3f( -1, 0, 0);
+    glNormal3f(-cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0, -sin(60*M_PI/180));
     glEnd();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f( -cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glNormal3f(cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), 0, -sin(60*M_PI/180));
     glEnd();
     glBegin(GL_TRIANGLES);
+    glNormal3f(0, 1, 0);
     glVertex3f( 0, 0, 0);
+    glNormal3f(cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), 0, -sin(60*M_PI/180));
+    glNormal3f(1, 1, 0);
     glVertex3f( 1, 0, 0);
     glEnd();
     glPopMatrix();
@@ -166,19 +184,27 @@ void Car::drawWheel (int color[], Vector3 translate, Vector3 scale, bool r) {
     //wheel top panels
     glPushMatrix();
     glBegin(GL_TRIANGLE_STRIP);
+    
     glVertex3f(1, -0.25, 0);
+    glNormal3f(1, 1, 0);
     glVertex3f(1, 0.25, 0);
     glVertex3f(cos(60*M_PI/180), -0.25, sin(60*M_PI/180));
+    glNormal3f(cos(60*M_PI/180),1, sin(60*M_PI/180));
     glVertex3f(cos(60*M_PI/180), 0.25, sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), -0.25, sin(60*M_PI/180));
+    glNormal3f(-cos(60*M_PI/180), 1, sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0.25, sin(60*M_PI/180));
     glVertex3f( -1, -0.25, 0);
+    glNormal3f(-1, 1, 0);
     glVertex3f( -1, 0.25, 0);
     glVertex3f( -cos(60*M_PI/180), -0.25, -sin(60*M_PI/180));
+    glNormal3f( -cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( -cos(60*M_PI/180), 0.25, -sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), -0.25, -sin(60*M_PI/180));
+    glNormal3f(cos(60*M_PI/180), 1, -sin(60*M_PI/180));
     glVertex3f( cos(60*M_PI/180), 0.25, -sin(60*M_PI/180));
     glVertex3f( 1, -0.25, 0);
+    glNormal3f(1, 1, 0);
     glVertex3f( 1, 0.25, 0);
     glEnd();
     glPopMatrix();
@@ -419,6 +445,35 @@ void Car::drawStrips() {
 void Car::drawCage() {
     glPushMatrix();
     glColor3ub(70, 85, 95);	//Tecnico Grey
+    GLfloat amb1[]={1,0.2f,0.2f,1.0f};
+    GLfloat diff1[]={1.0f,0.1f,0.1f,1.0f};
+    GLfloat spec1[]={1.0f,0.1f,0.1f,1.0f};
+    GLfloat shine=24;
+    glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb1);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff1);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec1);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    glBegin(GL_LINES);
+    glVertex3f(0, -3.5, 0);
+    glVertex3f(0, -4.2, 0.3);
+    glEnd();
+    glBegin(GL_LINES);
+    glVertex3f(1.5, -0.5, 0);
+    glVertex3f(2.2, -0.8, 0.3);
+    glEnd();
+    glBegin(GL_LINES);
+    glVertex3f(0.6, -0.5, 1);
+    glVertex3f(0.7, -0.6, 1.7);
+    glEnd();
+    glBegin(GL_LINES);
+    glVertex3f(-0.6, -0.5, 1);
+    glVertex3f(-0.7, -0.6, 1.7);
+    glEnd();
+    glBegin(GL_LINES);
+    glVertex3f(-1.5, -0.5, 0);
+    glVertex3f(-2.2, -0.8, 0.3);
+    glEnd();
     GLfloat amb[]={0.21f,0.21f,0.21f,1.0f};
     GLfloat diff[]={0.18f,0.18f,0.18f,1.0f};
     GLfloat spec[]={0.14f,0.14f,0.14f,1.0f};
@@ -426,22 +481,24 @@ void Car::drawCage() {
      GLfloat diff[]={0.51f,0.51f,0.51f,1.0f};
      GLfloat spec[]={0.19f,0.18f,0.17f,1.0f};
      GLfloat shine=76.8f;*/
-    GLfloat shine=24;
+    
     glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
     glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
     glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
     glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
-    glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
-    
     glBegin(GL_TRIANGLE_FAN);
     glNormal3f(0, -0.7, 0.3);
     glVertex3f(0, -3.5, 0);
+    
     glNormal3f(0.7, -0.3, 0.3);
     glVertex3f(1.5, -0.5, 0);
+    
     glNormal3f(0.1, -0.1, 0.7);
     glVertex3f(0.6, -0.5, 1);
+    
     glNormal3f(-0.1, -0.1, 0.7);
     glVertex3f(-0.6, -0.5, 1);
+    
     glNormal3f(-0.7, -0.3, 0.3);
     glVertex3f(-1.5, -0.5, 0);
     glEnd();

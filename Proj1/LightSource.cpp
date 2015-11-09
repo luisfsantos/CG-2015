@@ -13,7 +13,7 @@ LightSource::LightSource() {
 
 LightSource::LightSource(GLenum number) {
     _num = number;
-    setPosition(0,0,1,0);
+    setPosition(0,0,1,1);
     setAmbient(0.0, 0.0, 0.0, 1.0);
     setDiffuse(1.0, 1.0, 1.0, 1.0);
     setSpecular(1.0, 1.0, 1.0, 1.0);

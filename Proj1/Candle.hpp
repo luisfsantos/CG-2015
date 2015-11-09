@@ -25,7 +25,7 @@ private:
     LightSource* _flame;
 public:
     Candle(LightSource*);
-    Candle(double, double, double, LightSource*);
+    Candle(double, double, double, LightSource*, Vector3);
     ~Candle();
     virtual void draw();
     void update(double);

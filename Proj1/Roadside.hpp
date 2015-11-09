@@ -26,6 +26,7 @@ public:
     ~Roadside();
     void draw ();
     void drawTable();
+    void drawTable2();
     bool isIntersecting(GameObject);
     std::vector<Cherrio*> getCherrios();
 };

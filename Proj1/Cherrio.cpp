@@ -33,8 +33,8 @@ Cherrio::~Cherrio(){
 
 void Cherrio::draw(){
     /* comment the material*/
-    GLfloat amb[]={0.24725f,0.1995f,0.0745f,1.0f};
-    GLfloat diff[]={0.75164f,0.60648f,0.22648f,1.0f};
+    GLfloat amb[]={0.34725f,0.2995f,0.1745f,1.0f};
+    GLfloat diff[]={0.65164f,0.50648f,0.12648f,1.0f};
     GLfloat spec[]={0.628281f,0.555802f,0.366065f,1.0f};
     GLfloat shine=51.2f;
     glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);

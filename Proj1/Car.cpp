@@ -75,15 +75,7 @@ void Car::draw() {
     
     // main undercarriage
     drawUnder();
-    /* comment the material*/
-    GLfloat amb[]={0.02f,0.02f,0.02f,1.0f};
-    GLfloat diff[]={0.01f,0.01f,0.01f,1.0f};
-    GLfloat spec[]={0.4f,0.4f,0.4f,1.0f};
-    GLfloat shine=10;
-    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
-    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    
     //head of driver
     glPushMatrix();
     glColor3ub(236, 238, 239);
@@ -120,17 +112,17 @@ void Car::drawWheel (int color[], Vector3 translate, Vector3 scale, bool r) {
      glRotated(90, 0, 1, 0);
      glutSolidTorus(0.5, 1, 20, 20);
      glPopMatrix();*/
-    /* comment the material*/
-    GLfloat amb[]={0.02f,0.02f,0.02f,1.0f};
-    GLfloat diff[]={0.01f,0.01f,0.01f,1.0f};
-    GLfloat spec[]={0.4f,0.4f,0.4f,1.0f};
-    GLfloat shine=102;
+    glPushMatrix();
+    glColor3ub(0, 0, 0);
+    GLfloat amb[]={0.07f,0.07f,0.08f,1.0f};
+    GLfloat diff[]={0.18f,0.19f,0.18f,1.0f};
+    GLfloat spec[]={0.0f,0.0f,0.0f,1.0f};
+    GLfloat shine=128;
     glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
     glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
     glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
     glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
-    glPushMatrix();
-    glColor3ub(0, 0, 0);
+    
     glTranslated(translate.getX(), translate.getY(), translate.getZ());
     glScaled(scale.getX(), scale.getY(), scale.getZ());
     if(r) glRotated(180, 0, 0, 1);
@@ -238,60 +230,101 @@ void Car::update(double delta_t) {
 }
 
 void Car::drawUnder() {
-    /* comment the material*/
-    GLfloat amb[]={0.13f,0.28f,0.5f,1.0f};
-    GLfloat diff[]={0.21f,0.8f,1.0f,1.0f};
-    GLfloat spec[]={0.22f,0.13f,0.06f,1.0f};
-    GLfloat shine=74;
-    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
-    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
-    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     glPushMatrix();
     glColor3ub(0, 157, 224);	//Tecnico Blue
+    //GLfloat amb[] = { 0.0f,0.64f,0.87f,1.0f };
+    //GLfloat diff[] = { 0.0f,0.17f,0.26f,1.0f };
+    //GLfloat spec[] = { 0.3f,0.28f,0.39f,1.0f };
+    GLfloat amb[]={0.0f,0.12f,0.23f,1.0f};
+    GLfloat diff[]={0.0f,0.61f,0.87f,1.0f};
+    GLfloat spec[]={0.07f,0.07f,0.07f,1.0f};
+    GLfloat shine = 90;
+    glMaterialfv(GL_FRONT_AND_BACK, GL_AMBIENT, amb);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_DIFFUSE, diff);
+    glMaterialfv(GL_FRONT_AND_BACK, GL_SPECULAR, spec);
+    glMaterialf(GL_FRONT_AND_BACK, GL_SHININESS, shine);
     glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.01);
     //top front bottom back panels
     glBegin(GL_TRIANGLE_STRIP);
-    glNormal3f(0, 0, 1);
+    glNormal3f(1,-1,1);
     glVertex3f(1.5, -3.5, 0.5);
+    glNormal3f(-1,-1,1);
     glVertex3f(-1.5, -3.5, 0.5);
+    glNormal3f(1,-0.6,1);
     glVertex3f(1.5, -2.5, 0.5);
+    glNormal3f(-1,-0.6,1);
     glVertex3f(-1.5, -2.5, 0.5);
+    glNormal3f(1,-0.3,1);
     glVertex3f(1.5, -1.5, 0.5);
+    glNormal3f(-1,-0.6,1);
     glVertex3f(-1.5, -1.5, 0.5);
+    glNormal3f(1, 0, 1);
     glVertex3f(1.5, -0.5, 0.5);
+    glNormal3f(-1, 0, 1);
     glVertex3f(-1.5, -0.5, 0.5);
+    glNormal3f(1, 0, 1);
     glVertex3f(1.5, 0.5, 0.5);
+    glNormal3f(-1, 0, 1);
     glVertex3f(-1.5, 0.5, 0.5);
+    glNormal3f(1, 0.3, 1);
     glVertex3f(1.5, 1.5, 0.5);
+    glNormal3f(-1, 0.3, 1);
     glVertex3f(-1.5, 1.5, 0.5);
+    glNormal3f(1, 0.6, 1);
     glVertex3f(1.5, 2.5, 0.5);
+    glNormal3f(-1, 0.6, 1);
     glVertex3f(-1.5, 2.5, 0.5);
+    glNormal3f(1,1,1);
     glVertex3f(1.5, 3.5, 0.5);
+    glNormal3f(-1,1,1);
     glVertex3f(-1.5, 3.5, 0.5);
     
+    glNormal3f(1,1,-1);
     glVertex3f(1.5, 3.5, -0.5);
+    glNormal3f(-1,1,-1);
     glVertex3f(-1.5, 3.5, -0.5);
     glVertex3f(1.5, 2.5, -0.5);
     glVertex3f(-1.5, 2.5, -0.5);
     glVertex3f(1.5, 1.5, -0.5);
     glVertex3f(-1.5, 1.5, -0.5);
+    glNormal3f(1, 0, -1);
     glVertex3f(1.5, 0.5, -0.5);
+    glNormal3f(-1, 0, -1);
     glVertex3f(-1.5, 0.5, -0.5);
+    glNormal3f(1, 0, -1);
     glVertex3f(1.5, -0.5, -0.5);
+    glNormal3f(-1, 0, -1);
     glVertex3f(-1.5, -0.5, -0.5);
     glVertex3f(1.5, -1.5, -0.5);
     glVertex3f(-1.5, -1.5, -0.5);
     glVertex3f(1.5, -2.5, -0.5);
     glVertex3f(-1.5, -2.5, -0.5);
+    glNormal3f(-1,-1,-0.5);
     glVertex3f(1.5, -3.5, -0.5);
+    glNormal3f(-1,-1,-0.5);
     glVertex3f(-1.5, -3.5, -0.5);
+    glEnd();
+    glBegin(GL_TRIANGLE_STRIP);
+    glNormal3f(1,-1,1);
     glVertex3f(1.5, -3.5, 0.5);
+    glNormal3f(1,-1,-1);
+    glVertex3f(1.5, -3.5, -0.5);
+    glNormal3f(0.25,-1,1);
+    glVertex3f(0.75, -3.5, 0.5);
+    glNormal3f(0.25,-1,-1);
+    glVertex3f(0.75, -3.5, -0.5);
+    glNormal3f(-0.25,-1,1);
+    glVertex3f(-0.75, -3.5, 0.5);
+    glNormal3f(-0.25,-1,-1);
+    glVertex3f(-0.75, -3.5, -0.5);
+    glNormal3f(-1,-1,1);
     glVertex3f(-1.5, -3.5, 0.5);
+    glNormal3f(-1,-1,-1);
+    glVertex3f(-1.5, -3.5, -0.5);
+    
     glEnd();
     //right side panel
     glBegin(GL_TRIANGLE_STRIP);
-    glNormal3f(1, 0, 0);
     glVertex3f(1.5, -3.5, -0.5);
     glVertex3f(1.5, -3.5, 0.5);
     glVertex3f(1.5, -2.5, -0.5);
@@ -311,7 +344,6 @@ void Car::drawUnder() {
     glEnd();
     //left side panel
     glBegin(GL_TRIANGLE_STRIP);
-    glNormal3f(-1, 0, 0);
     glVertex3f(-1.5, -3.5, 0.5);
     glVertex3f(-1.5, -3.5, -0.5);
     glVertex3f(-1.5, -2.5, 0.5);
@@ -333,30 +365,39 @@ void Car::drawUnder() {
 }
 
 void Car::drawStrips() {
-    /* comment the material*/
-    GLfloat amb[]={0.22f,0.23f,0.24f,1.0f};
-    GLfloat diff[]={0.47f,0.47f,0.47f,1.0f};
-    GLfloat spec[]={0.18f,0.18f,0.18f,1.0f};
-    GLfloat shine=76.8f;
+    glPushMatrix();
+    glColor3ub(70, 85, 95);	//Tecnico Grey
+    GLfloat amb[]={0.44f,0.49f,0.48f,1.0f};
+    GLfloat diff[]={0.4f,0.44f,0.5f,1.0f};
+    GLfloat spec[]={1.0f,1.0f,1.0f,1.0f};
+    GLfloat shine=128;
     glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
     glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
     glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
     glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
-    glPushMatrix();
-    glColor3ub(70, 85, 95);	//Tecnico Grey
+    
     glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
     //left
     glBegin(GL_TRIANGLE_STRIP);
     glNormal3f(0, 0, 1);
     glVertex3f(-0.75, 3.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-1.1, 3.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-0.75, 2.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-1.1, 2.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-0.75, 1.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-1.1, 1.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-0.75, 0.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-1.1, 0.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-0.75, -0.5, 0);
+    glNormal3f(0, 0, 1);
     glVertex3f(-1.1, -0.5, 0);
     glEnd();
     //right
@@ -378,13 +419,30 @@ void Car::drawStrips() {
 void Car::drawCage() {
     glPushMatrix();
     glColor3ub(70, 85, 95);	//Tecnico Grey
+    GLfloat amb[]={0.21f,0.21f,0.21f,1.0f};
+    GLfloat diff[]={0.18f,0.18f,0.18f,1.0f};
+    GLfloat spec[]={0.14f,0.14f,0.14f,1.0f};
+    /*GLfloat amb[]={0.29f,0.29f,0.29f,1.0f};
+     GLfloat diff[]={0.51f,0.51f,0.51f,1.0f};
+     GLfloat spec[]={0.19f,0.18f,0.17f,1.0f};
+     GLfloat shine=76.8f;*/
+    GLfloat shine=24;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
     glTranslated(0, 0, (1.25*sin(60*M_PI/180))+0.02 + 0.5);
     
     glBegin(GL_TRIANGLE_FAN);
+    glNormal3f(0, -0.7, 0.3);
     glVertex3f(0, -3.5, 0);
+    glNormal3f(0.7, -0.3, 0.3);
     glVertex3f(1.5, -0.5, 0);
+    glNormal3f(0.1, -0.1, 0.7);
     glVertex3f(0.6, -0.5, 1);
+    glNormal3f(-0.1, -0.1, 0.7);
     glVertex3f(-0.6, -0.5, 1);
+    glNormal3f(-0.7, -0.3, 0.3);
     glVertex3f(-1.5, -0.5, 0);
     glEnd();
     glBegin(GL_TRIANGLE_FAN);

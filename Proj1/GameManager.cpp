@@ -7,15 +7,17 @@
 //
 
 #include "GameManager.hpp"
-
+#define CANDLES 6
 int oldTime = 0;
 bool day = true;
 double orangeVel = 1.4;
 GLenum polygonMode = GL_FILL;
 GLenum shadeMode = GL_SMOOTH;
+bool Candles = true;
 bool CalculatingLights = true;
 Vector3 ambient_day(0.5, 0.5, 0.5);
-Vector3 ambient_night(0, 0, 0);
+Vector3 ambient_night(0.1, 0.1, 0.1);
+Vector3 d_day(1.0, 1.0, 1.0);
 
 double track1 [209][3] = {
 	{1018.45, 716.482, 0},
@@ -267,6 +269,16 @@ void GameManager::keyPressed(bool *keys) {
 	if (_keys[KEY_A]) {
 		(polygonMode == GL_LINE) ? glPolygonMode(GL_FRONT_AND_BACK, polygonMode = GL_FILL) : glPolygonMode(GL_FRONT_AND_BACK, polygonMode =GL_LINE);
     }
+    if (_keys[KEY_C]) {
+        if (Candles) {
+            Candles = false;
+        } else {
+            Candles = true;
+        }
+        for (int i= 1; i <= CANDLES; i++) {
+            _light_sources[i]->setState(Candles);
+        }
+    }
     if (_keys[KEY_G]) {
         (shadeMode == GL_SMOOTH) ? glShadeModel(GL_FLAT) : glShadeModel(GL_SMOOTH);
         (shadeMode == GL_SMOOTH) ? shadeMode = GL_FLAT : shadeMode = GL_SMOOTH;
@@ -283,10 +295,14 @@ void GameManager::keyPressed(bool *keys) {
     if (_keys[KEY_N]) {
         if (day == true) {
             _light_sources[0]->setAmbient(ambient_night);
+            _light_sources[0]->setDiffuse(ambient_night);
+            _light_sources[0]->setSpecular(ambient_night);
             _light_sources[0]->draw();
             day = false;
         } else {
             _light_sources[0]->setAmbient(ambient_day);
+            _light_sources[0]->setDiffuse(d_day);
+            _light_sources[0]->setSpecular(d_day);
             _light_sources[0]->draw();
             day = true;
         }
@@ -406,14 +422,27 @@ void GameManager::init() {
      LIGHT SOURCES INITIALIZATIONS
      */
     //AMBIENT
-    Vector3 ambient_day(0.5, 0.5, 0.5);
     Vector3 ambient_direction (0, 0, -1);
     _light_sources.push_back(new LightSource(GL_LIGHT0));
     _light_sources[0]->setDirection(ambient_direction);
     _light_sources[0]->setAmbient(ambient_day);
     _light_sources[0]->setPosition(1280/2, 720/2, 1000, 0.0);
     _light_sources[0]->draw();
-
+    //CANDLES
+    _light_sources.push_back(new LightSource(GL_LIGHT1));
+    _light_sources.push_back(new LightSource(GL_LIGHT2));
+    _light_sources.push_back(new LightSource(GL_LIGHT3));
+    _light_sources.push_back(new LightSource(GL_LIGHT4));
+    _light_sources.push_back(new LightSource(GL_LIGHT5));
+    _light_sources.push_back(new LightSource(GL_LIGHT6));
+    _game_objects.push_back(new Candle(250, 200, 0, _light_sources[1]));
+    _game_objects.push_back(new Candle(200, 650, 0, _light_sources[2]));
+    _game_objects.push_back(new Candle(1000, 300, 0, _light_sources[3]));
+    _game_objects.push_back(new Candle(1000, 500, 0, _light_sources[4]));
+    _game_objects.push_back(new Candle(650, 250, 0, _light_sources[5]));
+    _game_objects.push_back(new Candle(330, 430, 0, _light_sources[6]));
+    
+    
 }
 
 void GameManager::setKeys(bool * keys){

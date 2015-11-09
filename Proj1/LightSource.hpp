@@ -31,6 +31,7 @@ private:
     bool _state;
     
 public:
+    LightSource ();
     LightSource (GLenum);
     ~LightSource ();
     bool getState ();

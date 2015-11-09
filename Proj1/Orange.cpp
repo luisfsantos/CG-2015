@@ -32,13 +32,13 @@ void Orange::update(double delta_t) {
     std::vector<Vector3*>::iterator iter;
     int i = 0;
     _position = _position + _speed * delta_t;
-	double modulo = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
-	_rotation += ((modulo * delta_t) / _radius) * (180/M_PI);
-	//addRotation(_right, angle);
-	if(_rotation >= 360) {
-		_rotation -= 360;
-		if(_rotation < 360) _rotation = 0;
-	}
+    double modulo = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
+    _rotation += ((modulo * delta_t) / _radius) * (180/M_PI);
+    //addRotation(_right, angle);
+    if(_rotation >= 360) {
+        _rotation -= 360;
+        if(_rotation < 360) _rotation = 0;
+    }
     for (iter = _vertices.begin(); iter != _vertices.end(); ++iter, i++) {
         double temp [4][2] = {{-_Width, _Height},{-_Width, -_Height},{_Width, -_Height},{_Width, _Height}};
         double tempX = temp[i][0];
@@ -53,7 +53,7 @@ void Orange::setSpeed(const Vector3& speed) {
     _speed = speed;
     _right.set(_speed.getY(), -_speed.getX(), 0);
     _absSpeed = sqrt(_speed.getX()*_speed.getX() + _speed.getY()*_speed.getY());
-	_direction = atan(_speed.getY() / _speed.getX());
+    _direction = atan(_speed.getY() / _speed.getX());
     //checkMagnitude();
 }
 
@@ -61,7 +61,7 @@ void Orange::setSpeed(double x, double y, double z) {
     _speed.set(x, y, z);
     _right.set(-y, x, z);
     _absSpeed = sqrt(x*x + y*y);
-	_direction = atan(y / x);
+    _direction = atan(y / x);
     //checkMagnitude();
 }
 
@@ -77,9 +77,10 @@ void Orange::draw() {
     GLfloat amb_orang[]={0.63f,0.36f,0.16f,1.0f};
     GLfloat diff_orang[]={1.0f,0.49f,0.0f,1.0f};
     GLfloat spec_orang[]={0.28f,0.13f,0.0f,1.0f};
-    GLfloat amb_stem[]={0.31f,0.18f,0.02f,1.0f};
-    GLfloat diff_stem[]={0.7f,0.4f,0.0f,1.0f};
-    GLfloat spec_stem[]={0.28f,0.13f,0.0f,1.0f};
+    GLfloat amb_stem[]={0.24f,0.44f,0.0f,1.0f};
+    GLfloat diff_stem[]={0.0f,0.2f,0.0f,1.0f};
+    GLfloat spec_stem[]={0.21f,0.14f,0.17f,1.0f};
+    GLfloat shine_stem=90;
     GLfloat shine=88;
     
     glPushMatrix();
@@ -109,7 +110,7 @@ void Orange::draw() {
     glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb_stem);
     glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff_stem);
     glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec_stem);
-    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine_stem);
     glPushMatrix();
     glTranslated(0, 0, _radius);
     glRotated(-30, 0, 0, 1);
@@ -119,7 +120,7 @@ void Orange::draw() {
     glutSolidCube(_radius / 10);
     glPopMatrix();
     glPopMatrix();
-   }
+}
 
 void Orange::collide(GameObject* car) {
     ((DynamicObject*)car)->setPosition(105, 300, 0);
@@ -129,17 +130,17 @@ void Orange::collide(GameObject* car) {
 }
 
 void Orange::reset(double abs) {
-	double x;
-	double y;
-	do {
-		x = rand() % 1280; 
-	} while ( x < 0 || x > 1280);
-	do {
-		y = rand() % 1280; 
-	} while ( y < 0 || y > 720);
-
-
-	setPosition(x, y, 0);
-	_direction = rand() % 360;
-	setSpeed(cos((getDirection() * M_PI) / 180.0) * abs, sin((getDirection() * M_PI) / 180.0)* abs, 0);
+    double x;
+    double y;
+    do {
+        x = rand() % 1280; 
+    } while ( x < 0 || x > 1280);
+    do {
+        y = rand() % 1280; 
+    } while ( y < 0 || y > 720);
+    
+    
+    setPosition(x, y, 0);
+    _direction = rand() % 360;
+    setSpeed(cos((getDirection() * M_PI) / 180.0) * abs, sin((getDirection() * M_PI) / 180.0)* abs, 0);
 }

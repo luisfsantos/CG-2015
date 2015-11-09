@@ -8,6 +8,9 @@
 
 #include "LightSource.hpp"
 
+LightSource::LightSource() {
+}
+
 LightSource::LightSource(GLenum number) {
     _num = number;
     setPosition(0,0,1,0);
@@ -28,6 +31,11 @@ bool LightSource::getState() {
 }
 
 bool LightSource::setState(bool state) {
+    if (state) {
+        glEnable(_num);
+    } else {
+        glDisable(_num);
+    }
     return _state = state;
 }
 
@@ -69,7 +77,7 @@ void LightSource::setAmbient(const Vector3& ambient) {
     _ambient[0] = aux.getX();
     _ambient[1] = aux.getY();
     _ambient[2] = aux.getZ();
-    _ambient[3] = 1;
+    _ambient[3] = 1.0;
 }
 
 void LightSource::setAmbient(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
@@ -85,7 +93,7 @@ void LightSource::setDiffuse(const Vector3& diffuse) {
     _diffuse[0] = aux.getX();
     _diffuse[1] = aux.getY();
     _diffuse[2] = aux.getZ();
-    _diffuse[3] = 1;
+    _diffuse[3] = 1.0;
 }
 
 void LightSource::setDiffuse(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
@@ -101,7 +109,7 @@ void LightSource::setSpecular(const Vector3& specular) {
     _specular[0] = aux.getX();
     _specular[1] = aux.getY();
     _specular[2] = aux.getZ();
-    _specular[3] = 1;
+    _specular[3] = 1.0;
 }
 
 void LightSource::setSpecular(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {

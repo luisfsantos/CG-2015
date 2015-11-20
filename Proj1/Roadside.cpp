@@ -8,6 +8,8 @@
 
 #include "Roadside.hpp"
 #include "Orange.hpp"
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
 
 int colors[6][3] = {
     {255, 255, 194},
@@ -24,6 +26,7 @@ Roadside::Roadside() {
 
 Roadside::Roadside(double positions[][3], int size, double x, double y, double z) {
     _position.set(x, y, z);
+    initTableTexture("/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/wood.bmp");
     for (int i=0; i<size; i++) {
         _cherrios.push_back(new Cherrio(positions[i][0]+x, positions[i][1]+y, positions[i][2]+z, 2.4, 4));
     }
@@ -35,7 +38,7 @@ Roadside::~Roadside() {
 
 void Roadside::draw() {
     std::vector<Cherrio*>::iterator iter;
-    drawTable();
+    drawTable3();
     glPushMatrix();
     //glTranslatef(_position.getX(), _position.getY(), _position.getZ());
     for ( iter = _cherrios.begin() ; iter != _cherrios.end(); ++iter){
@@ -47,7 +50,6 @@ void Roadside::draw() {
 
 void Roadside::drawTable() {
     /* comment the material*/
-    
     GLfloat amb[]={0.1f,0.1f,0.1f,1.0f};
     GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
     GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
@@ -70,11 +72,47 @@ void Roadside::drawTable() {
     glPopMatrix();   
 }
 
+void Roadside::initTableTexture(const char *filename) {
+    int imagex = 0, imagey = 0, imagen = 0, height = 256, width = 256;
+    unsigned char *data = stbi_load(filename, &imagex, &imagey, &imagen, 0);
+   /* FILE * file;
+    
+    file = fopen(filename, "rb");
+    
+    if ( file == NULL ) imagex = 3;
+    data = (unsigned char *)malloc( width * height * 3 );
+    //int size = fseek(file,);
+    fread(data, width * height * 3, 1, file );
+    fclose( file );
+    
+    for(int i = 0; i < width * height ; ++i)
+    {
+        int index = i*3;
+        unsigned char B,R;
+        B = data[index];
+        R = data[index+2];
+        
+        data[index] = R;
+        data[index+2] = B;
+        
+    }*/
+    glGenTextures( 1, &_TableTexture );
+    glBindTexture( GL_TEXTURE_2D, _TableTexture );
+    glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
+    
+    
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR );
+   // glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
+   // glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
+    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, imagex, imagey, GL_RGB, GL_UNSIGNED_BYTE, data );
+    free( data );
+
+}
+
 
 void Roadside::drawTable2() {
     /* comment the material*/
-    double hw = 720/50;
-    double ww = 1280/50;
     GLfloat amb[]={0.1f,0.1f,0.1f,1.0f};
     GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
     GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
@@ -86,9 +124,9 @@ void Roadside::drawTable2() {
     /* comment the material*/
     bool color = true;
     float x=0, y=0, z = 0;
-    int w=1280, h=720, n=10, m=5;
-    int sw = w/n, sh = h/m; //square width and height respectively
-    //for each width and eight draw a rectangle with a specific color
+    int w=1280, h=720, xxx=50;
+    double hw = h/xxx;
+    double ww = w/xxx;
     glPushMatrix();
     //glColor3ub(234,234,234);
     //glTranslated(w/2,h/2, 0);
@@ -103,6 +141,49 @@ void Roadside::drawTable2() {
             glVertex3f(x, y+hw, z);
             glNormal3f(0, 0, 1);
             glVertex3f(x+ww, y+hw, z);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x+ww, y, z);
+            
+        }
+        glEnd();
+    }
+    glPopMatrix();
+}
+
+void Roadside::drawTable3() {
+    /* comment the material */
+    GLfloat amb[]={0.8f,0.8f,0.8f,1.0f};
+    GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
+    GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
+    GLfloat shine=10;
+    glMaterialfv(GL_FRONT_AND_BACK,GL_AMBIENT,amb);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,diff);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,spec);
+    glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,shine);
+    /*comment the material*/
+    bool color = true;
+    float x=0, y=0, z = 0;
+    int w=1280, h=720, xxx=50;
+    double hw =256;// h/xxx;
+    double ww = 256;//w/xxx;
+    glPushMatrix();
+    //glColor3ub(234,234,234);
+    //glTranslated(w/2,h/2, 0);
+    //glScaled(w, h, 20);
+    for (y=0; y <= h; y += hw) {
+        glBegin(GL_QUADS);
+        
+        for (x=0; x<=w+ww; x += ww) {
+            glTexCoord2f(0.0f, 0.0f);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x, y, z);
+            glTexCoord2f(0.0f, 1.0f);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x, y+hw, z);
+            glTexCoord2f(1.0f, 1.0f);
+            glNormal3f(0, 0, 1);
+            glVertex3f(x+ww, y+hw, z);
+            glTexCoord2f(1.0f, 0.0f);
             glNormal3f(0, 0, 1);
             glVertex3f(x+ww, y, z);
             

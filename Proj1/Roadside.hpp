@@ -16,17 +16,21 @@
 #include "Orange.hpp"
 #include "GameObject.hpp"
 
+
 class Roadside : public StaticObject
 {
 public:
     std::vector<Cherrio*> _cherrios;
+    GLuint _TableTexture;
 public:
     Roadside ();
     Roadside (double [][3], int, double, double, double);
     ~Roadside();
     void draw ();
+    void initTableTexture(char const *);
     void drawTable();
     void drawTable2();
+    void drawTable3();
     bool isIntersecting(GameObject);
     std::vector<Cherrio*> getCherrios();
 };

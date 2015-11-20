@@ -227,8 +227,8 @@ void Car::update(double delta_t) {
     std::vector<Vector3*>::iterator iter;
     if (_movement[UP]) accelarate(1);
     if (_movement[DOWN]) brake(1);
-    if (_movement[LEFT]) turn(L);
-    if (_movement[RIGHT]) turn(R);
+    if (_movement[LEFT]) turn(LL);
+    if (_movement[RIGHT]) turn(RR);
     
     _halfWidth = _Height*std::abs(sin(_angle)) + _Width*std::abs(cos(_angle));
     _halfHeight = _Height*std::abs(cos(_angle)) + _Width*std::abs(sin(_angle));

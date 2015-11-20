@@ -15,8 +15,8 @@ GLenum polygonMode = GL_FILL;
 GLenum shadeMode = GL_SMOOTH;
 bool Candles = true;
 bool CalculatingLights = true;
-Vector3 ambient_day(0.5, 0.5, 0.5);
-Vector3 ambient_night(0.4, 0.4, 0.4);
+Vector3 ambient_day(0.8, 0.8, 0.8);
+Vector3 ambient_night(0.1, 0.1, 0.1);
 Vector3 d_day(1.0, 1.0, 1.0);
 
 double track1 [209][3] = {
@@ -301,8 +301,8 @@ void GameManager::keyPressed(bool *keys) {
             day = false;
         } else {
             _light_sources[0]->setAmbient(ambient_day);
-            _light_sources[0]->setDiffuse(d_day);
-            _light_sources[0]->setSpecular(d_day);
+            _light_sources[0]->setDiffuse(ambient_day);
+            _light_sources[0]->setSpecular(ambient_day);
             _light_sources[0]->draw();
             day = true;
         }
@@ -430,6 +430,8 @@ void GameManager::init() {
     _light_sources.push_back(new LightSource(GL_LIGHT0));
     _light_sources[0]->setDirection(ambient_direction);
     _light_sources[0]->setAmbient(ambient_day);
+    _light_sources[0]->setDiffuse(ambient_day);
+    _light_sources[0]->setSpecular(ambient_day);
     _light_sources[0]->setPosition(1280/2, 720/2, 1000, 0.0);
     _light_sources[0]->draw();
     //CANDLES

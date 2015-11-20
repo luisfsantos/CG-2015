@@ -89,6 +89,8 @@
 		169B25401BDA93FF00C01F3C /* Projection.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Projection.hpp; sourceTree = "<group>"; };
 		16AE8C5B1BD68DB2006E4E1F /* Cherrio.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Cherrio.cpp; sourceTree = "<group>"; };
 		16AE8C5C1BD68DB2006E4E1F /* Cherrio.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = Cherrio.hpp; sourceTree = "<group>"; };
+		16E7C7A71BFF7B1100B47B3E /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image.h; sourceTree = "<group>"; };
+		16E7C7A91BFF9F1E00B47B3E /* wood.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; path = wood.bmp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,8 @@
 		167023701BB6EA5A00C233E2 /* Proj1 */ = {
 			isa = PBXGroup;
 			children = (
+				16E7C7A91BFF9F1E00B47B3E /* wood.bmp */,
+				16E7C7A71BFF7B1100B47B3E /* stb_image.h */,
 				1618F0401BBD35F30059CFD9 /* Lights */,
 				1618F03F1BBD35CE0059CFD9 /* Vector3 */,
 				1618F03C1BBD35650059CFD9 /* Game Manager */,

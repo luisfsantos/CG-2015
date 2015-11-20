@@ -24,8 +24,8 @@
 #define LEFT    2
 #define RIGHT   3
 
-#define L       1
-#define R       -1
+#define LL       1
+#define RR       -1
 
 
 

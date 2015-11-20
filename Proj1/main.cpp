@@ -27,6 +27,7 @@ void initGL() {
     glClearColor(1.0, 1.0, 1.0, 0.0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
+    glEnable(GL_TEXTURE_2D);
     glEnable(GL_NORMALIZE);
 }
 

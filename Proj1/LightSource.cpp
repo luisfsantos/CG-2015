@@ -64,6 +64,12 @@ void LightSource::setDirection(const Vector3& direction) {
     _direction = direction;
 }
 
+void LightSource::setDirection(double x, double y, double z) {
+    _direction.setX(x);
+    _direction.setY(y);
+    _direction.setZ(z);
+}
+
 void LightSource::setCutOff(GLfloat cutoff) {
     _cut_off = cutoff;
 }

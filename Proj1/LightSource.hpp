@@ -40,6 +40,7 @@ public:
     void setPosition (const Vector3&);
     void setPosition (GLfloat, GLfloat, GLfloat, GLfloat);
     void setDirection (const Vector3&);
+    void setDirection (double, double, double);
     void setCutOff (GLfloat);
     void setExponent (GLfloat);
     void setAmbient (const Vector3&);

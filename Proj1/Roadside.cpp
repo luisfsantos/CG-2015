@@ -149,8 +149,11 @@ void Roadside::drawTable3() {
     bool color = true;
     float x=0, y=0, z = 0;
     int w=1280, h=720, xxx=50;
-    double hw =64;// h/xxx;
-    double ww = 64;//w/xxx;
+    double hw = 5;// h/xxx;
+    double ww = 5;//w/xxx;
+    double texX = 0;
+    double texY = 0;
+    double tex = 1/(256/hw);
     glColor3ub(245, 245, 245);
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, _TableTexture );
@@ -158,20 +161,22 @@ void Roadside::drawTable3() {
         glBegin(GL_QUADS);
         
         for (x=0; x<=w - ww; x += ww) {
-            glTexCoord2f(0.0f, 0.0f);
+            glTexCoord2f(texX, texY);
             glNormal3f(0, 0, 1);
             glVertex3f(x, y, z);
-            glTexCoord2f(0.0f, 1.0f);
+            glTexCoord2f(texX, texY+tex);
             glNormal3f(0, 0, 1);
             glVertex3f(x, y+hw, z);
-            glTexCoord2f(1.0f, 1.0f);
+            glTexCoord2f(texX+tex, texY+tex);
             glNormal3f(0, 0, 1);
             glVertex3f(x+ww, y+hw, z);
-            glTexCoord2f(1.0f, 0.0f);
+            glTexCoord2f(texX+tex , texY);
             glNormal3f(0, 0, 1);
             glVertex3f(x+ww, y, z);
             
+            (texX<1.0) ? texX += tex : texX = 0;
         }
+        (texY<1.0) ? texY += tex : texY = 0;
         glEnd();
     }
     glPopMatrix();

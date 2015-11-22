@@ -424,7 +424,7 @@ void GameManager::init() {
 	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 0, 1));
 	_cameras[1]->setPosition(1280/2, -200,1000);
 	
-    _cars.push_back(new Car(_light_sources[6], _light_sources[8]));
+    _cars.push_back(new Car(_light_sources[6], _light_sources[7]));
     _cars[0]->setLives(lives);
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);

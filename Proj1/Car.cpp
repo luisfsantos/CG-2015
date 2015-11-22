@@ -19,15 +19,32 @@ Car::Car() {
 }
 
 Car::Car(LightSource* left, LightSource* right) {
+    double quadratic = 0.0002;
+    double linear = 0.001;
+    Vector3 color(1, 1, 1);
     _headlights[0] = left;
     _headlights[1] = right;
-    _headlights[0]->setPosition(_position.getX()+14, _position.getY()+6, (_position.getZ()+10), 1.0);
-    _headlights[0]->setAmbient(1, 0, 0, 1);
-    _headlights[0]->setDiffuse(1, 0, 0, 1);
-    _headlights[0]->setSpecular(1, 0, 0, 1);
-    glLightf(_headlights[0]->getNum(), GL_LINEAR_ATTENUATION, 0.02);
-    glLightf(_headlights[0]->getNum(), GL_QUADRATIC_ATTENUATION, 0.0001);
+    _headlights[0]->setAmbient(color);
+    _headlights[0]->setDiffuse(color);
+    _headlights[0]->setSpecular(color);
+    _headlights[0]->setDirection(0, 1, 0);
+    _headlights[0]->setExponent(10);
+    _headlights[0]->setCutOff(30);
+    glLightf(_headlights[0]->getNum(), GL_CONSTANT_ATTENUATION, 0.9);
+    glLightf(_headlights[0]->getNum(), GL_LINEAR_ATTENUATION, linear);
+    glLightf(_headlights[0]->getNum(), GL_QUADRATIC_ATTENUATION, quadratic);
     _headlights[0]->draw();
+    _headlights[1]->setAmbient(color);
+    _headlights[1]->setDiffuse(color);
+    _headlights[1]->setSpecular(color);
+    _headlights[1]->setDirection(0, 1, 0);
+    _headlights[1]->setExponent(10);
+    _headlights[1]->setCutOff(30);
+    glLightf(_headlights[1]->getNum(), GL_CONSTANT_ATTENUATION, 0.9);
+    glLightf(_headlights[1]->getNum(), GL_LINEAR_ATTENUATION, linear);
+    glLightf(_headlights[1]->getNum(), GL_QUADRATIC_ATTENUATION, quadratic);
+    _headlights[1]->draw();
+    
     setDirection(90);
     setAbsSpeed(0);
     setBoundingBox(16, 9);
@@ -243,6 +260,7 @@ void Car::drawCubeObj (int color[], Vector3 translate, Vector3 scale) {
 
 void Car::update(double delta_t) {
     double _angle = (((getDirection()-90) * M_PI ) / 180.0);
+    double _real_angle = (((getDirection()) * M_PI ) / 180.0);
     int i = 0;
     std::vector<Vector3*>::iterator iter;
     if (_movement[UP]) accelarate(1);
@@ -273,6 +291,15 @@ void Car::update(double delta_t) {
         // translate back
         (*iter)->set(rotatedX + _position.getX(), rotatedY + _position.getY(), 0);
     }
+    
+    _headlights[0]->setPosition(_position.getX()+cos(_real_angle-0.2)*10.2, _position.getY()+sin(_real_angle-0.2)*10.2, _position.getZ()+10, 1.0);
+    _headlights[1]->setPosition(_position.getX()+cos(_real_angle+0.2)*10.2, _position.getY()+sin(_real_angle+0.2)*10.2, _position.getZ()+10, 1.0);
+    _headlights[0]->setDirection(cos(_real_angle), sin(_real_angle), 0);
+    _headlights[1]->setDirection(cos(_real_angle), sin(_real_angle), 0);
+    _headlights[0]->draw();
+    _headlights[1]->draw();
+    
+    
 }
 
 void Car::drawUnder() {

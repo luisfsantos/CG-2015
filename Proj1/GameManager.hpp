@@ -27,6 +27,7 @@
 #include "Butter.hpp"
 #include "Cherrio.hpp"
 #include "Candle.hpp"
+#include "Hud.hpp"
 #include <math.h> 
 #include <cmath>
 //#include <GL/glut.h>
@@ -63,6 +64,7 @@ private:
     Roadside* _road;
     Camera* _active_camera;
     bool* _keys;
+    Hud* _hud;
 public:
     GameManager();
     ~GameManager();

@@ -16,12 +16,12 @@ Candle::Candle(double x, double y, double z, LightSource *flame, Vector3 color) 
     Vector3 direction (((610-x)/(sqrt((610-x)*(610-x) + (360-y)*(360-y)))), ((360-y)/(sqrt((610-x)*(610-x) + (360-y)*(360-y)))), 0);
     setPosition(x, y, z);
     _flame = flame;
-    _flame->setDirection(direction);
-    _flame->setPosition(x, y, z+60, 1.0);
+    //_flame->setDirection(direction);
+    _flame->setPosition(x, y, z+45, 1.0);
     _flame->setAmbient(color);
     _flame->setDiffuse(color);
     _flame->setSpecular(color);
-    glLightf(_flame->getNum(), GL_LINEAR_ATTENUATION, 0.04);
+    glLightf(_flame->getNum(), GL_LINEAR_ATTENUATION, 0.02);
     glLightf(_flame->getNum(), GL_QUADRATIC_ATTENUATION, 0.0001);
     _flame->draw();
     

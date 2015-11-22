@@ -18,11 +18,13 @@
 #include <stdio.h>
 #include "DynamicObject.hpp"
 #include "Vector3.hpp"
+#include "LightSource.hpp"
 
 
 class Car : public DynamicObject
 {
-    
+private:
+    LightSource _headlights[2];
 public:
     Car();
     ~Car();

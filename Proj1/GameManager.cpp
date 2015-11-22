@@ -7,7 +7,7 @@
 //
 
 #include "GameManager.hpp"
-#define CANDLES 6
+#define CANDLES 5
 int oldTime = 0;
 bool day = true;
 double orangeVel = 1.4;
@@ -348,6 +348,22 @@ void GameManager::update() {
 	std::vector<Cherrio*>::iterator iter2;
 	std::vector<GameObject*>::iterator iter3;
 	std::vector<Camera*>::iterator iter4;
+    glPushMatrix();
+    glDisable(GL_LIGHTING);
+    glDisable(GL_DEPTH_TEST);
+    _cameras[3]->update();
+    _hud->update();
+    glColor3ub(255, 0, 0);
+    glBegin(GL_QUADS);
+    glVertex3f(20, 20, 3);
+    glVertex3f(20, 60, 3);
+    glVertex3f(60, 60, 3);
+    glVertex3f(60, 20, 3);
+    glEnd();
+    CalculatingLights ? glEnable(GL_LIGHTING) : glDisable(GL_LIGHTING);
+    glEnable(GL_DEPTH_TEST);
+    glPopMatrix();
+    
 	for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
 		(*iter)->update(1);
 	}
@@ -360,6 +376,7 @@ void GameManager::update() {
    for ( iter2 = _road->_cherrios.begin(); iter2 !=  _road->_cherrios.end(); ++iter2){
 		if ((_cars[0])->isIntersecting(**iter2)) {
 			(*iter2)->collide(_cars[0]);
+            _hud->die();
 		}
 	}
 	for( iter3 = _game_objects.begin() + 2; iter3 !=  _game_objects.begin() + 5; ++iter3) {
@@ -369,17 +386,48 @@ void GameManager::update() {
 	}
 	_cameras[2]->setEye(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), _cars[0]->getPosition()->getZ());
 	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 80);
-	_active_camera->update();
+     _active_camera->update();
+   
+   
+    
 }
 
 void GameManager::init() {
     glShadeModel(GL_SMOOTH);
+    _hud = new Hud(5);
+    /*
+     LIGHT SOURCES INITIALIZATIONS
+     */
+    //AMBIENT
+    Vector3 ambient_direction (0, 0, -1);
+    Vector3 blue(0, 0, 1.0);
+    Vector3 red(1.0, 0, 0);
+    Vector3 green(0, 1.0, 0);
+    Vector3 candle_light(1.0, 0.58, 0.16);
+    _light_sources.push_back(new LightSource(GL_LIGHT0));
+    _light_sources[0]->setDirection(ambient_direction);
+    _light_sources[0]->setAmbient(ambient_day);
+    _light_sources[0]->setDiffuse(ambient_day);
+    _light_sources[0]->setSpecular(ambient_day);
+    _light_sources[0]->setPosition(1280/2, 720/2, 1000, 0.0);
+    _light_sources[0]->draw();
+    //CANDLES
+    _light_sources.push_back(new LightSource(GL_LIGHT1));
+    _light_sources.push_back(new LightSource(GL_LIGHT2));
+    _light_sources.push_back(new LightSource(GL_LIGHT3));
+    _light_sources.push_back(new LightSource(GL_LIGHT4));
+    _light_sources.push_back(new LightSource(GL_LIGHT5));
+    _light_sources.push_back(new LightSource(GL_LIGHT6));
+    _light_sources.push_back(new LightSource(GL_LIGHT7));
+    /*
+     CAMERA
+     */
 	_active_camera = new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000);
 	_cameras.push_back(_active_camera);
-	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 1, 0));
+	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 0, 1));
 	_cameras[1]->setPosition(1280/2, -200,1000);
 	
-	_cars.push_back(new Car());
+    _cars.push_back(new Car(/*_light_sources[6], _light_sources[8]*/));
 	
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);
@@ -418,37 +466,14 @@ void GameManager::init() {
 
 	_cameras.push_back(new PerspectiveCamera(75, 1280/720, 10, 2000,
 			_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), 0, 0, 0, 1));
-    /*
-     LIGHT SOURCES INITIALIZATIONS
-     */
-    //AMBIENT
-    Vector3 ambient_direction (0, 0, -1);
-    Vector3 blue(0, 0, 1.0);
-    Vector3 red(1.0, 0, 0);
-    Vector3 green(0, 1.0, 0);
-    Vector3 candle_light(1, 0.58, 0.16);
-    _light_sources.push_back(new LightSource(GL_LIGHT0));
-    _light_sources[0]->setDirection(ambient_direction);
-    _light_sources[0]->setAmbient(ambient_day);
-    _light_sources[0]->setDiffuse(ambient_day);
-    _light_sources[0]->setSpecular(ambient_day);
-    _light_sources[0]->setPosition(1280/2, 720/2, 1000, 0.0);
-    _light_sources[0]->draw();
-    //CANDLES
-    _light_sources.push_back(new LightSource(GL_LIGHT1));
-    _light_sources.push_back(new LightSource(GL_LIGHT2));
-    _light_sources.push_back(new LightSource(GL_LIGHT3));
-    _light_sources.push_back(new LightSource(GL_LIGHT4));
-    _light_sources.push_back(new LightSource(GL_LIGHT5));
-    _light_sources.push_back(new LightSource(GL_LIGHT6));
+    
     _game_objects.push_back(new Candle(250, 200, 0, _light_sources[1], candle_light));
     _game_objects.push_back(new Candle(200, 650, 0, _light_sources[2], candle_light));
     _game_objects.push_back(new Candle(1000, 300, 0, _light_sources[3], candle_light));
     _game_objects.push_back(new Candle(1000, 500, 0, _light_sources[4], candle_light));
-    _game_objects.push_back(new Candle(650, 250, 0, _light_sources[5], candle_light));
-    _game_objects.push_back(new Candle(330, 430, 0, _light_sources[6], candle_light));
+    _game_objects.push_back(new Candle(330, 430, 0, _light_sources[5], candle_light));
     
-    
+    _cameras.push_back(new OrthogonalCamera(0, 1280, 0, 720, -1000, 1000));
 }
 
 void GameManager::setKeys(bool * keys){

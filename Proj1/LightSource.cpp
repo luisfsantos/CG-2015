@@ -13,7 +13,8 @@ LightSource::LightSource() {
 
 LightSource::LightSource(GLenum number) {
     _num = number;
-    setPosition(0,0,1,1);
+    setPosition(0,0,1.0,1.0);
+    //setDirection(Vector3(0,0,1));
     setAmbient(0.0, 0.0, 0.0, 1.0);
     setDiffuse(1.0, 1.0, 1.0, 1.0);
     setSpecular(1.0, 1.0, 1.0, 1.0);
@@ -49,7 +50,7 @@ void LightSource::setPosition(const Vector3& position) {
     _position[0] = aux.getX();
     _position[1] = aux.getY();
     _position[2] = aux.getZ();
-    _position[3] = 1;
+    _position[3] = 1.0;
 }
 
 void LightSource::setPosition(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {

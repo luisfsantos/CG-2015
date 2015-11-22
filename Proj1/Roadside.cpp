@@ -26,7 +26,7 @@ Roadside::Roadside() {
 
 Roadside::Roadside(double positions[][3], int size, double x, double y, double z) {
     _position.set(x, y, z);
-    initTableTexture("/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/wood.bmp");
+    initTableTexture("/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Lwood.jpg");
     for (int i=0; i<size; i++) {
         _cherrios.push_back(new Cherrio(positions[i][0]+x, positions[i][1]+y, positions[i][2]+z, 2.4, 4));
     }
@@ -73,39 +73,18 @@ void Roadside::drawTable() {
 }
 
 void Roadside::initTableTexture(const char *filename) {
-    int imagex = 0, imagey = 0, imagen = 0, height = 256, width = 256;
+    int imagex = 0, imagey = 0, imagen = 0;
     unsigned char *data = stbi_load(filename, &imagex, &imagey, &imagen, 0);
-   /* FILE * file;
     
-    file = fopen(filename, "rb");
-    
-    if ( file == NULL ) imagex = 3;
-    data = (unsigned char *)malloc( width * height * 3 );
-    //int size = fseek(file,);
-    fread(data, width * height * 3, 1, file );
-    fclose( file );
-    
-    for(int i = 0; i < width * height ; ++i)
-    {
-        int index = i*3;
-        unsigned char B,R;
-        B = data[index];
-        R = data[index+2];
-        
-        data[index] = R;
-        data[index+2] = B;
-        
-    }*/
     glGenTextures( 1, &_TableTexture );
     glBindTexture( GL_TEXTURE_2D, _TableTexture );
+    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, imagex, imagey, GL_RGB, GL_UNSIGNED_BYTE, data );
     glTexEnvf( GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE,GL_MODULATE );
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_LINEAR_MIPMAP_NEAREST );
-    
-    
     glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER,GL_LINEAR );
-   // glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
-   // glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
-    gluBuild2DMipmaps( GL_TEXTURE_2D, 3, imagex, imagey, GL_RGB, GL_UNSIGNED_BYTE, data );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_S,GL_REPEAT );
+    glTexParameterf( GL_TEXTURE_2D, GL_TEXTURE_WRAP_T,GL_REPEAT );
+    
     free( data );
 
 }
@@ -128,9 +107,10 @@ void Roadside::drawTable2() {
     double hw = h/xxx;
     double ww = w/xxx;
     glPushMatrix();
-    //glColor3ub(234,234,234);
+    glColor3ub(234,234,234);
     //glTranslated(w/2,h/2, 0);
     //glScaled(w, h, 20);
+    
     for (y=0; y <= h; y += hw) {
         glBegin(GL_QUADS);
         
@@ -152,7 +132,7 @@ void Roadside::drawTable2() {
 
 void Roadside::drawTable3() {
     /* comment the material */
-    GLfloat amb[]={0.8f,0.8f,0.8f,1.0f};
+    GLfloat amb[]={0.4f,0.4f,0.4f,1.0f};
     GLfloat diff[]={0.5f,0.5f,0.5f,1.0f};
     GLfloat spec[]={0.7f,0.7f,0.7f,1.0f};
     GLfloat shine=10;
@@ -164,16 +144,15 @@ void Roadside::drawTable3() {
     bool color = true;
     float x=0, y=0, z = 0;
     int w=1280, h=720, xxx=50;
-    double hw =256;// h/xxx;
-    double ww = 256;//w/xxx;
+    double hw =64;// h/xxx;
+    double ww = 64;//w/xxx;
+    glColor3ub(245, 245, 245);
     glPushMatrix();
-    //glColor3ub(234,234,234);
-    //glTranslated(w/2,h/2, 0);
-    //glScaled(w, h, 20);
+    glBindTexture( GL_TEXTURE_2D, _TableTexture );
     for (y=0; y <= h; y += hw) {
         glBegin(GL_QUADS);
         
-        for (x=0; x<=w+ww; x += ww) {
+        for (x=0; x<=w - ww; x += ww) {
             glTexCoord2f(0.0f, 0.0f);
             glNormal3f(0, 0, 1);
             glVertex3f(x, y, z);

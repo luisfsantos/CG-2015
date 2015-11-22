@@ -29,8 +29,11 @@ void Hud::update() {
 }
 
 void Hud::die() {
-    _cars.pop_back();
-    _lives -= 1;
+    if (_lives > 0) {
+        _cars.pop_back();
+        _lives -= 1;
+    }
+    
 }
 
 void Hud::create_cars() {

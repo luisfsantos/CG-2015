@@ -18,11 +18,31 @@ Car::Car() {
     _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
 }
 
+Car::Car(LightSource* left, LightSource* right) {
+    _headlights[0] = left;
+    _headlights[1] = right;
+    _headlights[0]->setPosition(_position.getX()+14, _position.getY()+6, (_position.getZ()+10), 1.0);
+    _headlights[0]->setAmbient(1, 0, 0, 1);
+    _headlights[0]->setDiffuse(1, 0, 0, 1);
+    _headlights[0]->setSpecular(1, 0, 0, 1);
+    glLightf(_headlights[0]->getNum(), GL_LINEAR_ATTENUATION, 0.02);
+    glLightf(_headlights[0]->getNum(), GL_QUADRATIC_ATTENUATION, 0.0001);
+    _headlights[0]->draw();
+    setDirection(90);
+    setAbsSpeed(0);
+    setBoundingBox(16, 9);
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()-_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()+_halfWidth, _position.getY()+_halfHeight,0));
+    _vertices.push_back(new Vector3(_position.getX()-_halfWidth, _position.getY()+_halfHeight,0));
+}
+
 Car::~Car() {
     
 }
 
 void Car::draw() {
+    
     
     /***************************************
      DECLARING VARIABLES

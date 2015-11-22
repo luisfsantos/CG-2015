@@ -354,13 +354,6 @@ void GameManager::update() {
     glDisable(GL_DEPTH_TEST);
     _cameras[3]->update();
     _hud->update();
-    glColor3ub(255, 0, 0);
-    glBegin(GL_QUADS);
-    glVertex3f(20, 20, 3);
-    glVertex3f(20, 60, 3);
-    glVertex3f(60, 60, 3);
-    glVertex3f(60, 20, 3);
-    glEnd();
     CalculatingLights ? glEnable(GL_LIGHTING) : glDisable(GL_LIGHTING);
     glEnable(GL_DEPTH_TEST);
     glPopMatrix();
@@ -431,7 +424,7 @@ void GameManager::init() {
 	_cameras.push_back(new PerspectiveCamera(70, 16 / 9, 100, 2000, 1280 / 2 , 720 / 2, 0, 0, 0, 1));
 	_cameras[1]->setPosition(1280/2, -200,1000);
 	
-    _cars.push_back(new Car(/*_light_sources[6], _light_sources[8]*/));
+    _cars.push_back(new Car(_light_sources[6], _light_sources[8]));
     _cars[0]->setLives(lives);
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);

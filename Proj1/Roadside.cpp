@@ -11,7 +11,7 @@
 #if defined(__APPLE__)|| defined(MACOSX)
 #define TABLE "/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Lwood.jpg"
 #else
-#define TABLE "Lwood.jpg"
+#define TABLE "..\\Proj1\\Lwood.jpg"
 #endif
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"

@@ -24,10 +24,11 @@
 class Car : public DynamicObject
 {
 private:
-    LightSource _headlights[2];
+    LightSource * _headlights[2];
     double _lives;
 public:
     Car();
+    Car(LightSource*, LightSource*);
     ~Car();
     virtual void draw();
     void drawWheel(int [], Vector3, Vector3, bool);

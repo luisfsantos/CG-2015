@@ -516,3 +516,18 @@ void Car::drawCage() {
     glEnd();
     glPopMatrix();
 }
+
+void Car::setLives(double lives) {
+    _lives = lives;
+}
+
+double Car::getLives() {
+    return _lives;
+}
+
+void Car::die(){
+    _lives -= 1;
+}
+
+
+

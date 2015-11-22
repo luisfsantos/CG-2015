@@ -8,6 +8,11 @@
 
 #include "Roadside.hpp"
 #include "Orange.hpp"
+#if defined(__APPLE__)|| defined(MACOSX)
+#define TABLE "/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Lwood.jpg"
+#else
+#define TABLE "Lwood.jpg"
+#endif
 #define STB_IMAGE_IMPLEMENTATION
 #include "stb_image.h"
 
@@ -26,7 +31,7 @@ Roadside::Roadside() {
 
 Roadside::Roadside(double positions[][3], int size, double x, double y, double z) {
     _position.set(x, y, z);
-    initTableTexture("/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Lwood.jpg");
+    initTableTexture(TABLE);
     for (int i=0; i<size; i++) {
         _cherrios.push_back(new Cherrio(positions[i][0]+x, positions[i][1]+y, positions[i][2]+z, 2.4, 4));
     }

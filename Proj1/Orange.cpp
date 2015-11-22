@@ -127,6 +127,7 @@ void Orange::collide(GameObject* car) {
     ((DynamicObject*)car)->setAbsSpeed(0);
     ((DynamicObject*)car)->setDirection(90);
     ((DynamicObject*)car)->setMovement(false, false, false, false);
+    ((DynamicObject*)car)->die();
 }
 
 void Orange::reset(double abs) {

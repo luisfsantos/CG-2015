@@ -59,6 +59,7 @@ public:
     
     void setMovement(bool, bool, bool, bool);
     virtual void collide(GameObject *) {};
+    virtual void die(){};
 };
 
 

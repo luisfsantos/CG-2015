@@ -11,6 +11,7 @@
 int oldTime = 0;
 bool day = true;
 double orangeVel = 1.4;
+double lives = 5;
 GLenum polygonMode = GL_FILL;
 GLenum shadeMode = GL_SMOOTH;
 bool Candles = true;
@@ -370,13 +371,16 @@ void GameManager::update() {
 
 	for ( iter = _game_objects.begin() + 1; iter != _game_objects.end(); ++iter){
 		if ((_cars[0])->isIntersecting(**iter)) {
+            int aux = _cars[0]->getLives();
 			(*iter)->collide(_cars[0]);
+            if (aux > _cars[0]->getLives()) {
+                _hud->die();
+            }
 		}
 	}
    for ( iter2 = _road->_cherrios.begin(); iter2 !=  _road->_cherrios.end(); ++iter2){
 		if ((_cars[0])->isIntersecting(**iter2)) {
 			(*iter2)->collide(_cars[0]);
-            _hud->die();
 		}
 	}
 	for( iter3 = _game_objects.begin() + 2; iter3 !=  _game_objects.begin() + 5; ++iter3) {
@@ -394,7 +398,7 @@ void GameManager::update() {
 
 void GameManager::init() {
     glShadeModel(GL_SMOOTH);
-    _hud = new Hud(5);
+    _hud = new Hud(lives);
     /*
      LIGHT SOURCES INITIALIZATIONS
      */
@@ -428,7 +432,7 @@ void GameManager::init() {
 	_cameras[1]->setPosition(1280/2, -200,1000);
 	
     _cars.push_back(new Car(/*_light_sources[6], _light_sources[8]*/));
-	
+    _cars[0]->setLives(lives);
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);
 	_game_objects.push_back(_road);
@@ -445,6 +449,7 @@ void GameManager::init() {
 	
 	//non dynamic
 	_game_objects[0]->setPosition(105, 300, 0);
+    
 	_game_objects[2]->setSpeed(-1, 1, 0);
 	_game_objects[3]->setSpeed(1, -1, 0);
 	_game_objects[4]->setSpeed(1, 1, 0);

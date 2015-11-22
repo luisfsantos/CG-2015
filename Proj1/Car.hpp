@@ -25,6 +25,7 @@ class Car : public DynamicObject
 {
 private:
     LightSource _headlights[2];
+    double _lives;
 public:
     Car();
     ~Car();
@@ -35,6 +36,9 @@ public:
     void drawUnder();
     void drawStrips();
     void drawCage();
+    void setLives(double);
+    void die();
+    double getLives();
 };
 #endif /* Car_hpp */
 

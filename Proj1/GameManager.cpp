@@ -320,6 +320,11 @@ void GameManager::keyPressed(bool *keys) {
 		_active_camera=_cameras[2];
 		_active_camera->update();
 	}
+	if (_keys[KEY_R]){
+		reset();
+	}
+
+
 	_cars[0]->setMovement(_keys[KEY_UP], _keys[KEY_DOWN], _keys[KEY_LEFT], _keys[KEY_RIGHT]);
 }
 
@@ -389,6 +394,33 @@ void GameManager::update() {
     
 }
 
+void GameManager::reset() {
+	/*Delete dynamic objects
+	redraw dynamic objects*/
+
+	//select default camera
+	_active_camera = _cameras[0];
+
+	//new lives
+	_hud = new Hud(lives);
+	_cars[0]->setLives(lives);
+
+	//reset car startup position
+	_game_objects[0]->setPosition(105, 300, 0);
+	_game_objects[0]->setAbsSpeed(0);
+	_game_objects[0]->setDirection(90);
+
+	//orange initial speed
+	_game_objects[2]->setSpeed(-1, 1, 0);
+	_game_objects[3]->setSpeed(1, -1, 0);
+	_game_objects[4]->setSpeed(1, 1, 0);
+
+	//orange's position reset
+	_game_objects[2]->reset(orangeVel);
+	_game_objects[3]->reset(orangeVel);
+	_game_objects[4]->reset(orangeVel);
+
+}
 void GameManager::init() {
     glShadeModel(GL_SMOOTH);
     _hud = new Hud(lives);

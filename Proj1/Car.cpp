@@ -19,7 +19,7 @@ Car::Car() {
 }
 
 Car::Car(LightSource* left, LightSource* right) {
-    double quadratic = 0.0002;
+    double quadratic = 0.0001;
     double linear = 0.001;
     Vector3 color(1, 1, 1);
     _headlights[0] = left;
@@ -28,7 +28,7 @@ Car::Car(LightSource* left, LightSource* right) {
     _headlights[0]->setDiffuse(color);
     _headlights[0]->setSpecular(color);
     _headlights[0]->setDirection(0, 1, 0);
-    _headlights[0]->setExponent(10);
+    _headlights[0]->setExponent(25);
     _headlights[0]->setCutOff(30);
     glLightf(_headlights[0]->getNum(), GL_CONSTANT_ATTENUATION, 0.9);
     glLightf(_headlights[0]->getNum(), GL_LINEAR_ATTENUATION, linear);
@@ -38,7 +38,7 @@ Car::Car(LightSource* left, LightSource* right) {
     _headlights[1]->setDiffuse(color);
     _headlights[1]->setSpecular(color);
     _headlights[1]->setDirection(0, 1, 0);
-    _headlights[1]->setExponent(10);
+    _headlights[1]->setExponent(25);
     _headlights[1]->setCutOff(30);
     glLightf(_headlights[1]->getNum(), GL_CONSTANT_ATTENUATION, 0.9);
     glLightf(_headlights[1]->getNum(), GL_LINEAR_ATTENUATION, linear);
@@ -56,6 +56,11 @@ Car::Car(LightSource* left, LightSource* right) {
 
 Car::~Car() {
     
+}
+
+void Car::headlights_toggle(bool on) {
+        _headlights[0]->setState(on);
+        _headlights[1]->setState(on);
 }
 
 void Car::draw() {

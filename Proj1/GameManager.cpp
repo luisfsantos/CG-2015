@@ -10,6 +10,7 @@
 #define CANDLES 5
 int oldTime = 0;
 bool day = true;
+bool Paused = false;
 double orangeVel = 1.4;
 double lives = 5;
 GLenum polygonMode = GL_FILL;
@@ -299,13 +300,17 @@ void GameManager::keyPressed(bool *keys) {
             _light_sources[0]->setDiffuse(ambient_night);
             _light_sources[0]->setSpecular(ambient_night);
             _light_sources[0]->draw();
+            _cars[0]->headlights_toggle(day);
             day = false;
+            
         } else {
             _light_sources[0]->setAmbient(ambient_day);
             _light_sources[0]->setDiffuse(ambient_day);
             _light_sources[0]->setSpecular(ambient_day);
             _light_sources[0]->draw();
+            _cars[0]->headlights_toggle(day);
             day = true;
+            
         }
     }
 	if (_keys[KEY_1]) {
@@ -322,16 +327,35 @@ void GameManager::keyPressed(bool *keys) {
 	}
 	if (_keys[KEY_R]){
 		reset();
+        Paused = false;
 	}
+    if (_keys[KEY_S]) {
+        Paused ? Paused = false : Paused = true;
+    }
 
 
 	_cars[0]->setMovement(_keys[KEY_UP], _keys[KEY_DOWN], _keys[KEY_LEFT], _keys[KEY_RIGHT]);
 }
 
 void GameManager::onTimer() {
-	update();
-	glutSwapBuffers();
-	glutPostRedisplay();// Post re-paint request to activate display()
+    if (Paused || (_cars[0]->getLives() == 0)) {
+        glDisable(GL_LIGHTING);
+        _cameras[3]->update();
+        _hud->update();
+        if (_cars[0]->getLives() == 0) {
+            _hud->gameover();
+        } else {
+            _hud->pause();
+        }
+        CalculatingLights ? glEnable(GL_LIGHTING) : glDisable(GL_LIGHTING);
+        _active_camera->update();
+        glutSwapBuffers();
+        glutPostRedisplay();
+    } else {
+        update();
+        glutSwapBuffers();
+        glutPostRedisplay();// Post re-paint request to activate display()
+    }
 }
 
 void GameManager::idle() {
@@ -363,6 +387,7 @@ void GameManager::update() {
     glEnable(GL_DEPTH_TEST);
     glPopMatrix();
     
+    _active_camera->update();
 	for ( iter = _game_objects.begin() ; iter != _game_objects.end(); ++iter){
 		(*iter)->update(1);
 	}
@@ -388,7 +413,7 @@ void GameManager::update() {
 	}
 	_cameras[2]->setEye(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), _cars[0]->getPosition()->getZ());
 	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 80);
-     _active_camera->update();
+    
    
    
     
@@ -458,6 +483,7 @@ void GameManager::init() {
 	
     _cars.push_back(new Car(_light_sources[6], _light_sources[7]));
     _cars[0]->setLives(lives);
+    _cars[0]->headlights_toggle(false);
 	_road = new Roadside(track1, 209, -60, -200, 0);
 	_game_objects.push_back(_cars[0]);
 	_game_objects.push_back(_road);

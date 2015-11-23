@@ -27,7 +27,7 @@ public:
     void create_cars();
     void die();
     void pause();
-    void unpause();
+    void gameover();
 };
 
 #endif /* Hud_hpp */

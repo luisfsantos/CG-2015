@@ -40,6 +40,7 @@ public:
     void setLives(double);
     void die();
     double getLives();
+    void headlights_toggle(bool);
 };
 #endif /* Car_hpp */
 

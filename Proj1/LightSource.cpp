@@ -128,7 +128,6 @@ void LightSource::setSpecular(GLfloat x, GLfloat y, GLfloat z, GLfloat w) {
 
 void LightSource::draw() {
     GLfloat direction[] = {static_cast<GLfloat>(_direction.getX()), static_cast<GLfloat>(_direction.getY()), static_cast<GLfloat>(_direction.getZ())};
-    glEnable(_num);
     glLightfv(_num, GL_AMBIENT, _ambient);
     glLightfv(_num, GL_DIFFUSE, _diffuse);
     glLightfv(_num, GL_SPECULAR, _specular);

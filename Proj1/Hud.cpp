@@ -81,7 +81,7 @@ void Hud::pause() {
     int imageH = 100, imageW = 512;
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, _paused );
-    glColor3ub(255, 255, 255);
+    glColor4f(1, 1, 1, 0.7);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 0.6);
     glVertex3f((width-imageW)/2, (height-imageH)/2, 190);
@@ -100,7 +100,7 @@ void Hud::gameover() {
     int imageH = 512, imageW = 512;
     glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, _game_over);
-    glColor3ub(255, 255, 255);
+    glColor4f(1, 1, 1, 0.7);
     glBegin(GL_POLYGON);
     glTexCoord2f(0.0, 1.0);
     glVertex3f((width-imageW)/2, (height-imageH)/2, 190);

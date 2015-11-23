@@ -19,7 +19,7 @@ Car::Car() {
 }
 
 Car::Car(LightSource* left, LightSource* right) {
-    double quadratic = 0.0001;
+    double quadratic = 0.0003;
     double linear = 0.001;
     Vector3 color(1, 1, 1);
     _headlights[0] = left;

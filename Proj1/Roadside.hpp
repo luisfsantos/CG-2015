@@ -31,6 +31,7 @@ public:
     void drawTable();
     void drawTable2();
     void drawTable3();
+    void reset(double [][3], int, double, double, double);
     bool isIntersecting(GameObject);
     std::vector<Cherrio*> getCherrios();
 };

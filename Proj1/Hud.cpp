@@ -8,7 +8,7 @@
 
 #include "Hud.hpp"
 #if defined(__APPLE__)|| defined(MACOSX)
-#define PAUSED "/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Paused1.jpg"
+#define PAUSED "/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Paused2.jpg"
 #define GAMEOVER "/Users/luissantos/Documents/IST/3ano/CG/Proj1/Proj1/Gameover.jpg"
 #else
 #define PAUSED "..\\Proj1\\Paused1.jpg"
@@ -72,14 +72,17 @@ void Hud::die() {
 void Hud::create_cars() {
     for (int i = 0; i<_lives; i++) {
         _cars.push_back(new Car());
-        _cars[i]->setPosition((1260-i*25), 700, 4);
+        glPushMatrix();
+        glScaled(3, 3, 3);
+        _cars[i]->setPosition((1260-i*35), 700, 300);
+        glPopMatrix();
     }
 }
 
 void Hud::pause() {
     int height = 720, width = 1280;
-    int imageH = 100, imageW = 512;
-    glPushMatrix();
+    int imageH = 720, imageW = 1280;
+    /*glPushMatrix();
     glBindTexture( GL_TEXTURE_2D, _paused );
     glColor4f(1, 1, 1, 0.7);
     glBegin(GL_POLYGON);
@@ -90,6 +93,20 @@ void Hud::pause() {
     glTexCoord2f(1.0, 0.35);
     glVertex3f((width+imageW)/2, (height+imageH)/2, 190);
     glTexCoord2f(0.0, 0.35);
+    glVertex3f((width-imageW)/2, (height+imageH)/2, 190);
+    glEnd();
+    glPopMatrix();*/
+    glPushMatrix();
+    glBindTexture( GL_TEXTURE_2D, _paused );
+    glColor4f(1, 1, 1, 0.7);
+    glBegin(GL_POLYGON);
+    glTexCoord2f(0.0, 1.0);
+    glVertex3f((width-imageW)/2, (height-imageH)/2, 190);
+    glTexCoord2f(1.0, 1.0);
+    glVertex3f((width+imageW)/2, (height-imageH)/2, 190);
+    glTexCoord2f(1.0, 0.0);
+    glVertex3f((width+imageW)/2, (height+imageH)/2, 190);
+    glTexCoord2f(0.0, 0.0);
     glVertex3f((width-imageW)/2, (height+imageH)/2, 190);
     glEnd();
     glPopMatrix();

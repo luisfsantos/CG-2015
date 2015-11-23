@@ -24,7 +24,7 @@ bool keys[260];
 /* Initialize OpenGL Graphics */
 
 void initGL() {
-    glClearColor(1.0, 1.0, 1.0, 0.0);
+    glClearColor(0.7,0.7, 0.7, 0.0);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
     glEnable(GL_TEXTURE_2D);

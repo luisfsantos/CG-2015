@@ -13,12 +13,13 @@ bool day = true;
 bool Paused = false;
 double orangeVel = 1.4;
 double lives = 5;
+bool Headlights = false;
 GLenum polygonMode = GL_FILL;
 GLenum shadeMode = GL_SMOOTH;
 bool Candles = true;
 bool CalculatingLights = true;
 Vector3 ambient_day(0.8, 0.8, 0.8);
-Vector3 ambient_night(0.1, 0.1, 0.1);
+Vector3 ambient_night(0.01, 0.01, 0.01);
 Vector3 d_day(1.0, 1.0, 1.0);
 
 double track1 [209][3] = {
@@ -285,6 +286,15 @@ void GameManager::keyPressed(bool *keys) {
         (shadeMode == GL_SMOOTH) ? glShadeModel(GL_FLAT) : glShadeModel(GL_SMOOTH);
         (shadeMode == GL_SMOOTH) ? shadeMode = GL_FLAT : shadeMode = GL_SMOOTH;
     }
+    if (_keys[KEY_H]) {
+        if (Headlights) {
+            _cars[0]->headlights_toggle(!Headlights);
+            Headlights = false;
+        } else {
+            _cars[0]->headlights_toggle(!Headlights);
+            Headlights = true;
+        }
+    }
     if (_keys[KEY_L]) {
         if (CalculatingLights == true) {
             glDisable(GL_LIGHTING);
@@ -301,6 +311,7 @@ void GameManager::keyPressed(bool *keys) {
             _light_sources[0]->setSpecular(ambient_night);
             _light_sources[0]->draw();
             _cars[0]->headlights_toggle(day);
+            Headlights = day;
             day = false;
             
         } else {
@@ -309,6 +320,7 @@ void GameManager::keyPressed(bool *keys) {
             _light_sources[0]->setSpecular(ambient_day);
             _light_sources[0]->draw();
             _cars[0]->headlights_toggle(day);
+            Headlights = day;
             day = true;
             
         }
@@ -411,6 +423,14 @@ void GameManager::update() {
 			(*iter3)->reset(orangeVel);
 		};
 	}
+    if (_road->isIntersecting(*_cars[0])) {
+        _cars[0]->setPosition(105, 300, 0);
+        _cars[0]->setAbsSpeed(0);
+        _cars[0]->setDirection(90);
+        _cars[0]->setMovement(false, false, false, false);
+        _cars[0]->die();
+        _hud->die();
+    }
 	_cameras[2]->setEye(_cars[0]->getPosition()->getX(), _cars[0]->getPosition()->getY(), _cars[0]->getPosition()->getZ());
 	_cameras[2]->setPosition(_cars[0]->getPosition()->getX() - 100*cos(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getY() - 100*sin(_cars[0]->getDirection()*M_PI/180), _cars[0]->getPosition()->getZ() + 80);
     
@@ -424,11 +444,12 @@ void GameManager::reset() {
 	redraw dynamic objects*/
 
 	//select default camera
-	_active_camera = _cameras[0];
+	//_active_camera = _cameras[0];
 
 	//new lives
 	_hud = new Hud(lives);
 	_cars[0]->setLives(lives);
+    _road->reset(track1, 209, -60, -200, 0);
 
 	//reset car startup position
 	_game_objects[0]->setPosition(105, 300, 0);

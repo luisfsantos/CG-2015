@@ -43,6 +43,7 @@
 #define KEY_N               110
 #define KEY_R				114
 #define KEY_S               115
+#define KEY_H               104
 #define KEY_LEFT			256
 #define KEY_UP              257
 #define KEY_RIGHT			258

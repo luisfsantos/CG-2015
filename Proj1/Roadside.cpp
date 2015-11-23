@@ -41,6 +41,13 @@ Roadside::~Roadside() {
     
 }
 
+void Roadside::reset(double positions[][3], int size, double x, double y, double z) {
+    _cherrios.clear();
+    for (int i=0; i<size; i++) {
+        _cherrios.push_back(new Cherrio(positions[i][0]+x, positions[i][1]+y, positions[i][2]+z, 2.4, 4));
+    }
+}
+
 void Roadside::draw() {
     std::vector<Cherrio*>::iterator iter;
     drawTable3();
